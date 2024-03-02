@@ -9,12 +9,7 @@ import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 const schema = yup
   .object({
     nome: yup.string().required(),
-    cpf: yup.string().required(),
-    curso: yup.string().required(),
-    orientador: yup.string().required(),
-    projeto: yup.string().required(),
-    login: yup.string().required(),
-    senha: yup.string().required(),
+    descricao: yup.string().required(),
   })
   .required();
 
