@@ -14,7 +14,6 @@ import gerenciarReuniao from "../../assets/icon-sidebar/gerenciar-reuniao.svg";
 import gerenciarDocs from "../../assets/icon-sidebar/gerenciar-docs.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import ButtonGerenciamento from "../UI/ButtonGerenciamento/ButtonGerenciamento";
 
 const Header = () => {
   const navigate = useNavigate();
