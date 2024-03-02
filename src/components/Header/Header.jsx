@@ -1,9 +1,11 @@
-import { Button, List } from "@mui/material";
+import { Button, IconButton, List, ListItem, Typography } from "@mui/material";
 import logo from "../../assets/logoLMTS.svg";
 import Drawer from "@mui/material/Drawer";
 import ItemSideBar from "../ItemSideBar/ItemSideBar";
 import styles from "./header.module.css";
-
+import Avatar from "@mui/material/Avatar";
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
 import gerenciarProjeto from "../../assets/icon-sidebar/gerenciar-projeto.svg";
 import gerenciarBolsa from "../../assets/icon-sidebar/gerenciar-bolsa.svg";
 import gerenciarEstudantes from "../../assets/icon-sidebar/gerenciar-estudante.svg";
@@ -11,38 +13,108 @@ import gerenciarOrientador from "../../assets/icon-sidebar/gerenciar-orientador.
 import gerenciarReuniao from "../../assets/icon-sidebar/gerenciar-reuniao.svg";
 import gerenciarDocs from "../../assets/icon-sidebar/gerenciar-docs.svg";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [controlSideBar, setControlSideBar] = useState(false);
 
   return (
-    <section>
+    <section className={styles.headerMain}>
       <Drawer variant="permanent">
+        <IconButton
+          onClick={() => setControlSideBar(true)}
+          sx={{ marginTop: "20px" }}
+        >
+          <MenuIcon />
+        </IconButton>
+        <List
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "25px",
+            justifyContent: "center",
+          }}
+        >
+          <Button onClick={() => navigate('/')}>
+            {<HomeIcon sx={{ fontSize: 33 }}/>}
+          </Button>
+          <ItemSideBar img={gerenciarProjeto} url={"projeto"} />
+          <ItemSideBar img={gerenciarReuniao} url={"reunião"} />
+          <ItemSideBar img={gerenciarOrientador} url={"orientadores"} />
+          <ItemSideBar img={gerenciarEstudantes} url={"estudantes"} />
+          <ItemSideBar img={gerenciarBolsa} url={"bolsas"} />
+          <ItemSideBar img={gerenciarDocs} url={"documentos"} />
+        </List>
+
+        <ListItem
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "25px",
+            justifyContent: "center",
+          }}
+        >
+          <Button>
+            <Avatar />
+          </Button>
+        </ListItem>
+      </Drawer>
+
+      <Drawer open={controlSideBar} onClose={() => setControlSideBar(false)}>
         <div className={styles.logo}>
           <Button onClick={() => navigate("/")}>
             <img src={logo} alt="Logo do LMTS" />
           </Button>
         </div>
         <List className={styles.SideBarContainer}>
-          <ItemSideBar img={gerenciarProjeto} url={"projeto"} text="Projeto" />
-          <ItemSideBar img={gerenciarReuniao} url={"reunião"} text="Reunião" />
+          <ItemSideBar
+            img={gerenciarProjeto}
+            url={"projeto"}
+            text="Gerenciar Projeto"
+          />
+          <ItemSideBar
+            img={gerenciarReuniao}
+            url={"reunião"}
+            text="Gerenciar Reunião"
+          />
           <ItemSideBar
             img={gerenciarOrientador}
             url={"orientadores"}
-            text="Orientadores"
+            text="Gerenciar Orientadores"
           />
           <ItemSideBar
             img={gerenciarEstudantes}
             url={"estudantes"}
-            text="Estudantes"
+            text="Gerenciar Estudantes"
           />
-          <ItemSideBar img={gerenciarBolsa} url={"bolsas"} text="Bolsas" />
+          <ItemSideBar
+            img={gerenciarBolsa}
+            url={"bolsas"}
+            text="Gerenciar Bolsas"
+          />
           <ItemSideBar
             img={gerenciarDocs}
             url={"documentos"}
-            text="Documentos"
+            text="Gerenciar Documentos"
           />
         </List>
+
+        <ListItem
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button>
+            <Avatar />
+          </Button>
+          <Typography>Olá, usuario</Typography>
+        </ListItem>
       </Drawer>
     </section>
   );

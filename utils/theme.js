@@ -8,8 +8,9 @@ const theme = createTheme({
       grayRef: '#383838',
       background: '#242424'
     },
-  
-
+    secondary: {
+      main: '#f8b133'
+    }
   },
   typography: {
     fontFamily: 'Archivo, sans-serif',

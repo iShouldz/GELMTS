@@ -1,19 +1,21 @@
 /* eslint-disable react/prop-types */
-import { TextField } from "@mui/material";
+import { Select} from "@mui/material";
 import { Controller } from "react-hook-form";
 
-const InputTextComponent = ({ name, control, ...rest }) => {
+const SelectComponent = ({ name, control, ...rest }) => {
   return (
     <div>
       <Controller
         name={name}
         control={control}
         render={({ field }) => (
-          <TextField
+          <Select
             {...field}
             {...rest}
+            select
             value={field.value || ""}
             sx={{color: "white",
+            width: "100%",
             "& .MuiOutlinedInput-notchedOutline": {
               borderColor: "white",
               color: "white",
@@ -41,11 +43,15 @@ const InputTextComponent = ({ name, control, ...rest }) => {
               },
             },}}
             onChange={(e) => field.onChange(e.target.value)}
-          />
+          >
+             <option>
+              oi
+            </option>
+          </Select>
         )}
       />
     </div>
   );
 };
 
-export default InputTextComponent;
+export default SelectComponent;

@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { Button, TextField} from "@mui/material";
+import { Button, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./estudanteForm.module.css";
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import SelectComponent from "../UI/SelectComponent/SelectComponent";
 
 const schema = yup
   .object({
@@ -37,7 +38,7 @@ const EstudanteForm = () => {
       onSubmit={handleSubmit(handleCadastrarEstudante)}
       className={styles.formContainer}
     >
-      <div>
+      <div className={styles.inputGroup}>
         <InputTextComponent
           name="nome"
           label="Nome"
@@ -52,41 +53,30 @@ const EstudanteForm = () => {
         />
       </div>
 
-      <div>
-        <TextField
-          id="outlined-basic"
-          label="Curso"
-          placeholder="Selecione seu curso"
-          variant="outlined"
-          {...register("curso")}
-        />
-        <TextField
-          id="outlined-basic"
+      <div className={styles.inputGroup}>
+        <SelectComponent name="curso" label="Curso" control={control} />
+        <Select name="orientador"
+          label="Orientador" >
+
+        </Select>
+        {/* <SelectComponent
+          name="orientador"
           label="Orientador"
-          placeholder="Selecione seu orientador"
-          variant="outlined"
-          {...register("orientador")}
-        />
+          control={control}
+        /> */}
       </div>
 
-      <div>
-        <TextField
-          id="outlined-basic"
+      <div className={styles.inputGroup}>
+        <InputTextComponent
+          control={control}
+          name="vinculo"
           label="Vinculo"
           placeholder="Digite seu vinculo"
-          variant="outlined"
-          {...register("vinculo")}
         />
-        <TextField
-          id="outlined-basic"
-          label="Projeto"
-          placeholder="Selecione o projeto"
-          variant="outlined"
-          {...register("projeto")}
-        />
+        <SelectComponent label="Projeto" control={control} name="projeto" />
       </div>
 
-      <div>
+      <div className={styles.inputGroup}>
         <InputTextComponent
           name="login"
           label="Login"
@@ -102,7 +92,13 @@ const EstudanteForm = () => {
         />
       </div>
 
-      <Button type="submit">Submit</Button>
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{ backgroundColor: "secondary.main", color: "primary.main" }}
+      >
+        Submit
+      </Button>
     </form>
   );
 };
