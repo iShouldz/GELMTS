@@ -1,0 +1,6 @@
+.reuniaoContainer{
+    margin-left: 15vw;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
