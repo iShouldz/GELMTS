@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import ButtonGerenciamento from "../../components/UI/ButtonGerenciamento/ButtonGerenciamento";
-import styles from './estudantes.module.css'
+import styles from "./estudantes.module.css";
 
 const Estudantes = () => {
   return (
@@ -14,8 +14,18 @@ const Estudantes = () => {
         Gerenciamento de Estudantes
       </Typography>
 
-      <Box sx={{ marginTop: "10vh", display: 'flex', gap: '50px', justifyContent: 'center', width: '100%'}}>
-        <ButtonGerenciamento>Cadastrar Estudante</ButtonGerenciamento>
+      <Box
+        sx={{
+          marginTop: "10vh",
+          display: "flex",
+          gap: "50px",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <ButtonGerenciamento path="cadastrar-estudante">
+          Cadastrar Estudante
+        </ButtonGerenciamento>
 
         <ButtonGerenciamento>Atualizar Estudante</ButtonGerenciamento>
 
