@@ -1,9 +1,9 @@
-import { Button, IconButton, List, ListItem } from "@mui/material";
+import { Button, IconButton, List, ListItem, Typography } from "@mui/material";
 import logo from "../../assets/logoLMTS.svg";
 import Drawer from "@mui/material/Drawer";
 import ItemSideBar from "../ItemSideBar/ItemSideBar";
 import styles from "./header.module.css";
-
+import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import gerenciarProjeto from "../../assets/icon-sidebar/gerenciar-projeto.svg";
 import gerenciarBolsa from "../../assets/icon-sidebar/gerenciar-bolsa.svg";
@@ -42,6 +42,21 @@ const Header = () => {
           <ItemSideBar img={gerenciarBolsa} url={"bolsas"} />
           <ItemSideBar img={gerenciarDocs} url={"documentos"} />
         </List>
+
+        <ListItem
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "25px",
+            justifyContent: "center",
+          }}
+        >
+          <Button>
+            <Avatar />
+          </Button>
+        </ListItem>
       </Drawer>
 
       <Drawer open={controlSideBar} onClose={() => setControlSideBar(false)}>
@@ -82,6 +97,20 @@ const Header = () => {
             text="Gerenciar Documentos"
           />
         </List>
+
+        <ListItem
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button>
+            <Avatar />
+          </Button>
+          <Typography>Olá, usuario</Typography>
+        </ListItem>
       </Drawer>
     </section>
   );
