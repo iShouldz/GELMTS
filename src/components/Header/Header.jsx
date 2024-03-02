@@ -5,6 +5,7 @@ import ItemSideBar from "../ItemSideBar/ItemSideBar";
 import styles from "./header.module.css";
 import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
 import gerenciarProjeto from "../../assets/icon-sidebar/gerenciar-projeto.svg";
 import gerenciarBolsa from "../../assets/icon-sidebar/gerenciar-bolsa.svg";
 import gerenciarEstudantes from "../../assets/icon-sidebar/gerenciar-estudante.svg";
@@ -13,6 +14,7 @@ import gerenciarReuniao from "../../assets/icon-sidebar/gerenciar-reuniao.svg";
 import gerenciarDocs from "../../assets/icon-sidebar/gerenciar-docs.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ButtonGerenciamento from "../UI/ButtonGerenciamento/ButtonGerenciamento";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -35,6 +37,9 @@ const Header = () => {
             justifyContent: "center",
           }}
         >
+          <Button onClick={() => navigate('/')}>
+            {<HomeIcon sx={{ fontSize: 33 }}/>}
+          </Button>
           <ItemSideBar img={gerenciarProjeto} url={"projeto"} />
           <ItemSideBar img={gerenciarReuniao} url={"reunião"} />
           <ItemSideBar img={gerenciarOrientador} url={"orientadores"} />
