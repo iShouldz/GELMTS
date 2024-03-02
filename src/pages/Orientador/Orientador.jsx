@@ -15,7 +15,7 @@ const Orientador = () => {
         sx={{ display: "flex", justifyContent: "center", marginTop: "10vh" }}
         color="primary.main"
       >
-        Gerenciamento de Orientador
+        Gerenciamento de Orientadores
       </Typography>
 
       <Box
