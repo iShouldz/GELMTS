@@ -1,0 +1,10 @@
+.SideBarContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
