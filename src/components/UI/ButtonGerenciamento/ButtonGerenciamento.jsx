@@ -1,20 +1,22 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@mui/material"
-import { useNavigate } from "react-router-dom"
-
-const ButtonGerenciamento = ({children, path}) => {
-
-  const navigate = useNavigate()
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+const ButtonGerenciamento = ({ children, path, icon }) => {
+  const navigate = useNavigate();
 
   const handleNavigate = (path) => {
-    navigate(path)
-  }
+    navigate(path);
+  };
 
   return (
-    <Button variant="contained" sx={{width: '250px', height: '200px'}} onClick={() => handleNavigate(path)}>
-        {children}
+    <Button
+      variant="contained"
+      sx={{ width: "250px", height: "200px", display: 'flex', flexDirection: 'column'}}
+      onClick={() => handleNavigate(path)}
+    >
+      {icon} {children}
     </Button>
-  )
-}
+  );
+};
 
-export default ButtonGerenciamento
+export default ButtonGerenciamento;
