@@ -6,6 +6,8 @@ import Estudantes from "./pages/Estudantes/Estudantes";
 import CadastrarEstudante from "./pages/CadastrarEstudante/CadastrarEstudante";
 import Orientador from "./pages/Orientador/Orientador";
 import CadastrarOrientador from "./pages/CadastrarOrientador/CadastrarOrientador";
+import Reuniao from "./pages/Reuniao/Reuniao";
+import CadastrarReuniao from "./pages/CadastrarReuniao/CadastrarReuniao";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +25,11 @@ function App() {
         {
           path: "orientadores/cadastrar-orientador",
           element: <CadastrarOrientador />,
+        },
+        { path: "reunião", element: <Reuniao />},
+        {
+          path: "reunioes/cadastrar-reuniao",
+          element: <CadastrarReuniao />,
         }
       ],
     },
