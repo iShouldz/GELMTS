@@ -15,7 +15,9 @@ const schema = yup
     projeto: yup.string().required(),
     orientandos: yup.array().of(
       yup.string().required()
-    )
+    ),
+    login: yup.string().required(),
+    senha: yup.string().required(),
   })
   .required();
 
