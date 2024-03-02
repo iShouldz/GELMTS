@@ -1,0 +1,7 @@
+.projetoContainer{
+    margin-left: 25vw;
+    margin-right: 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
