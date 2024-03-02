@@ -6,6 +6,7 @@ import Estudantes from "./pages/Estudantes/Estudantes";
 import Projeto from "./pages/Projeto/Projeto";
 import CadastrarEstudante from "./pages/CadastrarEstudante/CadastrarEstudante";
 import CadastrarProjeto from "./pages/CadastrarProjeto/CadastrarProjeto";
+import AtualizarProjeto from "./pages/AtualizarProjeto/AtualizarProjeto";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
         {
           path: "projeto/cadastrar-projeto",
           element: <CadastrarProjeto />,
+        },
+        {
+          path: "projeto/atualizar-projeto",
+          element: <AtualizarProjeto />,
         },
       ],
     },

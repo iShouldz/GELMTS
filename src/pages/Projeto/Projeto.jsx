@@ -27,7 +27,9 @@ const Projeto = () => {
           Cadastrar Projeto
         </ButtonGerenciamento>
 
-        <ButtonGerenciamento>Atualizar Projeto</ButtonGerenciamento>
+        <ButtonGerenciamento path="atualizar-projeto">
+          Atualizar Projeto
+        </ButtonGerenciamento>
 
         <ButtonGerenciamento>Remover Projeto</ButtonGerenciamento>
 

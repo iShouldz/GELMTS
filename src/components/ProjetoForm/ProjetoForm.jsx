@@ -54,7 +54,7 @@ const ProjetoForm = () => {
         />
       </div>
 
-      <Button type="submit">Cadastrar</Button>
+      <Button type="submit">Enviar</Button>
     </form>
   );
 };
