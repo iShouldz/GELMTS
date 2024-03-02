@@ -1,8 +1,8 @@
-import { List } from "@mui/material";
+import { Button, List } from "@mui/material";
 import logo from "../../assets/logoLMTS.svg";
 import Drawer from "@mui/material/Drawer";
 import ItemSideBar from "../ItemSideBar/ItemSideBar";
-import styles from './header.module.css'
+import styles from "./header.module.css";
 
 import gerenciarProjeto from "../../assets/icon-sidebar/gerenciar-projeto.svg";
 import gerenciarBolsa from "../../assets/icon-sidebar/gerenciar-bolsa.svg";
@@ -10,13 +10,18 @@ import gerenciarEstudantes from "../../assets/icon-sidebar/gerenciar-estudante.s
 import gerenciarOrientador from "../../assets/icon-sidebar/gerenciar-orientador.svg";
 import gerenciarReuniao from "../../assets/icon-sidebar/gerenciar-reuniao.svg";
 import gerenciarDocs from "../../assets/icon-sidebar/gerenciar-docs.svg";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <section>
       <Drawer variant="permanent">
         <div className={styles.logo}>
-          <img src={logo} alt="Logo do LMTS" />
+          <Button onClick={() => navigate("/")}>
+            <img src={logo} alt="Logo do LMTS" />
+          </Button>
         </div>
         <List className={styles.SideBarContainer}>
           <ItemSideBar img={gerenciarProjeto} url={"projeto"} text="Projeto" />

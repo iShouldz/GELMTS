@@ -12,7 +12,7 @@ const ItemSideBar = ({ img, url, text }) => {
 
   return (
     <ListItem button onClick={() => handleNavigate(url)} >
-      <Typography className={styles.SideBarItemContainer}>
+      <Typography className={styles.SideBarItemContainer} fontWeight="bold">
         <img src={img} alt="" />
         Gerenciar {text}
       </Typography>
