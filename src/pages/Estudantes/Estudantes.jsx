@@ -6,7 +6,20 @@ import PersonIcon from "@mui/icons-material/Person";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import ModalTemplate from "../../components/ModalTemplate/ModalTemplate";
+import { useState } from "react";
 const Estudantes = () => {
+
+  const [controlDialog, setControlDialog] = useState(false);
+
+  const handleClose = () => {
+    setControlDialog(false)
+  }
+
+  const handleOpen = () => {
+    setControlDialog(true)
+  }
+
   return (
     <section className={styles.estudantesContainer}>
       <Typography
@@ -35,7 +48,7 @@ const Estudantes = () => {
         </ButtonGerenciamento>
 
         <ButtonGerenciamento
-          path="atualizar-estudante"
+          onClick={handleOpen}
           icon={<ManageAccountsIcon sx={{ fontSize: 50 }} />}
         >
           Atualizar Estudante
@@ -55,6 +68,8 @@ const Estudantes = () => {
           Procurar Estudante
         </ButtonGerenciamento>
       </Box>
+
+      <ModalTemplate handleClose={handleClose} controlDialog={controlDialog} title={"Selecione o estudante"}/>
     </section>
   );
 };

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const ButtonGerenciamento = ({ children, path, icon }) => {
+const ButtonGerenciamento = ({ children, path, icon, ...props }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -13,6 +13,7 @@ const ButtonGerenciamento = ({ children, path, icon }) => {
       variant="contained"
       sx={{ width: "250px", height: "200px", display: 'flex', flexDirection: 'column'}}
       onClick={() => handleNavigate(path)}
+      {...props}
     >
       {icon} {children}
     </Button>
