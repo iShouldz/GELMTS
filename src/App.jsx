@@ -19,6 +19,7 @@ import Documento from "./pages/Documento/Documento";
 import CadastrarDocumento from "./pages/CadastrarDocumento/CadastrarDocumento";
 import Vinculo from "./pages/Vinculo/Vinculo";
 import Editais from "./pages/Editais/Editais";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -66,6 +67,9 @@ function App() {
         },
         {
           path: 'editais', element: <Editais />
+        },
+        {
+          path: '*', element: <NotFound />
         }
 
       ],
