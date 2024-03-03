@@ -17,6 +17,7 @@ import Bolsa from "./pages/Bolsa/Bolsa";
 import CadastrarBolsa from "./pages/CadastrarBolsa/CadastrarBolsa";
 import Documento from "./pages/Documento/Documento";
 import CadastrarDocumento from "./pages/CadastrarDocumento/CadastrarDocumento";
+import Vinculo from "./pages/Vinculo/Vinculo";
 
 function App() {
   const router = createBrowserRouter([
@@ -58,6 +59,9 @@ function App() {
         {
           path: "documento/cadastrar-documento",
           element: <CadastrarDocumento />,
+        },
+        {
+          path: "vinculo", element: <Vinculo />
         }
 
       ],
