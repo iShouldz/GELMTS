@@ -13,33 +13,38 @@ const InputTextComponent = ({ name, control, ...rest }) => {
             {...field}
             {...rest}
             value={field.value || ""}
-            sx={{color: "white",
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "white",
-              color: "white",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#FBA403 !important",
-              color: "white !important",
-            },
-            "& input": {
-              color: "white",
-            },
-            "& label": {
-              color: "secondary.labelColor",
-              "&.Mui-focused": {
-                color: "white",
+            sx={{
+              width: "13vw",
+              minWidth: "100px",
+              maxWidth: "400px",
+              color: "#1A2E4F !important",
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#1A2E4F",
+                color: "#1A2E4F",
               },
-              "&.MuiInputLabel-shrink": {
-                color: "white",
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#FBA403 !important",
+                color: "#1A2E4F !important",
+              },
+              "& input": {
+                color: "#1A2E4F",
+              },
+              "& label": {
+                color: "secondary.labelColor",
                 "&.Mui-focused": {
-                  color: "#FBA403",
+                  color: "#1A2E4F",
                 },
-                "&.Mui-error": {
-                  color: "red",
+                "&.MuiInputLabel-shrink": {
+                  color: "#1A2E4F !important",
+                  "&.Mui-focused": {
+                    color: "#FBA403",
+                  },
+                  "&.Mui-error": {
+                    color: "red",
+                  },
                 },
               },
-            },}}
+            }}
             onChange={(e) => field.onChange(e.target.value)}
           />
         )}

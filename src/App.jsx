@@ -27,11 +27,11 @@ function App() {
           path: "orientadores/cadastrar-orientador",
           element: <CadastrarOrientador />,
         },
-        { path: "reunião", element: <Reuniao />},
+        { path: "reunião", element: <Reuniao /> },
         {
           path: "reunioes/cadastrar-reuniao",
           element: <CadastrarReuniao />,
-        }
+        },
       ],
     },
     {

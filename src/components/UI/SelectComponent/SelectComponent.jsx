@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Select} from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
 
 const SelectComponent = ({ name, control, ...rest }) => {
@@ -14,39 +14,62 @@ const SelectComponent = ({ name, control, ...rest }) => {
             {...rest}
             select
             value={field.value || ""}
-            sx={{color: "white",
-            width: "100%",
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "white",
-              color: "white",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#FBA403 !important",
-              color: "white !important",
-            },
-            "& input": {
-              color: "white",
-            },
-            "& label": {
-              color: "secondary.labelColor",
-              "&.Mui-focused": {
-                color: "white",
+            InputLabelProps={{ style: { color: 'pink' } }}
+            sx={{
+              width: "13vw",
+              minWidth: "100px",
+              maxWidth: "400px",
+              color: "#1A2E4F !important",
+              "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "red"
               },
-              "&.MuiInputLabel-shrink": {
-                color: "white",
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+                color: "purple"
+              },
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "purple"
+              },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "purple"
+              },
+              "& .MuiInputLabel-root": {
+                color: 'pink !important',
+              },
+              "& .MuiInputLabel-shrink": {
+                color: 'pink !important',
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#1A2E4F",
+                color: "#1A2E4F",
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#FBA403 !important",
+                color: "#1A2E4F !important",
+              },
+              "& input": {
+                color: "#1A2E4F !important",
+              },
+              "& label": {
+                color: "#1A2E4F !important",
                 "&.Mui-focused": {
-                  color: "#FBA403",
+                  color: "#1A2E4F",
                 },
-                "&.Mui-error": {
-                  color: "red",
+                "&.MuiInputLabel-shrink": {
+                  color: "#1A2E4F !important",
+                  "&.Mui-focused": {
+                    color: "#1A2E4F !important",
+                  },
+                  "&.Mui-error": {
+                    color: "red",
+                  },
                 },
               },
-            },}}
+            }}
             onChange={(e) => field.onChange(e.target.value)}
           >
-             <option>
-              oi
-            </option>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         )}
       />

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Button, Select, TextField } from "@mui/material";
+import { Button, MenuItem, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -52,18 +52,13 @@ const EstudanteForm = () => {
           control={control}
         />
       </div>
-
       <div className={styles.inputGroup}>
-        <SelectComponent name="curso" label="Curso" control={control} />
-        <Select name="orientador"
-          label="Orientador" >
-
-        </Select>
-        {/* <SelectComponent
+        <SelectComponent name="curso" label="Curso" control={control} placeholder="Selecione o curso"/>
+        <SelectComponent
           name="orientador"
           label="Orientador"
           control={control}
-        /> */}
+        />
       </div>
 
       <div className={styles.inputGroup}>
@@ -95,7 +90,7 @@ const EstudanteForm = () => {
       <Button
         type="submit"
         variant="contained"
-        sx={{ backgroundColor: "secondary.main", color: "primary.main" }}
+        sx={{ backgroundColor: "primary.main" }}
       >
         Submit
       </Button>
