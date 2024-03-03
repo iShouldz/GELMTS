@@ -17,6 +17,7 @@ import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -55,6 +56,15 @@ const Header = () => {
               color="primary.main"
             >
               <DeviceHubIcon sx={{ fontSize: 33 }} />
+            </Typography>
+          </ListItem>
+          <ListItem button onClick={() => navigate("/editais")}>
+            <Typography
+              className={styles.SideBarItemContainer}
+              fontWeight="bold"
+              color="primary.main"
+            >
+              <LibraryBooksIcon sx={{ fontSize: 33 }} />
             </Typography>
           </ListItem>
         </List>
@@ -121,6 +131,16 @@ const Header = () => {
             >
               <DeviceHubIcon sx={{ fontSize: 33 }} />
               Gerenciar Vinculo
+            </Typography>
+          </ListItem>
+          <ListItem button onClick={() => navigate("/editais")}>
+            <Typography
+              className={styles.SideBarItemContainer}
+              fontWeight="bold"
+              color="primary.main"
+            >
+              <LibraryBooksIcon sx={{ fontSize: 33 }} />
+              Gerenciar Editais
             </Typography>
           </ListItem>
         </List>

@@ -18,6 +18,7 @@ import CadastrarBolsa from "./pages/CadastrarBolsa/CadastrarBolsa";
 import Documento from "./pages/Documento/Documento";
 import CadastrarDocumento from "./pages/CadastrarDocumento/CadastrarDocumento";
 import Vinculo from "./pages/Vinculo/Vinculo";
+import Editais from "./pages/Editais/Editais";
 
 function App() {
   const router = createBrowserRouter([
@@ -62,6 +63,9 @@ function App() {
         },
         {
           path: "vinculo", element: <Vinculo />
+        },
+        {
+          path: 'editais', element: <Editais />
         }
 
       ],
