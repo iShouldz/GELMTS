@@ -1,0 +1,15 @@
+.formBolsaContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputGroup{
+    display: flex;
+    gap: 20px
+}
+
+.participante {
+  margin-bottom: 10px; /* Ajuste o valor conforme necessário */
+}

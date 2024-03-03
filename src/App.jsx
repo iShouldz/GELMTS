@@ -11,6 +11,8 @@ import Orientador from "./pages/Orientador/Orientador";
 import CadastrarOrientador from "./pages/CadastrarOrientador/CadastrarOrientador";
 import Reuniao from "./pages/Reuniao/Reuniao";
 import CadastrarReuniao from "./pages/CadastrarReuniao/CadastrarReuniao";
+import Bolsa from "./pages/Bolsa/Bolsa";
+import CadastrarBolsa from "./pages/CadastrarBolsa/CadastrarBolsa";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,7 +44,12 @@ function App() {
         {
           path: "reunioes/cadastrar-reuniao",
           element: <CadastrarReuniao />,
-        }
+        },
+        { path: "bolsa", element: <Bolsa /> },
+        {
+          path: "bolsa/cadastrar-bolsa",
+          element: <CadastrarBolsa />,
+        },
       ],
     },
   ]);
