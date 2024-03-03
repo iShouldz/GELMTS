@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./cadastrarBolsa.module.css";
-import BolsaForm from "../../components/Bolsa/BolsaForm";
+import BolsaForm from "../../components/BolsaForm/BolsaForm";
 
 const CadastrarBolsa = () => {
   return (
