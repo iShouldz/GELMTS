@@ -44,7 +44,7 @@ const Header = () => {
           <ItemSideBar img={gerenciarOrientador} url={"orientadores"} />
           <ItemSideBar img={gerenciarEstudantes} url={"estudantes"} />
           <ItemSideBar img={gerenciarBolsa} url={"bolsa"} />
-          <ItemSideBar img={gerenciarDocs} url={"documentos"} />
+          <ItemSideBar img={gerenciarDocs} url={"documento"} />
         </List>
 
         <ListItem
@@ -97,7 +97,7 @@ const Header = () => {
           />
           <ItemSideBar
             img={gerenciarDocs}
-            url={"documentos"}
+            url={"documento"}
             text="Gerenciar Documentos"
           />
         </List>
