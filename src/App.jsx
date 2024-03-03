@@ -4,6 +4,7 @@ import Root from "./pages/Root/Root";
 import Home from "./pages/Home/Home";
 import Estudantes from "./pages/Estudantes/Estudantes";
 import CadastrarEstudante from "./pages/CadastrarEstudante/CadastrarEstudante";
+import Login from "./pages/Login/Login";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +19,10 @@ function App() {
           element: <CadastrarEstudante />,
         },
       ],
+    },
+    {
+      path: "login",
+      element: <Login />,
     },
   ]);
 
