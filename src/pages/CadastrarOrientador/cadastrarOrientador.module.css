@@ -1,0 +1,6 @@
+.FormularioOrientadorContainer {
+    margin-left: 18vw;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
