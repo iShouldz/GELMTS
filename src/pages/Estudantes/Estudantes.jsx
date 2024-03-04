@@ -8,12 +8,14 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { useState } from "react";
 import ModalSearch from "../../components/ModalSearch/ModalSearch";
-import ModalTemplate from "../../components/ModalTemplate/ModalTemplate";
+import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
+import EstudanteForm from "../../components/EstudanteForm/EstudanteForm";
 const Estudantes = () => {
   const [controlDialog, setControlDialog] = useState(false);
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
-  const [controlDialogRemove, setControlDialogRemove] = useState(false)
- 
+  const [controlDialogRemove, setControlDialogRemove] = useState(false);
+  const [controlDialogUpdate, setControlDialogUpdate] = useState(false);
+
   const handleClose = () => {
     setControlDialog(false);
   };
@@ -36,6 +38,19 @@ const Estudantes = () => {
 
   const handleCloseRemove = () => {
     setControlDialogRemove(false);
+  };
+
+  const handleOpenUpdate = () => {
+    setControlDialogUpdate(true);
+  };
+
+  const handleCloseUpdate = () => {
+    setControlDialogUpdate(false);
+  };
+
+  const handleUpdate = (data) => {
+    console.log(data);
+    console.log("update");
   };
 
   return (
@@ -93,7 +108,7 @@ const Estudantes = () => {
         controlDialog={controlDialog}
         title={"Selecione o estudante"}
         actionButtonText="Atualizar informações"
-        actionButton={() => console.log('atualizar aluno')}
+        actionButton={handleOpenUpdate}
       />
 
       <ModalSearch
@@ -101,7 +116,7 @@ const Estudantes = () => {
         controlDialog={controlDialogSearch}
         title={"Pesquise o estudante"}
         actionButtonText="Detalhes"
-        actionButton={() => console.log('detalhes do aluno')}
+        actionButton={() => console.log("detalhes do aluno")}
       />
 
       <ModalSearch
@@ -109,7 +124,14 @@ const Estudantes = () => {
         controlDialog={controlDialogRemove}
         title={"Remova o estudante"}
         actionButtonText="Remover o aluno"
-        actionButton={() => console.log('Remover o aluno')}
+        actionButton={() => console.log("Remover o aluno")}
+      />
+
+      <ModalUpdate
+        handleClose={handleCloseUpdate}
+        controlDialog={controlDialogUpdate}
+        title="Atualize os dados"
+        component={<EstudanteForm handleSubmitData={handleUpdate}/>}
       />
     </section>
   );
