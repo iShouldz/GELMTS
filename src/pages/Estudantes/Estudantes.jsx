@@ -4,21 +4,30 @@ import styles from "./estudantes.module.css";
 
 import PersonIcon from "@mui/icons-material/Person";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ModalTemplate from "../../components/ModalTemplate/ModalTemplate";
 import { useState } from "react";
+import ModalSearch from "../../components/ModalSearch/ModalSearch";
 const Estudantes = () => {
-
   const [controlDialog, setControlDialog] = useState(false);
+  const [controlDialogSearch, setControlDialogSearch] = useState(false);
 
   const handleClose = () => {
-    setControlDialog(false)
-  }
+    setControlDialog(false);
+  };
 
   const handleOpen = () => {
-    setControlDialog(true)
-  }
+    setControlDialog(true);
+  };
+
+  const handleOpenSearch = () => {
+    setControlDialogSearch(true);
+  };
+
+  const handleCloseSearch = () => {
+    setControlDialogSearch(false);
+  };
 
   return (
     <section className={styles.estudantesContainer}>
@@ -62,14 +71,24 @@ const Estudantes = () => {
         </ButtonGerenciamento>
 
         <ButtonGerenciamento
-          path="pesquisar-estudante"
+          path=""
+          onClick={handleOpenSearch}
           icon={<PersonSearchIcon sx={{ fontSize: 50 }} />}
         >
           Procurar Estudante
         </ButtonGerenciamento>
       </Box>
 
-      <ModalTemplate handleClose={handleClose} controlDialog={controlDialog} title={"Selecione o estudante"}/>
+      <ModalTemplate
+        handleClose={handleClose}
+        controlDialog={controlDialog}
+        title={"Selecione o estudante"}
+      />
+      <ModalSearch
+        handleClose={handleCloseSearch}
+        controlDialog={controlDialogSearch}
+        title={"Pesquise o estudante"}
+      />
     </section>
   );
 };

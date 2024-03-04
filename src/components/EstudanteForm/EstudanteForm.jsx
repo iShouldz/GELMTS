@@ -6,6 +6,7 @@ import * as yup from "yup";
 import styles from "./estudanteForm.module.css";
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import SelectComponent from "../UI/SelectComponent/SelectComponent";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -33,6 +34,12 @@ const EstudanteForm = () => {
     console.log(data);
   };
 
+  const navigate = useNavigate()
+  const handleGoBack = () => {
+    navigate.goBack();
+  };
+
+
   return (
     <form
       onSubmit={handleSubmit(handleCadastrarEstudante)}
@@ -53,7 +60,12 @@ const EstudanteForm = () => {
         />
       </div>
       <div className={styles.inputGroup}>
-        <SelectComponent name="curso" label="Curso" control={control} placeholder="Selecione o curso"/>
+        <SelectComponent
+          name="curso"
+          label="Curso"
+          control={control}
+          placeholder="Selecione o curso"
+        />
         <SelectComponent
           name="orientador"
           label="Orientador"
@@ -87,13 +99,24 @@ const EstudanteForm = () => {
         />
       </div>
 
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ backgroundColor: "primary.main" }}
-      >
-        Submit
-      </Button>
+      <div>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ backgroundColor: "primary.main" }}
+          onClick={() => navigate('/estudantes')}
+        >
+          Voltar
+        </Button>
+
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ backgroundColor: "primary.main" }}
+        >
+          Submit
+        </Button>
+      </div>
     </form>
   );
 };
