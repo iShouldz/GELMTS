@@ -13,12 +13,15 @@ import {
   Typography,
 } from "@mui/material";
 
-const ModalSearch = ({ handleClose, controlDialog, title }) => {
+const ModalSearch = ({
+  handleClose,
+  controlDialog,
+  title,
+  actionButton,
+  actionButtonText,
+}) => {
   return (
-    <Dialog
-      onClose={handleClose}
-      open={controlDialog}
-    >
+    <Dialog onClose={handleClose} open={controlDialog}>
       <DialogTitle>{title}</DialogTitle>
 
       <DialogContent>
@@ -26,12 +29,8 @@ const ModalSearch = ({ handleClose, controlDialog, title }) => {
         <TextField sx={{ width: "30vw", maxWidth: "800px" }} />
         <List>
           {/*Listagem dos estudantes para seleção e depois deleção/update */}
-          <Card sx={{width: '10vw'}}>
-            <CardMedia
-              sx={{ height: 140 }}
-              image=""
-              title="foto do aluno"
-            />
+          <Card sx={{ width: "10vw" }}>
+            <CardMedia sx={{ height: 140 }} image="" title="foto do aluno" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 Aluno 01
@@ -41,7 +40,9 @@ const ModalSearch = ({ handleClose, controlDialog, title }) => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" variant="contained">Detalhes</Button>
+              <Button size="small" variant="contained" onClick={actionButton}>
+                {actionButtonText}
+              </Button>
             </CardActions>
           </Card>
         </List>

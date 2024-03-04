@@ -6,13 +6,14 @@ import PersonIcon from "@mui/icons-material/Person";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import ModalTemplate from "../../components/ModalTemplate/ModalTemplate";
 import { useState } from "react";
 import ModalSearch from "../../components/ModalSearch/ModalSearch";
+import ModalTemplate from "../../components/ModalTemplate/ModalTemplate";
 const Estudantes = () => {
   const [controlDialog, setControlDialog] = useState(false);
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
-
+  const [controlDialogRemove, setControlDialogRemove] = useState(false)
+ 
   const handleClose = () => {
     setControlDialog(false);
   };
@@ -27,6 +28,14 @@ const Estudantes = () => {
 
   const handleCloseSearch = () => {
     setControlDialogSearch(false);
+  };
+
+  const handleOpenRemove = () => {
+    setControlDialogRemove(true);
+  };
+
+  const handleCloseRemove = () => {
+    setControlDialogRemove(false);
   };
 
   return (
@@ -64,8 +73,8 @@ const Estudantes = () => {
         </ButtonGerenciamento>
 
         <ButtonGerenciamento
-          path="remover-estudante"
           icon={<PersonRemoveIcon sx={{ fontSize: 50 }} />}
+          onClick={handleOpenRemove}
         >
           Remover Estudante
         </ButtonGerenciamento>
@@ -79,15 +88,28 @@ const Estudantes = () => {
         </ButtonGerenciamento>
       </Box>
 
-      <ModalTemplate
+      <ModalSearch
         handleClose={handleClose}
         controlDialog={controlDialog}
         title={"Selecione o estudante"}
+        actionButtonText="Atualizar informações"
+        actionButton={() => console.log('atualizar aluno')}
       />
+
       <ModalSearch
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
         title={"Pesquise o estudante"}
+        actionButtonText="Detalhes"
+        actionButton={() => console.log('detalhes do aluno')}
+      />
+
+      <ModalSearch
+        handleClose={handleCloseRemove}
+        controlDialog={controlDialogRemove}
+        title={"Remova o estudante"}
+        actionButtonText="Remover o aluno"
+        actionButton={() => console.log('Remover o aluno')}
       />
     </section>
   );

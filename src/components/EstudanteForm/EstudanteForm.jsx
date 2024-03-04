@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Button, MenuItem, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
@@ -20,7 +21,7 @@ const schema = yup
   })
   .required();
 
-const EstudanteForm = () => {
+const EstudanteForm = ({ handleSubmitData }) => {
   const {
     register,
     handleSubmit,
@@ -30,19 +31,17 @@ const EstudanteForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleCadastrarEstudante = (data) => {
-    console.log(data);
-  };
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleGoBack = () => {
     navigate.goBack();
   };
-
-
+  {
+    /*Componentização: Passando a função de submit como props, podemos reaproveitar esse componente de 
+    formulario em outros cenarios */
+  }
   return (
     <form
-      onSubmit={handleSubmit(handleCadastrarEstudante)}
+      onSubmit={handleSubmit(handleSubmitData)}
       className={styles.formContainer}
     >
       <div className={styles.inputGroup}>
@@ -104,7 +103,7 @@ const EstudanteForm = () => {
           type="submit"
           variant="contained"
           sx={{ backgroundColor: "primary.main" }}
-          onClick={() => navigate('/estudantes')}
+          onClick={() => navigate("/estudantes")}
         >
           Voltar
         </Button>

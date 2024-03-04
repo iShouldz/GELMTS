@@ -3,6 +3,11 @@ import styles from "./cadastrarEstudante.module.css";
 import EstudanteForm from "../../components/EstudanteForm/EstudanteForm";
 
 const CadastrarEstudante = () => {
+
+  const handleCadastrar = (data) => {
+    console.log(data)
+  }
+
   return (
     <section className={styles.FormularioContainer}>
       <Typography
@@ -23,7 +28,7 @@ const CadastrarEstudante = () => {
         Cadastrar Estudante
       </Typography>
 
-      <EstudanteForm />
+      <EstudanteForm handleSubmitData={handleCadastrar}/>
     </section>
   );
 };
