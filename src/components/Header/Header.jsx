@@ -147,10 +147,14 @@ const Header = () => {
 
         <ListItem
           sx={{
-            position: "absolute",
+            position: "sticky",
             bottom: 0,
+            width: '100%', 
             display: "flex",
             justifyContent: "space-between",
+            backgroundColor: 'white', 
+            borderTop: '1px solid #e0e0e0', 
+            padding: '10px 20px', 
           }}
         >
           <Button>
