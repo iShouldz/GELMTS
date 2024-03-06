@@ -49,7 +49,7 @@ function App() {
         },
         { path: "reunião", element: <Reuniao /> },
         {
-          path: "reunioes/cadastrar-reuniao",
+          path: "reunião/cadastrar-reuniao",
           element: <CadastrarReuniao />,
         },
         { path: "bolsa", element: <Bolsa /> },
