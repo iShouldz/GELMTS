@@ -3,6 +3,11 @@ import styles from "./cadastrarOrientador.module.css";
 import OrientadorForm from "../../components/OrientadorForm/OrientadorForm";
 
 const CadastrarOrientador = () => {
+
+    const handleCadastrar = (data) => {
+        console.log(data)
+    }
+
     return (
         <section className={styles.FormularioOrientadorContainer}>
             <Typography
@@ -23,7 +28,7 @@ const CadastrarOrientador = () => {
                 Cadastrar Orientador
             </Typography>
 
-            <OrientadorForm />
+            <OrientadorForm handleSubmitData={handleCadastrar}/>
         </section>
     )
 }

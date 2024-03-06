@@ -5,6 +5,7 @@ import * as yup from "yup";
 import styles from "./orientadorForm.module.css";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -34,6 +35,8 @@ const OrientadorForm = () => {
     defaultValues: { orientandos: [''] }
   });
 
+  const navigate = useNavigate();
+
   const handleCadastrarOrientador = (data) => {
     console.log(data);
   };
@@ -61,7 +64,7 @@ const OrientadorForm = () => {
       onSubmit={handleSubmit(handleCadastrarOrientador)}
       className={styles.formOrientadorContainer}
     >
-      <div>
+      <div className={styles.inputGroup}>
         <InputTextComponent
           name="nome"
           label="Nome"
@@ -76,7 +79,7 @@ const OrientadorForm = () => {
         />
       </div>
 
-      <div>
+      <div className={styles.inputGroup}>
         <TextField
           id="outlined-basic"
           label="Curso"
@@ -101,7 +104,7 @@ const OrientadorForm = () => {
       </div>
 
       {orientandos.map((orientando, index) => (
-        <div key={index}>
+        <div key={index} className={styles.inputGroup}>
           <TextField
             id={`orientandos[${index}]`}
             label={`Orientando ${index + 1}`}
@@ -116,7 +119,7 @@ const OrientadorForm = () => {
         <PersonAddAlt1Icon />
       </IconButton>
 
-      <div>
+      <div className={styles.inputGroup}>
         <InputTextComponent
           name="login"
           label="Login"
@@ -132,7 +135,24 @@ const OrientadorForm = () => {
         />
       </div>
 
-      <Button type="submit">Submit</Button>
+      <div>
+        <Button 
+          type="submit" 
+          variant="contained" 
+          sx={{ backgroundColor: "primary.main" }}
+          onClick={() => navigate("/orientadores")}
+        >
+          Voltar
+        </Button>
+
+        <Button 
+          type="submit" 
+          variant="contained" 
+          sx={{ backgroundColor: "primary.main" }}
+        >
+          Submit
+        </Button>
+      </div>
     </form>
   );
 };
