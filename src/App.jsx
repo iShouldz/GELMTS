@@ -20,6 +20,7 @@ import CadastrarDocumento from "./pages/CadastrarDocumento/CadastrarDocumento";
 import Vinculo from "./pages/Vinculo/Vinculo";
 import Editais from "./pages/Editais/Editais";
 import NotFound from "./pages/NotFound/NotFound";
+import Admin from "./pages/admin/Admin";
 
 function App() {
   const router = createBrowserRouter([
@@ -63,15 +64,19 @@ function App() {
           element: <CadastrarDocumento />,
         },
         {
-          path: "vinculo", element: <Vinculo />
+          path: "vinculo",
+          element: <Vinculo />,
         },
         {
-          path: 'editais', element: <Editais />
+          path: "editais",
+          element: <Editais />,
         },
-        {
-          path: '*', element: <NotFound />
-        }
+        { path: "admin", element: <Admin /> },
 
+        {
+          path: "*",
+          element: <NotFound />,
+        },
       ],
     },
     {

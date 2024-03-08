@@ -17,8 +17,8 @@ import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 const Header = () => {
   const navigate = useNavigate();
   const [controlSideBar, setControlSideBar] = useState(false);
@@ -145,23 +145,36 @@ const Header = () => {
           </ListItem>
         </List>
 
-        <ListItem
-          sx={{
-            position: "sticky",
-            bottom: 0,
-            width: '100%', 
-            display: "flex",
-            justifyContent: "space-between",
-            backgroundColor: 'white', 
-            borderTop: '1px solid #e0e0e0', 
-            padding: '10px 20px', 
-          }}
-        >
-          <Button>
-            <Avatar />
-          </Button>
-          <Typography>Olá, usuario</Typography>
-        </ListItem>
+        <List>
+          <ListItem
+            sx={{
+              position: "sticky",
+              bottom: 0,
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+              backgroundColor: "white",
+              borderTop: "1px solid #e0e0e0",
+              padding: "10px 20px",
+            }}
+          >
+            <Button>
+              <Avatar />
+            </Button>
+            <Typography>Olá, usuario</Typography>
+          </ListItem>
+
+          <ListItem button onClick={() => navigate("/admin")}>
+            <Typography
+              className={styles.SideBarItemContainer}
+              fontWeight="bold"
+              color="primary.main"
+            >
+              <AdminPanelSettingsIcon  sx={{ fontSize: 33 }}/>
+              Funções adminstrativas
+            </Typography>
+          </ListItem>
+        </List>
       </Drawer>
     </section>
   );
