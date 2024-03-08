@@ -5,6 +5,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ClearIcon from '@mui/icons-material/Clear';
+
 import { Box, Typography } from '@mui/material';
 const Admin = () => {
   return (
@@ -54,11 +57,11 @@ const Admin = () => {
           Procurar Usuario
         </ButtonGerenciamento>
 
-        <ButtonGerenciamento>
+        <ButtonGerenciamento icon={<ClearIcon sx={{ fontSize: 50 }} />}>
             Deletar conta
         </ButtonGerenciamento>
 
-        <ButtonGerenciamento>
+        <ButtonGerenciamento icon={<ExitToAppIcon sx={{ fontSize: 50 }} />}>
             Sair
         </ButtonGerenciamento>
       </Box>
