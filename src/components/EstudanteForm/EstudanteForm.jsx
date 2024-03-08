@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
 import { useState } from "react";
 
+import { cursos } from "../../../utils/lists";
 const schema = yup
   .object({
     nome: yup.string().required(),
@@ -24,6 +25,7 @@ const schema = yup
   .required();
 
 const EstudanteForm = ({ handleSubmitData, cadastro = false }) => {
+  console.log(cursos);
   const navigate = useNavigate();
   const {
     register,
@@ -72,12 +74,14 @@ const EstudanteForm = ({ handleSubmitData, cadastro = false }) => {
           name="curso"
           label="Curso"
           control={control}
+          listagem={cursos}
           placeholder="Selecione o curso"
         />
         <SelectComponent
           name="orientador"
           label="Orientador"
           control={control}
+          //listagem= Adicione a listagem de todos os orientadores do sistema
         />
       </div>
 
@@ -88,7 +92,12 @@ const EstudanteForm = ({ handleSubmitData, cadastro = false }) => {
           label="Vinculo"
           placeholder="Digite seu vinculo"
         />
-        <SelectComponent label="Projeto" control={control} name="projeto" />
+        <SelectComponent
+          label="Projeto"
+          control={control}
+          name="projeto"
+          //listagem= Adicione a listagem de todos os projetos do sistema
+        />
       </div>
 
       <div className={styles.inputGroup}>
