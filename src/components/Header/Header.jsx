@@ -26,9 +26,12 @@ import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import DetailsUser from "../DetailsUser/DetailsUser";
+
 const Header = () => {
   const navigate = useNavigate();
   const [controlSideBar, setControlSideBar] = useState(false);
+  const [modalDetails, setModalDetails] = useState(false)
 
   return (
     <section className={styles.headerMain}>
@@ -99,7 +102,7 @@ const Header = () => {
             justifyContent: "center",
           }}
         >
-          <Button>
+          <Button onClick={() => setModalDetails(true)}>
             <Avatar />
           </Button>
         </ListItem>
@@ -199,7 +202,7 @@ const Header = () => {
               justifyContent: "space-between",
             }}
           >
-            <Button>
+            <Button onClick={() => setModalDetails(true)}>
               <Avatar />
             </Button>
             <Typography
@@ -212,6 +215,9 @@ const Header = () => {
           </ListItem>
         </List>
       </Drawer>
+
+      <DetailsUser handleClose={() => setModalDetails(false)} controlDialog={modalDetails} />
+
     </section>
   );
 };

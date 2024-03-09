@@ -13,7 +13,7 @@ const userSlice = createSlice({
     },
     handleCurrentLogin(state, actions){
         state.user = actions.payload
-    }
+    },
     
   },
 });
