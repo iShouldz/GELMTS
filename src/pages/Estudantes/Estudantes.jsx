@@ -10,7 +10,6 @@ import { useState } from "react";
 import ModalSearch from "../../components/ModalSearch/ModalSearch";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
 import EstudanteForm from "../../components/EstudanteForm/EstudanteForm";
-import { useSelector } from "react-redux";
 const Estudantes = () => {
   const [controlDialog, setControlDialog] = useState(false);
   const [controlDialogSearch, setControlDialogSearch] = useState(false);

@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
 import styles from "./loginForm.module.css";
+import { useDispatch } from "react-redux";
+import userSlice, { userActions } from "../../store/login/loginSlice";
 
 const schema = yup
   .object({
@@ -13,25 +15,30 @@ const schema = yup
   .required();
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
   const {
     handleSubmit,
     formState: { errors },
+    register
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleLogin = (data) => {
     console.log(data);
+    dispatch(userActions.handleUpdateLogin())
+    
   };
 
   return (
     <form
-      onSubmit={handleSubmit(handleSubmit)}
+      onSubmit={handleSubmit(handleLogin)}
       className={styles.formItensContainer}
     >
       <TextField
         name="login"
         label="Login"
+        {...register("login")}
         placeholder="Digite seu login"
         sx={{
           color: "#1A2E4F !important",
@@ -68,6 +75,7 @@ const LoginForm = () => {
         name="senha"
         label="Senha"
         type="password"
+        {...register("senha")}
         placeholder="Digite sua senha"
         sx={{
           color: "#1A2E4F !important",
