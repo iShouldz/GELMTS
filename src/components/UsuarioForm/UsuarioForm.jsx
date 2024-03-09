@@ -27,6 +27,7 @@ import LooksOneIcon from "@mui/icons-material/LooksOne";
 import LooksTwoIcon from "@mui/icons-material/LooksTwo";
 import Looks3Icon from "@mui/icons-material/Looks3";
 import Looks4Icon from "@mui/icons-material/Looks4";
+import ErrosForm from "../ErrorsForm/ErrosForm";
 
 const schema = yup
   .object({
@@ -66,7 +67,7 @@ const UsuarioForm = ({ handleSubmitData }) => {
     resolver: yupResolver(schema),
   });
 
-  console.log(errors)
+  console.log(errors);
 
   return (
     <form
@@ -121,21 +122,27 @@ const UsuarioForm = ({ handleSubmitData }) => {
               label="Nome"
               placeholder="Digite o nome"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.nome?.message} />
+            </InputTextComponent>
 
             <InputTextComponent
               control={control}
               name="rg"
               label="RG"
               placeholder="Digite o RG"
-            />
+            >
+              <ErrosForm errors={errors?.rg?.message} />
+            </InputTextComponent>
 
             <InputTextComponent
               name="CPF"
               label="CPF"
               placeholder="Digite o CPF"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.CPF?.message} />
+            </InputTextComponent>
           </div>
 
           <div className={styles.inputGroup}>
@@ -144,14 +151,18 @@ const UsuarioForm = ({ handleSubmitData }) => {
               label="Celular"
               placeholder="Digite o número celular"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.celular?.message} />
+            </InputTextComponent>
 
             <InputTextComponent
               name="dataEmissao"
               label="Data Emissão RG"
               placeholder="Digite a data de emissão do RG"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.dataEmissao?.message} />
+            </InputTextComponent>
 
             <div>
               <Select
@@ -219,7 +230,9 @@ const UsuarioForm = ({ handleSubmitData }) => {
               label="Foto da assinatura"
               placeholder="Envie a sua assinatura digital"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.fotoAssinatura?.message} />
+            </InputTextComponent>
 
             <SelectComponent
               name="curso"
@@ -233,7 +246,9 @@ const UsuarioForm = ({ handleSubmitData }) => {
               label="Gestão"
               placeholder="Selecione Gestão"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.gestao?.message} />
+            </InputTextComponent>
           </div>
         </>
       ) : pageForm === 75 ? (
@@ -271,13 +286,18 @@ const UsuarioForm = ({ handleSubmitData }) => {
               label="Login"
               placeholder="Digite o Login"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.login?.message} />
+            </InputTextComponent>
+
             <InputTextComponent
               name="senha"
               label="Senha"
               placeholder="Digite a Senha"
               control={control}
-            />
+            >
+              <ErrosForm errors={errors?.senha?.message} />
+            </InputTextComponent>
 
             <SelectComponent
               name="admin"

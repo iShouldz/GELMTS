@@ -2,7 +2,7 @@
 import { FormHelperText, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-const InputTextComponent = ({ name, control, helperText = "", ...rest }) => {
+const InputTextComponent = ({ name, control, helperText = "", children, ...rest }) => {
   return (
     <div>
       <Controller
@@ -49,6 +49,7 @@ const InputTextComponent = ({ name, control, helperText = "", ...rest }) => {
               onChange={(e) => field.onChange(e.target.value)}
             />
             <FormHelperText>{helperText}</FormHelperText>
+            {children}
           </>
         )}
       />
