@@ -37,6 +37,11 @@ const Header = () => {
   const [modalDetails, setModalDetails] = useState(false);
   const dispatch = useDispatch();
 
+  const handleItem = (path) => {
+    navigate(`/${path}`)
+    setControlSideBar(false)
+  }
+
   return (
     <section className={styles.headerMain}>
       {/*Sidebar fechada */}
@@ -123,34 +128,40 @@ const Header = () => {
             img={gerenciarProjeto}
             url={"projeto"}
             text="Gerenciar Projeto"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarReuniao}
             url={"reunião"}
             text="Gerenciar Reunião"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarOrientador}
             url={"orientadores"}
             text="Gerenciar Orientadores"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarEstudantes}
             url={"estudantes"}
             text="Gerenciar Estudantes"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarBolsa}
             url={"bolsa"}
             text="Gerenciar Bolsas"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarDocs}
             url={"documento"}
             text="Gerenciar Documentos"
+            close={() => setControlSideBar(false)}
           />
 
-          <ListItem button onClick={() => navigate("/vinculo")}>
+          <ListItem button onClick={() => handleItem("vinculo")}>
             <Typography
               className={styles.SideBarItemContainer}
               fontWeight="bold"
@@ -160,7 +171,7 @@ const Header = () => {
               Gerenciar Vinculo
             </Typography>
           </ListItem>
-          <ListItem button onClick={() => navigate("/editais")}>
+          <ListItem button onClick={() => handleItem("editais")}>
             <Typography
               className={styles.SideBarItemContainer}
               fontWeight="bold"
