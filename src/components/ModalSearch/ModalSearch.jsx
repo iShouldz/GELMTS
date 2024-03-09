@@ -9,9 +9,21 @@ import {
   DialogContent,
   DialogTitle,
   List,
-  TextField,
   Typography,
 } from "@mui/material";
+import SelectComponent from "../../components/UI/SelectComponent/SelectComponent";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import { cursos } from "../../../utils/lists";
+
+const schema = yup
+  .object({
+    nome: yup.string().required(),
+    curso: yup.string().required(),
+  })
+  .required();
 
 const ModalSearch = ({
   handleClose,
@@ -20,16 +32,61 @@ const ModalSearch = ({
   actionButton,
   actionButtonText,
 }) => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
   return (
-    <Dialog onClose={handleClose} open={controlDialog}>
+    <Dialog
+      onClose={handleClose}
+      open={controlDialog}
+      sx={{
+        "& .MuiDialog-container": {
+          "& .MuiPaper-root": {
+            width: "100%",
+            maxWidth: "50vw",
+          },
+        },
+      }}
+    >
       <DialogTitle>{title}</DialogTitle>
 
       <DialogContent>
-        <Typography fontWeight="bold">Digite o nome do estudante</Typography>
-        <TextField sx={{ width: "30vw", maxWidth: "800px" }} />
-        <List>
+        <form
+          style={{
+            display: "flex",
+            gap: "30px",
+            padding: "20px",
+            justifyContent: "center",
+          }}
+        >
+          <InputTextComponent
+            fontWeight="bold"
+            name="nome"
+            label="CPF"
+            fullWidth
+            placeholder="Digite seu CPF"
+            control={control}
+            helperText="Digite o CPF"
+            sx={{ width: "30vw", maxWidth: "800px" }}
+          />
+          <SelectComponent
+            name="curso"
+            control={control}
+            listagem={cursos}
+            helperText="Selecione o curso"
+          />
+
+          <Button variant="contained">Filtrar</Button>
+        </form>
+
+        <List sx={{ width: "20%" }}>
           {/*Listagem dos estudantes para seleção e depois deleção/update */}
-          <Card sx={{ width: "10vw" }}>
+          <Card >
             <CardMedia sx={{ height: 140 }} image="" title="foto do aluno" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
