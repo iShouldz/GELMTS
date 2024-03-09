@@ -17,6 +17,8 @@ const ModalDetails = ({
   controlDialog,
   title,
   data,
+  adicionalButton,
+  adicionalButtonText="",
   children,
 }) => {
   return (
@@ -64,6 +66,9 @@ const ModalDetails = ({
       </DialogContent>
 
       <DialogActions>
+        {adicionalButtonText !== "" && (
+          <Button onClick={adicionalButton}>{adicionalButtonText}</Button>
+        )}
         <Button onClick={handleClose}>Fechar</Button>
       </DialogActions>
     </Dialog>

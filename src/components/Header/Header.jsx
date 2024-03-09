@@ -26,13 +26,16 @@ import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import DetailsUser from "../DetailsUser/DetailsUser";
-import avatarMockup from '../../assets/mockupAvatarImage.jpg'
+import avatarMockup from "../../assets/mockupAvatarImage.jpg";
+import ModalDetails from "../ModalDetails/ModalDetails";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../store/login/loginSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const [controlSideBar, setControlSideBar] = useState(false);
-  const [modalDetails, setModalDetails] = useState(false)
+  const [modalDetails, setModalDetails] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <section className={styles.headerMain}>
@@ -95,7 +98,7 @@ const Header = () => {
 
         <ListItem
           sx={{
-              padding: '0',
+            padding: "0",
             display: "flex",
             flexDirection: "column",
             gap: "25px",
@@ -103,7 +106,7 @@ const Header = () => {
           }}
         >
           <Button onClick={() => setModalDetails(true)}>
-            <Avatar src={avatarMockup}/>
+            <Avatar src={avatarMockup} />
           </Button>
         </ListItem>
       </Drawer>
@@ -167,12 +170,17 @@ const Header = () => {
               Gerenciar Editais
             </Typography>
           </ListItem>
-        </List>
 
-        <Divider />
+          <Divider />
 
-        <List sx={{height: '100vh'}}>
-          
+        <List
+          sx={{
+            height: "100vh",
+            gap: "15px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <ListItem button onClick={() => navigate("/admin")}>
             <Typography
               className={styles.SideBarItemContainer}
@@ -185,39 +193,38 @@ const Header = () => {
           </ListItem>
 
           <ListItem
-            // sx={{
-            //   position: "absolute",
-            //   bottom: 0,
-            //   width: "100%",
-            //   display: "flex",
-            //   justifyContent: "space-between",
-            //   backgroundColor: "white",
-            //   paddingLeft: "0",
-            // }}
-            sx={{
-              position: "absolute",
-
-              display: "flex",
-              gap: "25px",
-              justifyContent: "space-between",
-            }}
+            button
+            onClick={() => setModalDetails(true)}
+            sx={{ paddingRight: "30px" }}
           >
-            <Button onClick={() => setModalDetails(true)}>
-              <Avatar src={avatarMockup}/>
-            </Button>
             <Typography
               className={styles.SideBarItemContainer}
               fontWeight="bold"
               color="primary.main"
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
             >
+              <Avatar src={avatarMockup} />
               Olá, usuario
             </Typography>
           </ListItem>
         </List>
+        </List>
+
+        
       </Drawer>
 
-      <DetailsUser handleClose={() => setModalDetails(false)} controlDialog={modalDetails} />
-
+      <ModalDetails
+        handleClose={() => setModalDetails(false)}
+        controlDialog={modalDetails}
+        data={[{ nome: "pedro" }]}
+        title="Olá, usuario"
+        adicionalButtonText="Sair"
+        adicionalButton={() => dispatch(userActions.handleUpdateLogin())}
+      ></ModalDetails>
     </section>
   );
 };
