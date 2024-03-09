@@ -16,7 +16,6 @@ const SelectComponent = ({ name, control, listagem = [], helperText='', ...rest 
               {...rest}
               select
               value={field.value || ""}
-              InputLabelProps={{ style: { color: "pink" } }}
               sx={estilosMUI}
               onChange={(e) => field.onChange(e.target.value)}
             >

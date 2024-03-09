@@ -23,6 +23,7 @@ const CadastrarBolsa = () => {
         Cadastrar Bolsa
       </Typography>
 
+      {/*Se refere a uml de inscrição - edital, inscrições de estudante são a lista de bolsas q ele se inscreveu */}
       <BolsaForm />
     </section>
   );

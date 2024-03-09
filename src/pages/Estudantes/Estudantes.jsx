@@ -10,11 +10,14 @@ import { useState } from "react";
 import ModalSearch from "../../components/ModalSearch/ModalSearch";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
 import EstudanteForm from "../../components/EstudanteForm/EstudanteForm";
+import ModalDetails from "../../components/ModalDetails/ModalDetails";
+import { cursos } from "../../../utils/lists";
 const Estudantes = () => {
   const [controlDialog, setControlDialog] = useState(false);
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
   const [controlDialogRemove, setControlDialogRemove] = useState(false);
   const [controlDialogUpdate, setControlDialogUpdate] = useState(false);
+  const [controlDialogDetails, setControlDialogDetails] = useState(false);
   // const estados = useSelector((state) => state.login.isLogado)
 
   // console.log(estados)
@@ -119,7 +122,7 @@ const Estudantes = () => {
         controlDialog={controlDialogSearch}
         title={"Pesquise o estudante"}
         actionButtonText="Detalhes"
-        actionButton={() => console.log("detalhes do aluno")}
+        actionButton={() => setControlDialogDetails(true)}
       />
 
       <ModalSearch
@@ -137,6 +140,18 @@ const Estudantes = () => {
       >
         <EstudanteForm handleSubmitData={handleUpdate} />
       </ModalUpdate>
+
+      <ModalDetails
+        handleClose={() => setControlDialogDetails(false)}
+        controlDialog={controlDialogDetails}
+        title="Informações do Estudante"
+        data={[{name: 'Aluno Mockup', curso: 'Curso Mockup', cpf: '050.000.000-85', nam1e: 'Aluno Mockup', curso2: 'Curso Mockup', cp3f: '050.000.000-85', name3: 'Aluno Mockup', c3urso: 'Curso Mockup', cpf3: '050.000.000-85'}]}
+      >
+        {/*Usemos a children para quando for para exibir lista de dados, assim o componente vai ficar bem reutilizavel */}
+        {cursos.map((item) => (
+          <Typography key={item}>{item}</Typography>
+        ))}
+      </ModalDetails>
     </section>
   );
 };
