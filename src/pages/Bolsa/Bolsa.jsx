@@ -26,6 +26,7 @@ const Bolsa = () => {
           gap: "50px",
           justifyContent: "center",
           width: "100%",
+          flexWrap: "wrap",
         }}
       >
         <ButtonGerenciamento 

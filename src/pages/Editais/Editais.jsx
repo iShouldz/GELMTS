@@ -24,6 +24,7 @@ const Editais = () => {
           gap: "50px",
           justifyContent: "center",
           width: "100%",
+          flexWrap: "wrap",
         }}
       >
         <ButtonGerenciamento path="cadastrar-edital" icon={<BookmarkAddIcon sx={{ fontSize: 50 }} />}>
