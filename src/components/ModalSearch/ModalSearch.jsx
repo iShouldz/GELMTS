@@ -18,7 +18,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import { cursos } from "../../../utils/lists";
-
+import avatarImage from '../../assets/mockupAvatarImage.jpg'
 const schema = yup
   .object({
     nome: yup.string().required(),
@@ -88,7 +88,7 @@ const ModalSearch = ({
         <List sx={{ width: "20%" }}>
           {/*Listagem dos estudantes para seleção e depois deleção/update */}
           <Card >
-            <CardMedia sx={{ height: 140 }} image="" title="foto do aluno" />
+            <CardMedia sx={{ height: 140 }} image={avatarImage} title="foto do aluno" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 Aluno 01

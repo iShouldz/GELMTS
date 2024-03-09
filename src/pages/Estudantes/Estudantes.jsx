@@ -133,8 +133,9 @@ const Estudantes = () => {
         handleClose={handleCloseUpdate}
         controlDialog={controlDialogUpdate}
         title="Atualize os dados"
-        component={<EstudanteForm handleSubmitData={handleUpdate}/>}
-      />
+      >
+        <EstudanteForm handleSubmitData={handleUpdate} />
+      </ModalUpdate>
     </section>
   );
 };
