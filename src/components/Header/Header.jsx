@@ -27,6 +27,7 @@ import DeviceHubIcon from "@mui/icons-material/DeviceHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import DetailsUser from "../DetailsUser/DetailsUser";
+import avatarMockup from '../../assets/mockupAvatarImage.jpg'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -94,8 +95,7 @@ const Header = () => {
 
         <ListItem
           sx={{
-            position: "absolute",
-            bottom: 0,
+              padding: '0',
             display: "flex",
             flexDirection: "column",
             gap: "25px",
@@ -103,7 +103,7 @@ const Header = () => {
           }}
         >
           <Button onClick={() => setModalDetails(true)}>
-            <Avatar />
+            <Avatar src={avatarMockup}/>
           </Button>
         </ListItem>
       </Drawer>
@@ -196,14 +196,14 @@ const Header = () => {
             // }}
             sx={{
               position: "absolute",
-              bottom: 0,
+
               display: "flex",
               gap: "25px",
               justifyContent: "space-between",
             }}
           >
             <Button onClick={() => setModalDetails(true)}>
-              <Avatar />
+              <Avatar src={avatarMockup}/>
             </Button>
             <Typography
               className={styles.SideBarItemContainer}
