@@ -2,6 +2,11 @@ import { Typography } from "@mui/material";
 import styles from './cadastrarusuario.module.css'
 import UsuarioForm from "../../components/UsuarioForm/UsuarioForm";
 const CadastrarUsuario = () => {
+
+  const handleSubmit = (data) => {
+    console.log(data)
+  }
+
   return (
     <section className={styles.UsuarioContainer}>
       <Typography
@@ -13,16 +18,16 @@ const CadastrarUsuario = () => {
         Formulario de cadastro
       </Typography>
 
-      <Typography
+      {/* <Typography
         variant="h6"
         fontWeight="bold"
         sx={{ display: "flex", justifyContent: "center" }}
         color="primary.main"
       >
         Cadastrar Usuario
-      </Typography>
+      </Typography> */}
 
-      <UsuarioForm />
+      <UsuarioForm handleSubmitData={handleSubmit}/>
     </section>
   );
 };
