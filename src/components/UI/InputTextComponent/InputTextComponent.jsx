@@ -15,7 +15,7 @@ const InputTextComponent = ({ name, control, helperText = "", ...rest }) => {
               {...rest}
               value={field.value || ""}
               sx={{
-                width: "33vw",
+                width: "13vw",
                 minWidth: "100px",
                 maxWidth: "400px",
                 color: "#1A2E4F !important",
