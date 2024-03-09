@@ -13,6 +13,7 @@ import {
   orgaosRG,
 } from "../../../utils/lists";
 import {
+  Alert,
   Box,
   Button,
   FormHelperText,
@@ -22,12 +23,13 @@ import {
   Typography,
 } from "@mui/material";
 import styles from "./usuarioform.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LooksOneIcon from "@mui/icons-material/LooksOne";
 import LooksTwoIcon from "@mui/icons-material/LooksTwo";
 import Looks3Icon from "@mui/icons-material/Looks3";
 import Looks4Icon from "@mui/icons-material/Looks4";
 import ErrosForm from "../ErrorsForm/ErrosForm";
+import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
 
 const schema = yup
   .object({
@@ -53,6 +55,7 @@ const UsuarioForm = ({ handleSubmitData }) => {
   const navigate = useNavigate();
   const [rgSelect, setRgSelect] = useState();
   const [pageForm, setPageForm] = useState(25);
+  const [confirm, setConfirm] = useState(false);
 
   const handleChange = (event) => {
     setRgSelect(event.target.value);
@@ -67,7 +70,18 @@ const UsuarioForm = ({ handleSubmitData }) => {
     resolver: yupResolver(schema),
   });
 
+  const errorFields = Object.keys(errors).map((fieldName) => {
+    return { field: fieldName, message: errors[fieldName]?.message };
+  });
   console.log(errors);
+  const numberOfErrors = Object.keys(errors).length;
+  console.log(numberOfErrors);
+
+  useEffect(() => {
+    if (numberOfErrors >= 1 && pageForm === 100) {
+      setConfirm(true);
+    }
+  }, [numberOfErrors, pageForm]);
 
   return (
     <form
@@ -334,6 +348,26 @@ const UsuarioForm = ({ handleSubmitData }) => {
           )}
         </Box>
       </div>
+
+      <ModalConfirmation
+        handleClose={() => setConfirm(false)}
+        controlDialog={confirm}
+        actionButton="Entendido"
+        title="Campos invalidos!"
+      >
+        <Typography fontWeight="bold">Verifique os campos abaixo</Typography>
+
+        <Typography>
+          Os campos abaixo estão invalidos e devem ser revisados.
+        </Typography>
+        <Box>
+          {errorFields.map((erro) => (
+            <Alert severity="warning" key={erro.field}>
+              {erro.field} - {erro.message}
+            </Alert>
+          ))}
+        </Box>
+      </ModalConfirmation>
     </form>
   );
 };
