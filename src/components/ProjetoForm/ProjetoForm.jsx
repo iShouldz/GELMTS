@@ -3,7 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./projetoForm.module.css";
+import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const schema = yup
   .object({
@@ -20,7 +23,8 @@ const schema = yup
   })
   .required();
 
-const ProjetoForm = () => {
+const ProjetoForm = ({ handleSubmitData, cadastro = false }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -32,6 +36,17 @@ const ProjetoForm = () => {
     resolver: yupResolver(schema),
     defaultValues: { participantes: [''], antigosParticipantes: [''] }
   });
+
+  console.log(errors);
+  const [confirmModal, setConfirmModal] = useState(false);
+  
+  const handleClose = () => {
+    setConfirmModal(false);
+  };
+
+  const handleGoBack = () => {
+    navigate.goBack();
+  };
 
   const handleCadastrarProjeto = (data) => {
     console.log(data);
@@ -61,45 +76,45 @@ const ProjetoForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(handleCadastrarProjeto)}
+      // onSubmit={handleSubmit(handleCadastrarProjeto)}
+      onSubmit={handleSubmit(handleSubmitData)}
       className={styles.formProjectContainer}
     >
       <div className={styles.inputGroup}>
-        <TextField
+        <InputTextComponent
           name="nome"
           label="Nome"
           placeholder="Digite seu Nome"
-          {...register("nome")}
+          control={control}
         />
-        <TextField
+        <InputTextComponent
           name="descricao"
           label="Descrição"
           placeholder="descreva aqui..."
-          {...register("descricao")}
+          control={control}
         />
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <InputTextComponent 
           name="participante"
           label="Participante"
           placeholder="Selecione um participante"
-          {...register("participante")}
+          control={control}
         />
-
-        <TextField
+        <InputTextComponent
           name="scrumMaster"
           label="Scrum Master"
           placeholder="Selecione um Scrum Master"
-          {...register("scrumMaster")}
+          control={control}
         />
       </div>
 
       <div className={styles.inputGroup}>
-        <TextField
+        <InputTextComponent
           name="orientador"
           label="Orientador"
           placeholder="Selecione um orientador"
-          {...register("orientador")}
+          control={control}
         />
       </div>
 
@@ -139,7 +154,24 @@ const ProjetoForm = () => {
         </div>
       </div>
 
-      <Button type="submit">Enviar</Button>
+      <div className={styles.inputGroup}>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "primary.main" }}
+          onClick={() => navigate("/projeto")}
+        >
+          Voltar
+        </Button>
+
+        <Button
+          variant="contained"
+          // onClick={() => setConfirmModal(true)}
+          type="submit"
+          sx={{ backgroundColor: "primary.main" }}
+        >
+          Enviar
+        </Button>
+      </div>
     </form>
   );
 };
