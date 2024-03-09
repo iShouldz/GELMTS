@@ -20,10 +20,11 @@ import Vinculo from "./pages/Vinculo/Vinculo";
 import Editais from "./pages/Editais/Editais";
 import NotFound from "./pages/NotFound/NotFound";
 import Admin from "./pages/admin/Admin";
+import CadastrarUsuario from "./pages/CadastrarUsuario/CadastrarUsuario";
 
 function App() {
   const isLogado = useSelector((state) => state.login.isLogado);
-  const isAdmin = useSelector((state) => state.login.isAdmin)
+  const isAdmin = useSelector((state) => state.login.isAdmin);
   // const navigate = useNavigate()
 
   // useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
       path: "/",
       element: !isLogado ? <Login /> : <Root />,
       children: [
-        { path: "/", element:  <Home /> },
+        { path: "/", element: <Home /> },
         { path: "estudantes", element: <Estudantes /> },
         {
           path: "estudantes/cadastrar-estudante",
@@ -80,8 +81,11 @@ function App() {
           path: "editais",
           element: <Editais />,
         },
-        {/*Para validar o admin, pegue o objeto do usuario e verifique o campo de isAdmin */},
-        { path: "admin", element: !isAdmin ? <Admin /> : <NotFound />},
+        {
+          /*Para validar o admin, pegue o objeto do usuario e verifique o campo de isAdmin */
+        },
+        { path: "admin", element: !isAdmin ? <Admin /> : <NotFound /> },
+        { path: "admin/cadastrar-usuario", element: <CadastrarUsuario /> },
         {
           path: "*",
           element: <NotFound />,
