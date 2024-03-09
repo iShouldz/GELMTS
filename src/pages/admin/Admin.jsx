@@ -1,15 +1,22 @@
-import styles from './admin.module.css'
-import ButtonGerenciamento from '../../components/UI/ButtonGerenciamento/ButtonGerenciamento'
+import styles from "./admin.module.css";
+import ButtonGerenciamento from "../../components/UI/ButtonGerenciamento/ButtonGerenciamento";
+import { useDispatch } from "react-redux";
 
 import PersonIcon from "@mui/icons-material/Person";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import ClearIcon from '@mui/icons-material/Clear';
+import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import ClearIcon from "@mui/icons-material/Clear";
 
-import { Box, Typography } from '@mui/material';
+import { Box, Typography } from "@mui/material";
+import { userActions } from "../../store/login/loginSlice";
 const Admin = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(userActions.handleUpdateLogin());
+  };
   return (
     <section className={styles.adminContainer}>
       <Typography
@@ -28,45 +35,68 @@ const Admin = () => {
           gap: "50px",
           justifyContent: "center",
           width: "100%",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
         }}
       >
-        <ButtonGerenciamento 
-          path="cadastrar-bolsa"
-          icon={<PersonIcon sx={{ fontSize: 50 }} />}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "50px",
+            justifyContent: "center",
+            width: "100%",
+            flexWrap: "wrap",
+          }}
         >
-          Cadastrar Usuario
-        </ButtonGerenciamento>
+          <ButtonGerenciamento
+            path="cadastrar-usuario"
+            icon={<PersonIcon sx={{ fontSize: 50 }} />}
+          >
+            Cadastrar Usuario
+          </ButtonGerenciamento>
 
-        <ButtonGerenciamento 
-          path="atualizar-bolsa"
-          icon={<ManageAccountsIcon sx={{ fontSize: 50 }} />}
-        >
-          Atualizar Usuario
-        </ButtonGerenciamento>
+          <ButtonGerenciamento
+            path="atualizar-bolsa"
+            icon={<ManageAccountsIcon sx={{ fontSize: 50 }} />}
+          >
+            Atualizar Usuario
+          </ButtonGerenciamento>
 
-        <ButtonGerenciamento
-          icon={<PersonRemoveIcon sx={{ fontSize: 50 }} />}
-        >
+          <ButtonGerenciamento
+            icon={<PersonRemoveIcon sx={{ fontSize: 50 }} />}
+          >
             Remover Usuario
-        </ButtonGerenciamento>
+          </ButtonGerenciamento>
+        </Box>
 
-        <ButtonGerenciamento
-          icon={<PersonSearchIcon sx={{ fontSize: 50 }} />}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "50px",
+            justifyContent: "center",
+            width: "100%",
+            flexWrap: "wrap",
+          }}
         >
-          Procurar Usuario
-        </ButtonGerenciamento>
+          <ButtonGerenciamento
+            icon={<PersonSearchIcon sx={{ fontSize: 50 }} />}
+          >
+            Procurar Usuario
+          </ButtonGerenciamento>
 
-        <ButtonGerenciamento icon={<ClearIcon sx={{ fontSize: 50 }} />}>
+          <ButtonGerenciamento icon={<ClearIcon sx={{ fontSize: 50 }} />}>
             Deletar conta
-        </ButtonGerenciamento>
+          </ButtonGerenciamento>
 
-        <ButtonGerenciamento icon={<ExitToAppIcon sx={{ fontSize: 50 }} />}>
+          <ButtonGerenciamento
+            icon={<ExitToAppIcon sx={{ fontSize: 50 }} />}
+            onClick={handleLogout}
+          >
             Sair
-        </ButtonGerenciamento>
+          </ButtonGerenciamento>
+        </Box>
       </Box>
     </section>
-  )
-}
+  );
+};
 
-export default Admin
+export default Admin;
