@@ -8,7 +8,7 @@ export const cursos = [
 ]
 
 export const estilosMUI = {
-    width: "13vw",
+    width: "33vw",
     minWidth: "100px",
     maxWidth: "400px",
     color: "#1A2E4F !important",
