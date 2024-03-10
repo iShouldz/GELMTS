@@ -1,21 +1,24 @@
-import { Button, TextField, IconButton, Select, MenuItem, InputLabel } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./reuniaoForm.module.css";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
+import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import SelectComponent from "../UI/SelectComponent/SelectComponent";
+
+import { urgencia } from "../../../utils/lists";
 
 const schema = yup
   .object({
     data: yup.date().required(),
     horaInicio: yup.string().required(),
-    topicos: yup.string().required(),
+    topicos: yup.array().of(yup.string().required()),
     projeto: yup.string().required(),
-    equipe: yup.object().shape({
-      orientador: yup.string().required(),
-      orientandos: yup.array().of(yup.string().required()),
-    }),
+    orientador: yup.string().required(),
+    orientandos: yup.array().of(yup.string().required()),
     urgencia: yup.string().oneOf(['baixa', 'média', 'alta']).required(),
   })
   .required();
@@ -24,14 +27,16 @@ const ReuniaoForm = () => {
   const {
     register,
     handleSubmit,
-    control, // Adicionando control
+    control,
     formState: { errors },
     watch,
     setValue
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: { orientandos: [''], urgencia: ''}
+    defaultValues: { orientandos: [''], topicos: [''] }
   });
+
+  console.log(errors);
 
   const navigate = useNavigate();
 
@@ -45,90 +50,99 @@ const ReuniaoForm = () => {
     setValue("orientandos", [...orientandos, '']);
   };
 
+  const topicos = watch("topicos");
+
+  const addTopico = () => {
+    setValue("topicos", [...topicos, '']);
+  }
+
   return (
     <form
       onSubmit={handleSubmit(handleCadastrarReuniao)}
       className={styles.formReuniaoContainer}
     >
       <div className={styles.inputGroup}>
-        <TextField
-          id="data"
+        <InputTextComponent
+          name="data"
           label="Data"
           type="date"
-          control={control}
           InputLabelProps={{
             shrink: true,
           }}
           variant="outlined"
           {...register("data")}
+          control={control}
         />
-        {errors.data && (
-          <p className={styles.error}>{errors.data.message}</p>
-        )}
 
-        <TextField
-          id="horaInicio"
+        <InputTextComponent
+          name="horaInicio"
           label="Hora de Início"
           placeholder="Digite a hora de início"
           variant="outlined"
           {...register("horaInicio")}
+          control={control}
         />
-        {errors.horaInicio && (
-          <p className={styles.error}>{errors.horaInicio.message}</p>
-        )}
-      </div>
 
-      <div className={styles.inputGroup}>
-        <TextField
-          id="topicos"
-          label="Tópicos"
-          placeholder="Digite os tópicos"
-          variant="outlined"
-          {...register("topicos")}
-        />
-        {errors.topicos && (
-          <p className={styles.error}>{errors.topicos.message}</p>
-        )}
-
-        <TextField
-          id="projeto"
+        {/* FAZER SELECT DA LISTA DE PROJETOS*/}
+        <InputTextComponent
+          name="projeto"
           label="Projeto"
           placeholder="Digite o projeto"
           variant="outlined"
           {...register("projeto")}
+          control={control}
         />
-        {errors.projeto && (
-          <p className={styles.error}>{errors.projeto.message}</p>
-        )}
+      </div>
 
-        <InputLabel htmlFor="urgencia-select">Urgência</InputLabel>
-        <Select
-          id="urgencia-select"
+      <div className={styles.inputGroup}>
+        {topicos.map((topico, index) => (
+          <div key={index} className={styles.inputGroup}>
+            <InputTextComponent
+              name={`topicos[${index}]`}
+              label={`Topico ${index + 1}`}
+              variant="outlined"
+              {...register(`topicos[${index}]`)}
+              control={control}
+            />
+          </div>
+        ))}
+        <IconButton onClick={addTopico}>
+          <AddIcon />
+        </IconButton>
+      </div>
+
+      <div className={styles.inputGroup}>
+        <SelectComponent
+          name="urgencia"
+          label="Urgência"
           placeholder="Selecione a urgência"
+          listagem={urgencia}
           defaultValue=""
           {...register("urgencia")}
-          labelId="urgencia-label"
-          displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem value="baixa">Baixa</MenuItem>
-          <MenuItem value="média">Média</MenuItem>
-          <MenuItem value="alta">Alta</MenuItem>
-        </Select>
-        {errors.urgencia && (
-          <p className={styles.error}>{errors.urgencia.message}</p>
-        )}
+          control={control}
+        />
+
+        {/* FAZER SELECT DA LISTA DE ORIENTADORES*/}
+        <SelectComponent
+          name="orientador"
+          label="Orientador"
+          placeholder="Digite o nome do orientador"
+          variant="outlined"
+          {...register("orientador")}
+          control={control}
+        />
       </div>
 
       <div className={styles.inputGroup}>
         {orientandos.map((orientando, index) => (
           <div key={index} className={styles.inputGroup}>
-            <TextField
-              id={`orientandos[${index}]`}
+          {/* FAZER SELECT DA LISTA DE ORIENTANDOS*/}
+            <InputTextComponent
+              name={`orientandos[${index}]`}
               label={`Orientando ${index + 1}`}
-              placeholder="Selecione seu(s) orientando(s)"
               variant="outlined"
               {...register(`orientandos[${index}]`)}
+              control={control}
             />
           </div>
         ))}
@@ -139,18 +153,18 @@ const ReuniaoForm = () => {
       </div>
 
       <div>
-        <Button 
-          type="submit" 
-          variant="contained" 
+        <Button
+          type="submit"
+          variant="contained"
           sx={{ backgroundColor: "primary.main" }}
           onClick={() => navigate("/reunião")}
         >
           Voltar
         </Button>
 
-        <Button 
-          type="submit" 
-          variant="contained" 
+        <Button
+          type="submit"
+          variant="contained"
           sx={{ backgroundColor: "primary.main" }}
         >
           Submit

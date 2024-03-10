@@ -4,11 +4,16 @@
     align-items: center;
     gap: 20px;
     border-radius: 10px;
-    width: 30vw;
+    width: 40vw;
     padding: 30px;
 }
 
 .inputGroup{
     display: flex;
     gap: 20px
+}
+
+.error{
+    color: red;
+    font-size: 1rem;
 }
