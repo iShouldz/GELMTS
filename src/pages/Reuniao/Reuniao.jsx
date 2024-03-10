@@ -74,6 +74,7 @@ const Reuniao = () => {
           gap: "50px",
           justifyContent: "center",
           width: "100%",
+          flexWrap: "wrap",
         }}
       >
         <ButtonGerenciamento path="cadastrar-reuniao" icon={<GroupsIcon sx={{ fontSize: 50 }} />}>

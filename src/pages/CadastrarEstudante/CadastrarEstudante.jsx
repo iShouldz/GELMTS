@@ -28,7 +28,7 @@ const CadastrarEstudante = () => {
         Cadastrar Estudante
       </Typography>
 
-      <EstudanteForm handleSubmitData={handleCadastrar}/>
+      <EstudanteForm handleSubmitData={handleCadastrar} cadastro={true}/>
     </section>
   );
 };

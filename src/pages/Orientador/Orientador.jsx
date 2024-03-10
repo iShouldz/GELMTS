@@ -73,6 +73,7 @@ const Orientador = () => {
           gap: "50px",
           justifyContent: "center",
           width: "100%",
+          flexWrap: "wrap",
         }}
       >
         <ButtonGerenciamento path="cadastrar-orientador" icon={<PersonIcon sx={{ fontSize: 50 }} />}>

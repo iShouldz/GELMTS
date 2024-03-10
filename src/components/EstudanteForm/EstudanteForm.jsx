@@ -8,11 +8,14 @@ import styles from "./estudanteForm.module.css";
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import SelectComponent from "../UI/SelectComponent/SelectComponent";
 import { useNavigate } from "react-router-dom";
+import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
+import { useState } from "react";
 
+import { cursos } from "../../../utils/lists";
 const schema = yup
   .object({
     nome: yup.string().required(),
-    cpf: yup.string().required(),
+    cpf: yup.number().required(),
     curso: yup.string().required(),
     orientador: yup.string().required(),
     projeto: yup.string().required(),
@@ -21,7 +24,9 @@ const schema = yup
   })
   .required();
 
-const EstudanteForm = ({ handleSubmitData }) => {
+const EstudanteForm = ({ handleSubmitData, cadastro = false }) => {
+  console.log(cursos);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -31,7 +36,13 @@ const EstudanteForm = ({ handleSubmitData }) => {
     resolver: yupResolver(schema),
   });
 
-  const navigate = useNavigate();
+  console.log(errors);
+  const [confirmModal, setConfirmModal] = useState(false);
+
+  const handleClose = () => {
+    setConfirmModal(false);
+  };
+
   const handleGoBack = () => {
     navigate.goBack();
   };
@@ -63,12 +74,14 @@ const EstudanteForm = ({ handleSubmitData }) => {
           name="curso"
           label="Curso"
           control={control}
+          listagem={cursos}
           placeholder="Selecione o curso"
         />
         <SelectComponent
           name="orientador"
           label="Orientador"
           control={control}
+          //listagem= Adicione a listagem de todos os orientadores do sistema
         />
       </div>
 
@@ -79,7 +92,12 @@ const EstudanteForm = ({ handleSubmitData }) => {
           label="Vinculo"
           placeholder="Digite seu vinculo"
         />
-        <SelectComponent label="Projeto" control={control} name="projeto" />
+        <SelectComponent
+          label="Projeto"
+          control={control}
+          name="projeto"
+          //listagem= Adicione a listagem de todos os projetos do sistema
+        />
       </div>
 
       <div className={styles.inputGroup}>
@@ -99,23 +117,33 @@ const EstudanteForm = ({ handleSubmitData }) => {
       </div>
 
       <div>
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ backgroundColor: "primary.main" }}
-          onClick={() => navigate("/estudantes")}
-        >
-          Voltar
-        </Button>
+        {cadastro && (
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: "primary.main" }}
+            onClick={() => navigate("/estudantes")}
+          >
+            Voltar
+          </Button>
+        )}
 
         <Button
-          type="submit"
           variant="contained"
+          // onClick={() => setConfirmModal(true)}
+          type="submit"
           sx={{ backgroundColor: "primary.main" }}
         >
           Submit
         </Button>
       </div>
+
+      {/* <ModalConfirmation
+        handleClose={handleClose}
+        controlDialog={confirmModal}
+        handleConfirm={handleSubmit(handleSubmitData)}
+        navigatePath="/"
+        title="teste"
+      /> */}
     </form>
   );
 };

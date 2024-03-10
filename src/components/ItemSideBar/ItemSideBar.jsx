@@ -3,11 +3,12 @@ import { ListItem, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styles from './itemSideBar.module.css'
 
-const ItemSideBar = ({ img, url, text }) => {
+const ItemSideBar = ({ img, url, text, close }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (url) => {
     navigate(`/${url}`);
+    close()
   };
 
   return (

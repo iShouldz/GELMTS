@@ -1,4 +1,11 @@
-import { Button, IconButton, List, ListItem, Typography } from "@mui/material";
+import {
+  Button,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
@@ -17,14 +24,27 @@ import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import avatarMockup from "../../assets/mockupAvatarImage.jpg";
+import ModalDetails from "../ModalDetails/ModalDetails";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../store/login/loginSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const [controlSideBar, setControlSideBar] = useState(false);
+  const [modalDetails, setModalDetails] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleItem = (path) => {
+    navigate(`/${path}`)
+    setControlSideBar(false)
+  }
 
   return (
     <section className={styles.headerMain}>
+      {/*Sidebar fechada */}
       <Drawer variant="permanent">
         <IconButton
           onClick={() => setControlSideBar(true)}
@@ -67,24 +87,36 @@ const Header = () => {
               <LibraryBooksIcon sx={{ fontSize: 33 }} />
             </Typography>
           </ListItem>
+
+          <Divider />
+
+          <ListItem button onClick={() => navigate("/admin")}>
+            <Typography
+              className={styles.SideBarItemContainer}
+              fontWeight="bold"
+              color="primary.main"
+            >
+              <AdminPanelSettingsIcon sx={{ fontSize: 33 }} />
+            </Typography>
+          </ListItem>
         </List>
 
         <ListItem
           sx={{
-            position: "absolute",
-            bottom: 0,
+            padding: "0",
             display: "flex",
             flexDirection: "column",
             gap: "25px",
             justifyContent: "center",
           }}
         >
-          <Button>
-            <Avatar />
+          <Button onClick={() => setModalDetails(true)}>
+            <Avatar src={avatarMockup} />
           </Button>
         </ListItem>
       </Drawer>
 
+      {/*Sidebar aberta */}
       <Drawer open={controlSideBar} onClose={() => setControlSideBar(false)}>
         <div className={styles.logo}>
           <Button onClick={() => navigate("/")}>
@@ -96,34 +128,40 @@ const Header = () => {
             img={gerenciarProjeto}
             url={"projeto"}
             text="Gerenciar Projeto"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarReuniao}
             url={"reunião"}
             text="Gerenciar Reunião"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarOrientador}
             url={"orientadores"}
             text="Gerenciar Orientadores"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarEstudantes}
             url={"estudantes"}
             text="Gerenciar Estudantes"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarBolsa}
             url={"bolsa"}
             text="Gerenciar Bolsas"
+            close={() => setControlSideBar(false)}
           />
           <ItemSideBar
             img={gerenciarDocs}
             url={"documento"}
             text="Gerenciar Documentos"
+            close={() => setControlSideBar(false)}
           />
 
-          <ListItem button onClick={() => navigate("/vinculo")}>
+          <ListItem button onClick={() => handleItem("vinculo")}>
             <Typography
               className={styles.SideBarItemContainer}
               fontWeight="bold"
@@ -133,7 +171,7 @@ const Header = () => {
               Gerenciar Vinculo
             </Typography>
           </ListItem>
-          <ListItem button onClick={() => navigate("/editais")}>
+          <ListItem button onClick={() => handleItem("editais")}>
             <Typography
               className={styles.SideBarItemContainer}
               fontWeight="bold"
@@ -143,22 +181,61 @@ const Header = () => {
               Gerenciar Editais
             </Typography>
           </ListItem>
-        </List>
 
-        <ListItem
+          <Divider />
+
+        <List
           sx={{
-            position: "absolute",
-            bottom: 0,
+            height: "100vh",
+            gap: "15px",
             display: "flex",
-            justifyContent: "space-between",
+            flexDirection: "column",
           }}
         >
-          <Button>
-            <Avatar />
-          </Button>
-          <Typography>Olá, usuario</Typography>
-        </ListItem>
+          <ListItem button onClick={() => navigate("/admin")}>
+            <Typography
+              className={styles.SideBarItemContainer}
+              fontWeight="bold"
+              color="primary.main"
+            >
+              <AdminPanelSettingsIcon sx={{ fontSize: 33 }} />
+              Funções adminstrativas
+            </Typography>
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={() => setModalDetails(true)}
+            sx={{ paddingRight: "30px" }}
+          >
+            <Typography
+              className={styles.SideBarItemContainer}
+              fontWeight="bold"
+              color="primary.main"
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+            >
+              <Avatar src={avatarMockup} />
+              Olá, usuario
+            </Typography>
+          </ListItem>
+        </List>
+        </List>
+
+        
       </Drawer>
+
+      <ModalDetails
+        handleClose={() => setModalDetails(false)}
+        controlDialog={modalDetails}
+        data={[{ nome: "pedro" }]}
+        title="Olá, usuario"
+        adicionalButtonText="Sair"
+        adicionalButton={() => dispatch(userActions.handleUpdateLogin())}
+      ></ModalDetails>
     </section>
   );
 };

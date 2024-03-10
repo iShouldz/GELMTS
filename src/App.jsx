@@ -1,5 +1,5 @@
-import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Root from "./pages/Root/Root";
 import Home from "./pages/Home/Home";
 import Estudantes from "./pages/Estudantes/Estudantes";
@@ -7,7 +7,6 @@ import Projeto from "./pages/Projeto/Projeto";
 import CadastrarEstudante from "./pages/CadastrarEstudante/CadastrarEstudante";
 import CadastrarProjeto from "./pages/CadastrarProjeto/CadastrarProjeto";
 import AtualizarProjeto from "./pages/AtualizarProjeto/AtualizarProjeto";
-
 import Login from "./pages/Login/Login";
 import Orientador from "./pages/Orientador/Orientador";
 import CadastrarOrientador from "./pages/CadastrarOrientador/CadastrarOrientador";
@@ -20,12 +19,24 @@ import CadastrarDocumento from "./pages/CadastrarDocumento/CadastrarDocumento";
 import Vinculo from "./pages/Vinculo/Vinculo";
 import Editais from "./pages/Editais/Editais";
 import NotFound from "./pages/NotFound/NotFound";
+import Admin from "./pages/admin/Admin";
+import CadastrarUsuario from "./pages/CadastrarUsuario/CadastrarUsuario";
 
 function App() {
+  const isLogado = useSelector((state) => state.login.isLogado);
+  const isAdmin = useSelector((state) => state.login.isAdmin);
+  // const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   if(!isAdmin){
+  //     navigate("/login")
+  //   }
+  // }, [isAdmin, navigate])
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root />,
+      element: !isLogado ? <Login /> : <Root />,
       children: [
         { path: "/", element: <Home /> },
         { path: "estudantes", element: <Estudantes /> },
@@ -63,15 +74,22 @@ function App() {
           element: <CadastrarDocumento />,
         },
         {
-          path: "vinculo", element: <Vinculo />
+          path: "vinculo",
+          element: <Vinculo />,
         },
         {
-          path: 'editais', element: <Editais />
+          path: "editais",
+          element: <Editais />,
         },
         {
-          path: '*', element: <NotFound />
-        }
-
+          /*Para validar o admin, pegue o objeto do usuario e verifique o campo de isAdmin */
+        },
+        { path: "admin", element: !isAdmin ? <Admin /> : <NotFound /> },
+        { path: "admin/cadastrar-usuario", element: <CadastrarUsuario /> },
+        {
+          path: "*",
+          element: <NotFound />,
+        },
       ],
     },
     {
@@ -79,7 +97,6 @@ function App() {
       element: <Login />,
     },
   ]);
-
   return <RouterProvider router={router} />;
 }
 
