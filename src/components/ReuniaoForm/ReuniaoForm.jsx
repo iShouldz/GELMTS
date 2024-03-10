@@ -84,12 +84,9 @@ const ReuniaoForm = () => {
         />
 
         {/* FAZER SELECT DA LISTA DE PROJETOS*/}
-        <InputTextComponent
+        <SelectComponent
           name="projeto"
           label="Projeto"
-          placeholder="Digite o projeto"
-          variant="outlined"
-          {...register("projeto")}
           control={control}
         />
       </div>
