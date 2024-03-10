@@ -20,6 +20,8 @@ import {
   LinearProgress,
   MenuItem,
   Select,
+  Step,
+  Stepper,
   Typography,
 } from "@mui/material";
 import styles from "./usuarioform.module.css";
@@ -48,6 +50,7 @@ const schema = yup
     login: yup.string().required(),
     senha: yup.string().required(),
     admin: yup.string().required(),
+    role: yup.string().required()
   })
   .required();
 
@@ -148,7 +151,9 @@ const UsuarioForm = ({ handleSubmitData }) => {
             >
               <ErrosForm errors={errors?.rg?.message} />
             </InputTextComponent>
+          </div>
 
+          <div className={styles.inputGroup}>
             <InputTextComponent
               name="CPF"
               label="CPF"
@@ -157,9 +162,6 @@ const UsuarioForm = ({ handleSubmitData }) => {
             >
               <ErrosForm errors={errors?.CPF?.message} />
             </InputTextComponent>
-          </div>
-
-          <div className={styles.inputGroup}>
             <InputTextComponent
               name="celular"
               label="Celular"
@@ -168,7 +170,8 @@ const UsuarioForm = ({ handleSubmitData }) => {
             >
               <ErrosForm errors={errors?.celular?.message} />
             </InputTextComponent>
-
+          </div>
+          <div className={styles.inputGroup}>
             <InputTextComponent
               name="dataEmissao"
               label="Data Emissão RG"
@@ -229,16 +232,15 @@ const UsuarioForm = ({ handleSubmitData }) => {
               listagem={nacionalidade}
               helperText="Selecione a nacionalidade"
             />
+          </div>
 
+          <div className={styles.inputGroup}>
             <SelectComponent
               name="naturalidade"
               control={control}
               listagem={nacionalidade}
               helperText="Selecione a naturalidade"
             />
-          </div>
-
-          <div className={styles.inputGroup}>
             <InputTextComponent
               name="fotoAssinatura"
               label="Foto da assinatura"
@@ -247,7 +249,9 @@ const UsuarioForm = ({ handleSubmitData }) => {
             >
               <ErrosForm errors={errors?.fotoAssinatura?.message} />
             </InputTextComponent>
+          </div>
 
+          <div className={styles.inputGroup}>
             <SelectComponent
               name="curso"
               control={control}
@@ -312,12 +316,21 @@ const UsuarioForm = ({ handleSubmitData }) => {
             >
               <ErrosForm errors={errors?.senha?.message} />
             </InputTextComponent>
+          </div>
 
+          <div className={styles.inputGroup}>
             <SelectComponent
               name="admin"
               control={control}
               listagem={["Sim", "Não"]}
               helperText="Essa conta terá privilegios de administrador? "
+            />
+
+            <SelectComponent
+              name="role"
+              control={control}
+              listagem={["Professor", "Estudante"]}
+              helperText="Selecione o tipo do usuario"
             />
           </div>
         </>
