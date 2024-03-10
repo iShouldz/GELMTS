@@ -11,6 +11,7 @@ import {useState} from "react";
 import ModalSearchReuniao from "../../components/ModalSearchReuniao/ModalSearchReuniao";
 import ModalUpdateReuniao from "../../components/ModalUpdateReuniao/ModalUpdateReuniao";
 import ReuniaoForm from "../../components/ReuniaoForm/ReuniaoForm";
+import ModalDetailsReuniao from "../../components/ModalDetailsReuniao/ModalDetailsReuniao";
 
 const Reuniao = () => {
 
@@ -18,6 +19,7 @@ const Reuniao = () => {
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
   const [controlDialogRemove, setControlDialogRemove] = useState(false);
   const [controlDialogUpdate, setControlDialogUpdate] = useState(false);
+  const [controlDialogDetails, setControlDialogDetails] = useState(false);
 
   const handleClose = () => {
     setControlDialog(false);
@@ -122,8 +124,17 @@ const Reuniao = () => {
         handleClose={handleCloseUpdate}
         controlDialog={controlDialogUpdate}
         title="Atualize os dados"
-        component={<ReuniaoForm handlleSubmitData={handleUpdate} />}
+      >
+        <ReuniaoForm handlleSubmitData={handleUpdate} />
+      </ModalUpdateReuniao>
+
+      <ModalDetailsReuniao
+        handleClose={() => setControlDialogDetails(false)}
+        controlDialog={controlDialogDetails}
+        title="Informações da reunião"
+        data={[{ data: '04/05/2024', horaInicio: '14:00', projeto: 'GELMTS', topico: 'definicao das responsabilidades', urgencia: 'media', orientador: 'Vinícius', orientandos: ['Maria', 'José']}]}
       />
+
     </section>
   );
 };
