@@ -30,7 +30,7 @@ import {
           <List>
             {/*Listagem dos orientadores para seleção e depois deleção/update */}
             <Card sx={{ width: "10vw" }}>
-              <CardMedia sx={{ height: 140 }} image="qualquer" title="foto do aluno" />
+              <CardMedia sx={{ height: 140 }} image="qualquer" title="foto do orientador" />
               <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
                   Orientador 01
