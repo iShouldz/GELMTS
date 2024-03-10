@@ -10,6 +10,9 @@ import { useState } from "react";
 import ModalSearchOrientadores from "../../components/ModalSearchOrientadores/ModalSearchOrientadores";
 import ModalUpdateOrientador from "../../components/ModalUpdateOrientador/ModalUpdateOrientador";
 import OrientadorForm from "../../components/OrientadorForm/OrientadorForm";
+import ModalDetailsOrientador from "../../components/ModalDetailsOrientador/ModalDetailsOrientador";
+
+import { cursos } from "../../../utils/lists";
 
 const Orientador = () => {
 
@@ -17,6 +20,7 @@ const Orientador = () => {
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
   const [controlDialogRemove, setControlDialogRemove] = useState(false);
   const [controlDialogUpdate, setControlDialogUpdate] = useState(false);
+  const [controlDialogDetails, setControlDialogDetails] = useState(false);
 
   const handleClose = () => {
     setControlDialog(false);
@@ -124,6 +128,19 @@ const Orientador = () => {
       >
         <OrientadorForm handleSubmitData={handleUpdate} />
       </ModalUpdateOrientador>
+
+      <ModalDetailsOrientador
+        handleClose={() => setControlDialogDetails(false)}
+        controlDialog={controlDialogDetails}
+        title="Informações do Orientador"
+        data={[{ name: 'name: Orientador 1', cpf: '100.100.100-10', curso: 'Orient. Curso 1', name2: 'name: Orientador 2', cpf2: '200.200.200-20', curso2: 'Orient. Curso 2', name3: 'name: Orientador 3', cpf3: '300.300.300-30', curso3: 'Orient. Curso 3'}]}
+      >
+        {cursos.map((item) => (
+          <Typography key={item}>{item}</Typography>
+        ))}
+
+        
+      </ModalDetailsOrientador>
     </section>
   );
 };
