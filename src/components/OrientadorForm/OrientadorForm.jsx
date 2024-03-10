@@ -1,4 +1,4 @@
-import { Button, TextField, IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -6,6 +6,9 @@ import styles from "./orientadorForm.module.css";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import { useNavigate } from "react-router-dom";
+
+import {cursos} from "../../../utils/lists";
+import SelectComponent from "../UI/SelectComponent/SelectComponent";
 
 const schema = yup
   .object({
@@ -80,45 +83,45 @@ const OrientadorForm = () => {
       </div>
 
       <div className={styles.inputGroup}>
-        <TextField
-          id="outlined-basic"
+        <InputTextComponent
+          name="curso"
           label="Curso"
           placeholder="Selecione seu curso"
-          variant="outlined"
-          {...register("curso")}
+          control={control}
+          listagem={cursos}
         />
-        <TextField
-          id="outlined-basic"
+        <InputTextComponent
+          name="especialidade"
           label="Especialidade"
           placeholder="Selecione sua especialidade"
-          variant="outlined"
-          {...register("especialidade")}
+          control={control}
         />
-        <TextField
-          id="outlined-basic"
+        <SelectComponent
+          name="projeto"
           label="Projeto"
-          placeholder="Selecione seu projeto"
-          variant="outlined"
-          {...register("projeto")}
+          control={control}
         />
       </div>
 
-      {orientandos.map((orientando, index) => (
-        <div key={index} className={styles.inputGroup}>
-          <TextField
-            id={`orientandos[${index}]`}
-            label={`Orientando ${index + 1}`}
-            placeholder="Selecione seu(s) orientando(s)"
-            variant="outlined"
-            {...register(`orientandos[${index}]`)}
-          />
-        </div>
-      ))}
+      <div className={styles.inputGroup}>
+        {orientandos.map((orientando, index) => (
+          <div key={index} className={styles.inputGroup}>
+            <InputTextComponent
+              name={`orientandos[${index}]`}
+              label={`Orientando ${index + 1}`}
+              placeholder="Selecione seu(s) orientando(s)"
+              variant="outlined"
+              {...register(`orientandos[${index}]`)}
+              control={control}
+            />
+          </div>
+        ))}
 
-      <IconButton onClick={addOrientando}>
-        <PersonAddAlt1Icon />
-      </IconButton>
-
+        <IconButton onClick={addOrientando}>
+          <PersonAddAlt1Icon />
+        </IconButton>
+      </div>
+      
       <div className={styles.inputGroup}>
         <InputTextComponent
           name="login"
