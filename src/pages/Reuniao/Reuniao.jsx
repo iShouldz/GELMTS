@@ -108,7 +108,7 @@ const Reuniao = () => {
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
         title={"Pesquise a reunião"}
-        actionButton={() => console.log("Detalhes da reunião")}
+        actionButton={() => setControlDialogDetails(true)}
         actionButtonText="Detalhes"
       />
 
