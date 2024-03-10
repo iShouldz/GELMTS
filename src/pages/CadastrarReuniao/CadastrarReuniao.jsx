@@ -20,7 +20,7 @@ const CadastrarReuniao = () => {
             </Typography>
 
             <Typography
-                variant="h6"
+                variant="h5"
                 fontWeight="bold"
                 sx={{ display: "flex", justifyContent: "center" }}
                 color="primary.main"
@@ -28,7 +28,7 @@ const CadastrarReuniao = () => {
                 Cadastrar Reunião
             </Typography>
 
-            <ReuniaoForm handleSubmitData={handleCadastrar}/>
+            <ReuniaoForm handleSubmitData={handleCadastrar} cadastro={true}/>
         </section>
     )
 }

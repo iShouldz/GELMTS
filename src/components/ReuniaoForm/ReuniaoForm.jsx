@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Button, IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,11 +20,12 @@ const schema = yup
     projeto: yup.string().required(),
     orientador: yup.string().required(),
     orientandos: yup.array().of(yup.string().required()),
-    urgencia: yup.string().oneOf(['baixa', 'média', 'alta']).required(),
+    urgencia: yup.string().required(),
   })
   .required();
 
-const ReuniaoForm = () => {
+const ReuniaoForm = ({ handleSubmitData, cadastro = false }) => {
+
   const {
     register,
     handleSubmit,
@@ -40,10 +42,6 @@ const ReuniaoForm = () => {
 
   const navigate = useNavigate();
 
-  const handleCadastrarReuniao = (data) => {
-    console.log(data);
-  };
-
   const orientandos = watch("orientandos");
 
   const addOrientando = () => {
@@ -58,7 +56,7 @@ const ReuniaoForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(handleCadastrarReuniao)}
+      onSubmit={handleSubmit(handleSubmitData)}
       className={styles.formReuniaoContainer}
     >
       <div className={styles.inputGroup}>
@@ -133,7 +131,7 @@ const ReuniaoForm = () => {
       <div className={styles.inputGroup}>
         {orientandos.map((orientando, index) => (
           <div key={index} className={styles.inputGroup}>
-          {/* FAZER SELECT DA LISTA DE ORIENTANDOS*/}
+            {/* FAZER SELECT DA LISTA DE ORIENTANDOS*/}
             <InputTextComponent
               name={`orientandos[${index}]`}
               label={`Orientando ${index + 1}`}
@@ -150,15 +148,17 @@ const ReuniaoForm = () => {
       </div>
 
       <div>
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ backgroundColor: "primary.main" }}
-          onClick={() => navigate("/reunião")}
-        >
-          Voltar
-        </Button>
-
+        {cadastro && (
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ backgroundColor: "primary.main" }}
+            onClick={() => navigate("/reunião")}
+          >
+            Voltar
+          </Button>
+        )}
+        
         <Button
           type="submit"
           variant="contained"
