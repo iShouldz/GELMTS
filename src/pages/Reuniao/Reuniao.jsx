@@ -97,15 +97,15 @@ const Reuniao = () => {
       <ModalSearchReuniao
         handleClose={handleClose}
         controlDialog={controlDialog}
-        title="Selecione a reunião"
+        title={"Selecione a reunião"}
         actionButton={handleOpenUpdate}
         actionButtonText="Atualizar informações"
       />
 
-      <ModalUpdateReuniao
+      <ModalSearchReuniao
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
-        title="Pesquise a reunião"
+        title={"Pesquise a reunião"}
         actionButton={() => console.log("Detalhes da reunião")}
         actionButtonText="Detalhes"
       />
@@ -113,7 +113,7 @@ const Reuniao = () => {
       <ModalSearchReuniao
         handleClose={handleCloseRemove}
         controlDialog={controlDialogRemove}
-        title="Remova a reunião"
+        title={"Remova a reunião"}
         actionButton={() => console.log("Remover reunião")}
         actionButtonText="Remover a reunião"
       />
