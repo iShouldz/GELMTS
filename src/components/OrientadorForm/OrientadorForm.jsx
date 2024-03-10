@@ -83,7 +83,7 @@ const OrientadorForm = () => {
       </div>
 
       <div className={styles.inputGroup}>
-        <InputTextComponent
+        <SelectComponent
           name="curso"
           label="Curso"
           placeholder="Selecione seu curso"
@@ -122,6 +122,7 @@ const OrientadorForm = () => {
         </IconButton>
       </div>
       
+
       <div className={styles.inputGroup}>
         <InputTextComponent
           name="login"
