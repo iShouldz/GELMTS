@@ -100,7 +100,7 @@ const ModalSearchReuniao = ({
               title="foto da reunião"
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
+              <Typography gutterBottom variant="h5" component="div">
                 Reunião 01
               </Typography>
               <Typography variant="body2" color="text.secondary">
