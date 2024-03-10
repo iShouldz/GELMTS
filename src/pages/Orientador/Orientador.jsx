@@ -121,8 +121,9 @@ const Orientador = () => {
         handleClose={handleCloseUpdate}
         controlDialog={controlDialogUpdate}
         title="Atualize os dados"
-        component={<OrientadorForm handleSubmitData={handleUpdate} />}
-      />
+      >
+        <OrientadorForm handleSubmitData={handleUpdate} />
+      </ModalUpdateOrientador>
     </section>
   );
 };
