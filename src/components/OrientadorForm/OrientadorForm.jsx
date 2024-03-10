@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Button, IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,7 +8,7 @@ import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import { useNavigate } from "react-router-dom";
 
-import {cursos} from "../../../utils/lists";
+import { cursos } from "../../../utils/lists";
 import SelectComponent from "../UI/SelectComponent/SelectComponent";
 
 const schema = yup
@@ -25,7 +26,7 @@ const schema = yup
   })
   .required();
 
-const OrientadorForm = () => {
+const OrientadorForm = ({ handleSubmitData, cadastro = false}) => {
   const {
     register,
     handleSubmit,
@@ -40,31 +41,29 @@ const OrientadorForm = () => {
 
   const navigate = useNavigate();
 
-  const handleCadastrarOrientador = (data) => {
-    console.log(data);
-  };
-
   const orientandos = watch("orientandos");
 
   const addOrientando = () => {
     setValue("orientandos", [...orientandos, '']);
   };
 
-  {Object.keys(errors).length > 0 && (
-    <div className={styles.errorContainer}>
-      <p>Houve alguns erros no formulário:</p>
-      <ul>
-        {Object.keys(errors).map((fieldName, index) => (
-          <li key={index}>{errors[fieldName].message}</li>
-        ))}
-      </ul>
-    </div>
-  )}
-  
+  {
+    Object.keys(errors).length > 0 && (
+      <div className={styles.errorContainer}>
+        <p>Houve alguns erros no formulário:</p>
+        <ul>
+          {Object.keys(errors).map((fieldName, index) => (
+            <li key={index}>{errors[fieldName].message}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
 
   return (
     <form
-      onSubmit={handleSubmit(handleCadastrarOrientador)}
+      onSubmit={handleSubmit(handleSubmitData)}
       className={styles.formOrientadorContainer}
     >
       <div className={styles.inputGroup}>
@@ -121,7 +120,7 @@ const OrientadorForm = () => {
           <PersonAddAlt1Icon />
         </IconButton>
       </div>
-      
+
 
       <div className={styles.inputGroup}>
         <InputTextComponent
@@ -140,18 +139,21 @@ const OrientadorForm = () => {
       </div>
 
       <div>
-        <Button 
-          type="submit" 
-          variant="contained" 
-          sx={{ backgroundColor: "primary.main" }}
-          onClick={() => navigate("/orientadores")}
-        >
-          Voltar
-        </Button>
+        {cadastro && (
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ backgroundColor: "primary.main" }}
+            onClick={() => navigate("/orientadores")}
+          >
+            Voltar
+          </Button>
+        )}
 
-        <Button 
-          type="submit" 
-          variant="contained" 
+
+        <Button
+          type="submit"
+          variant="contained"
           sx={{ backgroundColor: "primary.main" }}
         >
           Submit

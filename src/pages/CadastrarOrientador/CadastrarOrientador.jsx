@@ -28,7 +28,7 @@ const CadastrarOrientador = () => {
                 Cadastrar Orientador
             </Typography>
 
-            <OrientadorForm handleSubmitData={handleCadastrar}/>
+            <OrientadorForm handleSubmitData={handleCadastrar} cadastro={true}/>
         </section>
     )
 }
