@@ -96,7 +96,7 @@ const Orientador = () => {
       <ModalSearchOrientadores
         handleClose={handleClose}
         controlDialog={controlDialog}
-        title="Selecione o orientador"
+        title={"Selecione o orientador"}
         actionButton={handleOpenUpdate}
         actionButtonText="Atualizar informações"
       />
@@ -104,7 +104,7 @@ const Orientador = () => {
       <ModalSearchOrientadores
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
-        title="Pesquise o orientador"
+        title={"Pesquise o orientador"}
         actionButton={() => console.log("Detalhes do orientador")}
         actionButtonText="Detalhes"
       />
@@ -112,7 +112,7 @@ const Orientador = () => {
       <ModalSearchOrientadores
         handleClose={handleCloseRemove}
         controlDialog={controlDialogRemove}
-        title="Remova o orientador"
+        title={"Remova o orientador"}
         actionButton={() => console.log("Remover orientador")}
         actionButtonText="Remover o orientador"
       />
