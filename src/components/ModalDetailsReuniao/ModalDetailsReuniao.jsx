@@ -12,7 +12,7 @@ import {
 import { estilosMUI } from "../../../utils/lists";
 import reuniaoPicture from "../../assets/reuniaoPicture.png";
 
-const ModalDetailsOrientador = ({
+const ModalDetailsReuniao = ({
     handleClose,
     controlDialog,
     title,
@@ -75,4 +75,4 @@ const ModalDetailsOrientador = ({
     );
 };
 
-export default ModalDetailsOrientador;
+export default ModalDetailsReuniao;
