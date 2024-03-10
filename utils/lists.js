@@ -1031,3 +1031,9 @@ export const nacionalidade = [
     "zambiano",
     "zimbabueano"
 ]
+
+export const urgencia = [
+    "baixa",
+    "média",
+    "alta"
+]

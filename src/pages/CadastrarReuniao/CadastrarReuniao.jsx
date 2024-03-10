@@ -1,8 +1,13 @@
 import  { Typography } from "@mui/material";
 import styles from "./cadastrarReuniao.module.css";
-/*import ReuniaoForm from "../../components/ReuniaoForm/ReuniaoForm";*/
+import ReuniaoForm from "../../components/ReuniaoForm/ReuniaoForm";
 
 const CadastrarReuniao = () => {
+
+    const handleCadastrar = (data) => {
+        console.log(data)
+    }
+
     return (
         <section className={styles.FormularioReuniaoContainer}>
             <Typography
@@ -15,7 +20,7 @@ const CadastrarReuniao = () => {
             </Typography>
 
             <Typography
-                variant="h6"
+                variant="h5"
                 fontWeight="bold"
                 sx={{ display: "flex", justifyContent: "center" }}
                 color="primary.main"
@@ -23,7 +28,7 @@ const CadastrarReuniao = () => {
                 Cadastrar Reunião
             </Typography>
 
-            {/* <ReuniaoForm /> */}
+            <ReuniaoForm handleSubmitData={handleCadastrar} cadastro={true}/>
         </section>
     )
 }
