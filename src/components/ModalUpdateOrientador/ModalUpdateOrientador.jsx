@@ -1,14 +1,32 @@
 /* eslint-disable react/prop-types */
-import { Dialog, DialogContent, DialogTitle} from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 
-const ModalTemplateOrientador = ({ handleClose, controlDialog, title, component }) => {
+const ModalTemplateOrientador = ({ handleClose, controlDialog, title, children }) => {
   {/*Instrução: Passe o componente de cadastro para atualizar, so passar com a handle dos dados que funciona */}
   return (
-    <Dialog onClose={handleClose} open={controlDialog}>
+    <Dialog onClose={handleClose} open={controlDialog}
+      sx={{
+        "& .MuiDialog-container": {
+          "& .MuiPaper-root": {
+            width: "100%",
+            maxWidth: "55vw",
+          },
+        },
+      }}
+    > 
       <DialogTitle>{title}</DialogTitle>
-      <DialogContent>
-        {component}
+      <DialogContent
+        sx={{ 
+          display: "flex", 
+          justifyContent: "center" 
+        }}
+      >
+        {children}
       </DialogContent>
+
+      <DialogActions>
+        <Button onClick={handleClose}>Fechar</Button>
+      </DialogActions>
     </Dialog>
   );
 };
