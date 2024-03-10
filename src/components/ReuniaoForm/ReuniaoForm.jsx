@@ -99,7 +99,7 @@ const ReuniaoForm = () => {
           <div key={index} className={styles.inputGroup}>
             <InputTextComponent
               name={`topicos[${index}]`}
-              label={`Topico ${index + 1}`}
+              label={`Tópico ${index + 1}`}
               variant="outlined"
               {...register(`topicos[${index}]`)}
               control={control}
