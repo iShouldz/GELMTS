@@ -35,24 +35,25 @@ import Looks3Icon from "@mui/icons-material/Looks3";
 import Looks4Icon from "@mui/icons-material/Looks4";
 import ErrosForm from "../ErrorsForm/ErrosForm";
 import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
+import { cidadeEstado } from "../../../utils/lists";
 
 const schema = yup
   .object({
     nome: yup.string().required(),
-    // rg: yup.string().required(),
-    // CPF: yup.number().required(),
-    // celular: yup.string().required(),
-    // dataEmissao: yup.string().required(),
-    // orgaoRG: yup.string().required(),
-    // estadoCivil: yup.string().required(),
-    // nacionalidade: yup.string().required(),
-    // naturalidade: yup.string().required(),
-    // fotoAssinatura: yup.string().required(),
-    // curso: yup.string().required(),
-    // gestao: yup.string().required(),
-    // login: yup.string().required(),
-    // senha: yup.string().required(),
-    // admin: yup.string().required(),
+    rg: yup.string().required(),
+    CPF: yup.number().required(),
+    celular: yup.string().required(),
+    dataEmissao: yup.string().required(),
+    orgaoRG: yup.string().required(),
+    estadoCivil: yup.string().required(),
+    nacionalidade: yup.string().required(),
+    naturalidade: yup.string().required(),
+    fotoAssinatura: yup.string().required(),
+    curso: yup.string().required(),
+    gestao: yup.string().required(),
+    login: yup.string().required(),
+    senha: yup.string().required(),
+    admin: yup.string().required(),
     role: yup.string().required(),
     matricula: yup.string().when("role", {
       is: "estudante",
@@ -84,6 +85,11 @@ const schema = yup
       then: (schema) => schema.required("Digite a especialidade"),
       otherwise: (schema) => schema.notRequired(),
     }),
+    rua: yup.string().required(),
+    numero: yup.string().required(),
+    cidade: yup.string().required(),
+    estado: yup.string().required(),
+    cep: yup.string().required(),
   })
   .required();
 
@@ -93,6 +99,8 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
   const [pageForm, setPageForm] = useState(0);
   const [confirm, setConfirm] = useState(false);
   const [radioValue, setRadioValue] = useState();
+  const [selectedEstado, setSelectedEstado] = useState();
+  const [selectedCity, setSelectedCity] = useState();
 
   console.log(radioValue);
   const handleChange = (event) => {
@@ -101,6 +109,14 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
 
   const handleChangeRadio = (event) => {
     setRadioValue(event.target.value);
+  };
+
+  const handleChangeEstado = (event) => {
+    setSelectedEstado(event.target.value);
+  };
+
+  const handleChangeCity = (event) => {
+    setSelectedCity(event.target.value);
   };
 
   const {
@@ -123,7 +139,7 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
       // setConfirm(true);
     }
   }, [numberOfErrors, pageForm]);
-
+  console.log(selectedEstado);
   return (
     <form
       onSubmit={handleSubmit(handleSubmitData)}
@@ -321,6 +337,73 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
           >
             <Looks3Icon sx={{ fontSize: 33 }} /> Endereço
           </Typography>
+
+          <div className={styles.inputGroup}>
+            <InputTextComponent
+              name="rua"
+              label="Rua"
+              placeholder="Digite a Rua"
+              control={control}
+            >
+              <ErrosForm errors={errors?.rua?.message} />
+            </InputTextComponent>
+
+            <InputTextComponent
+              name="numero"
+              label="Numero"
+              placeholder="Digite o numero da casa"
+              control={control}
+            >
+              <ErrosForm errors={errors?.numero?.message} />
+            </InputTextComponent>
+
+            <SelectComponent
+              name="cep"
+              control={control}
+              listagem={["teste"]}
+              helperText="Selecione a rua"
+            />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div>
+              <Select
+                sx={estilosMUI}
+                value={selectedEstado}
+                onChange={handleChangeEstado}
+                {...register("estado")}
+              >
+                {cidadeEstado.estados.map((itemEstado) => (
+                  <MenuItem value={itemEstado.sigla} key={itemEstado.sigla}>
+                    {itemEstado.sigla}
+                  </MenuItem>
+                ))}
+              </Select>
+              <FormHelperText>Selecione o Estado</FormHelperText>
+            </div>
+
+            {/* <Select
+              value={selectedCity}
+              onChange={handleChangeCity}
+              {...register("cidade")}
+            >
+              {cidadeEstado.estados.map((itemEstado) =>
+                itemEstado.sigla == selectedEstado
+                  ? itemEstado.cidades.map((cidade) => (
+                      <MenuItem value={cidade} key={cidade}>
+                        {cidade}
+                      </MenuItem>
+                    ))
+                  : ""
+              )}
+            </Select> */}
+            <SelectComponent
+              name="cidade"
+              control={control}
+              listagem={["teste"]}
+              helperText="Selecione a cidade"
+            />
+          </div>
         </>
       ) : pageForm === 100 ? (
         <>
