@@ -93,7 +93,12 @@ const schema = yup
   })
   .required();
 
-const UsuarioForm = ({ handleSubmitData, type }) => {
+const UsuarioForm = ({
+  handleSubmitData,
+  typeTitle = "Cadastro",
+  typeSub = "criado",
+  textAlert = "",
+}) => {
   const navigate = useNavigate();
   const [rgSelect, setRgSelect] = useState();
   const [pageForm, setPageForm] = useState(0);
@@ -156,7 +161,7 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
         }}
         variant="h4"
       >
-        Etapa de cadastro
+        Etapa de {typeTitle}
       </Typography>
       <Box
         sx={{
@@ -514,7 +519,7 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
       ) : (
         <>
           <Typography variant="h5">
-            Selecione o tipo de usuario a ser criado
+            Selecione o tipo de usuario a ser {typeSub}
           </Typography>
 
           <RadioGroup
@@ -541,6 +546,15 @@ const UsuarioForm = ({ handleSubmitData, type }) => {
               {...register("role")}
             />
           </RadioGroup>
+
+          {textAlert !== "" && (
+            <Alert
+              severity="warning"
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              {textAlert}
+            </Alert>
+          )}
         </>
       )}
 
