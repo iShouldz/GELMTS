@@ -10,7 +10,7 @@ import { useState } from "react";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
 import ProjetoForm from "../../components/ProjetoForm/ProjetoForm";
 import ModalSearchProjeto from "../../components/ModalSearchProjeto/ModalSearchProjeto";
-import ModalDetailsProjeto from "../../components/ModalDetailsProjeto/ModalDetailsProjeto";
+import ModalDetails from "../../components/ModalDetails/ModalDetails";
 
 const Projeto = () => {
 
@@ -140,7 +140,7 @@ const Projeto = () => {
         <ProjetoForm handleSubmitData={handleUpdate} />
       </ModalUpdate>
 
-      <ModalDetailsProjeto
+      <ModalDetails
         handleClose={() => setControlDialogDetails(false)}
         controlDialog={controlDialogDetails}
         title="Informações do projeto"
