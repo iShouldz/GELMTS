@@ -16,9 +16,12 @@ import {
   Alert,
   Box,
   Button,
+  FormControlLabel,
   FormHelperText,
   LinearProgress,
   MenuItem,
+  Radio,
+  RadioGroup,
   Select,
   Step,
   Stepper,
@@ -32,6 +35,7 @@ import Looks3Icon from "@mui/icons-material/Looks3";
 import Looks4Icon from "@mui/icons-material/Looks4";
 import ErrosForm from "../ErrorsForm/ErrosForm";
 import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
+import { cidadeEstado } from "../../../utils/lists";
 
 const schema = yup
   .object({
@@ -50,18 +54,74 @@ const schema = yup
     login: yup.string().required(),
     senha: yup.string().required(),
     admin: yup.string().required(),
-    role: yup.string().required()
+    role: yup.string().required(),
+    matricula: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Digite a matricula"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    atividade: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione a atividade"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    vinculo: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione o vinculo"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    funcao: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione a função"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    horarioAtividade: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione um horario de atividade"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    especialidade: yup.string().when("role", {
+      is: "professor",
+      then: (schema) => schema.required("Digite a especialidade"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    rua: yup.string().required(),
+    numero: yup.string().required(),
+    cidade: yup.string().required(),
+    estado: yup.string().required(),
+    cep: yup.string().required(),
   })
   .required();
 
-const UsuarioForm = ({ handleSubmitData }) => {
+const UsuarioForm = ({
+  handleSubmitData,
+  typeTitle = "Cadastro",
+  typeSub = "criado",
+  textAlert = "",
+}) => {
   const navigate = useNavigate();
   const [rgSelect, setRgSelect] = useState();
-  const [pageForm, setPageForm] = useState(25);
+  const [pageForm, setPageForm] = useState(0);
   const [confirm, setConfirm] = useState(false);
+  const [radioValue, setRadioValue] = useState();
+  const [selectedEstado, setSelectedEstado] = useState();
+  const [selectedCity, setSelectedCity] = useState();
 
+  console.log(radioValue);
   const handleChange = (event) => {
     setRgSelect(event.target.value);
+  };
+
+  const handleChangeRadio = (event) => {
+    setRadioValue(event.target.value);
+  };
+
+  const handleChangeEstado = (event) => {
+    setSelectedEstado(event.target.value);
+  };
+
+  const handleChangeCity = (event) => {
+    setSelectedCity(event.target.value);
   };
 
   const {
@@ -78,14 +138,13 @@ const UsuarioForm = ({ handleSubmitData }) => {
   });
   console.log(errors);
   const numberOfErrors = Object.keys(errors).length;
-  console.log(numberOfErrors);
 
   useEffect(() => {
     if (numberOfErrors >= 1 && pageForm === 100) {
-      setConfirm(true);
+      // setConfirm(true);
     }
   }, [numberOfErrors, pageForm]);
-
+  console.log(selectedEstado);
   return (
     <form
       onSubmit={handleSubmit(handleSubmitData)}
@@ -102,7 +161,7 @@ const UsuarioForm = ({ handleSubmitData }) => {
         }}
         variant="h4"
       >
-        Etapa de cadastro
+        Etapa de {typeTitle}
       </Typography>
       <Box
         sx={{
@@ -283,8 +342,75 @@ const UsuarioForm = ({ handleSubmitData }) => {
           >
             <Looks3Icon sx={{ fontSize: 33 }} /> Endereço
           </Typography>
+
+          <div className={styles.inputGroup}>
+            <InputTextComponent
+              name="rua"
+              label="Rua"
+              placeholder="Digite a Rua"
+              control={control}
+            >
+              <ErrosForm errors={errors?.rua?.message} />
+            </InputTextComponent>
+
+            <InputTextComponent
+              name="numero"
+              label="Numero"
+              placeholder="Digite o numero da casa"
+              control={control}
+            >
+              <ErrosForm errors={errors?.numero?.message} />
+            </InputTextComponent>
+
+            <SelectComponent
+              name="cep"
+              control={control}
+              listagem={["teste"]}
+              helperText="Selecione a rua"
+            />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div>
+              <Select
+                sx={estilosMUI}
+                value={selectedEstado}
+                onChange={handleChangeEstado}
+                {...register("estado")}
+              >
+                {cidadeEstado.estados.map((itemEstado) => (
+                  <MenuItem value={itemEstado.sigla} key={itemEstado.sigla}>
+                    {itemEstado.sigla}
+                  </MenuItem>
+                ))}
+              </Select>
+              <FormHelperText>Selecione o Estado</FormHelperText>
+            </div>
+
+            {/* <Select
+              value={selectedCity}
+              onChange={handleChangeCity}
+              {...register("cidade")}
+            >
+              {cidadeEstado.estados.map((itemEstado) =>
+                itemEstado.sigla == selectedEstado
+                  ? itemEstado.cidades.map((cidade) => (
+                      <MenuItem value={cidade} key={cidade}>
+                        {cidade}
+                      </MenuItem>
+                    ))
+                  : ""
+              )}
+            </Select> */}
+            <SelectComponent
+              name="cidade"
+              control={control}
+              listagem={["teste"]}
+              helperText="Selecione a cidade"
+            />
+          </div>
         </>
-      ) : (
+      ) : pageForm === 100 ? (
         <>
           <Typography
             fontWeight="bold"
@@ -296,43 +422,139 @@ const UsuarioForm = ({ handleSubmitData }) => {
               gap: "20px",
             }}
           >
-            <Looks4Icon sx={{ fontSize: 33 }} /> Detalhes administrativos
+            <Looks4Icon sx={{ fontSize: 33 }} /> Configurações finais
           </Typography>
-          <div className={styles.inputGroup}>
-            <InputTextComponent
-              name="login"
-              label="Login"
-              placeholder="Digite o Login"
-              control={control}
-            >
-              <ErrosForm errors={errors?.login?.message} />
-            </InputTextComponent>
 
-            <InputTextComponent
-              name="senha"
-              label="Senha"
-              placeholder="Digite a Senha"
-              control={control}
-            >
-              <ErrosForm errors={errors?.senha?.message} />
-            </InputTextComponent>
-          </div>
+          {radioValue === "estudante" ? (
+            <>
+              <div className={styles.inputGroup}>
+                <InputTextComponent
+                  name="matricula"
+                  label="Matricula"
+                  placeholder="Digite a matricula"
+                  control={control}
+                >
+                  <ErrosForm errors={errors?.matricula?.message} />
+                </InputTextComponent>
 
-          <div className={styles.inputGroup}>
-            <SelectComponent
-              name="admin"
-              control={control}
-              listagem={["Sim", "Não"]}
-              helperText="Essa conta terá privilegios de administrador? "
+                <SelectComponent
+                  name="atividade"
+                  control={control}
+                  listagem={["teste"]}
+                  helperText="Selecione a atividade"
+                />
+
+                <SelectComponent
+                  name="vinculo"
+                  control={control}
+                  listagem={["teste"]}
+                  helperText="Selecione um vinculo"
+                />
+              </div>
+
+              <div className={styles.inputGroup}>
+                <SelectComponent
+                  control={control}
+                  listagem={["teste"]}
+                  name="funcao"
+                  label="Função"
+                  helperText="Selecione uma função"
+                />
+                <SelectComponent
+                  control={control}
+                  listagem={["teste"]}
+                  name="horarioAtividade"
+                  label="Horario de atividade"
+                  helperText="Selecione um horario"
+                />
+              </div>
+            </>
+          ) : (
+            <div className={styles.inputGroup}>
+              <SelectComponent
+                name="especialidade"
+                label="Especialidade"
+                listagem={["teste"]}
+                helperText="Digite a especialidade"
+                control={control}
+              />
+            </div>
+          )}
+
+          <Box
+            sx={{
+              backgroundColor: "#1A2E4F10",
+              padding: "30px",
+              borderRadius: "20px",
+            }}
+          >
+            <Typography>Zona administrativa</Typography>
+            <div className={styles.inputGroup}>
+              <InputTextComponent
+                name="login"
+                label="Login"
+                placeholder="Digite o Login"
+                control={control}
+              >
+                <ErrosForm errors={errors?.login?.message} />
+              </InputTextComponent>
+
+              <InputTextComponent
+                name="senha"
+                label="Senha"
+                placeholder="Digite a Senha"
+                control={control}
+              >
+                <ErrosForm errors={errors?.senha?.message} />
+              </InputTextComponent>
+              <SelectComponent
+                name="admin"
+                control={control}
+                listagem={["Sim", "Não"]}
+                helperText="Essa conta terá privilegios de administrador? "
+              />
+            </div>
+          </Box>
+        </>
+      ) : (
+        <>
+          <Typography variant="h5">
+            Selecione o tipo de usuario a ser {typeSub}
+          </Typography>
+
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+            value={radioValue}
+            onChange={handleChangeRadio}
+          >
+            <FormControlLabel
+              control={<Radio />}
+              label="Estudante"
+              labelPlacement="end"
+              value="estudante"
+              name="radio-buttons"
+              {...register("role")}
             />
-
-            <SelectComponent
-              name="role"
-              control={control}
-              listagem={["Professor", "Estudante"]}
-              helperText="Selecione o tipo do usuario"
+            <FormControlLabel
+              control={<Radio />}
+              label="Professor"
+              labelPlacement="end"
+              value="professor"
+              name="radio-buttons"
+              {...register("role")}
             />
-          </div>
+          </RadioGroup>
+
+          {textAlert !== "" && (
+            <Alert
+              severity="warning"
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              {textAlert}
+            </Alert>
+          )}
         </>
       )}
 

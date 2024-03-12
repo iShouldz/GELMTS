@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUsersState = {
-  user: [], isLogado: false, isAdmin: false
+  user: {}, isLogado: false, isAdmin: false
 };
 
 const userSlice = createSlice({
@@ -10,6 +10,7 @@ const userSlice = createSlice({
   reducers: {
     handleUpdateLogin(state) {
       state.isLogado = !state.isLogado
+      state.user = {nome: 'Pedro'}
     },
     handleCurrentLogin(state, actions){
         state.user = actions.payload

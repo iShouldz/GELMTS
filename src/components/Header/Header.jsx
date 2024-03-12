@@ -26,17 +26,20 @@ import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import avatarMockup from "../../assets/mockupAvatarImage.jpg";
 import ModalDetails from "../ModalDetails/ModalDetails";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../store/login/loginSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const [controlSideBar, setControlSideBar] = useState(false);
   const [modalDetails, setModalDetails] = useState(false);
+  const nome = useSelector((state) => state.login.user);
   const dispatch = useDispatch();
 
+  console.log(nome)
+  {/*dado apenas para mockup, no aguardo do back ficar pronto */}
+  const user = "Pedro"
   const handleItem = (path) => {
     navigate(`/${path}`)
     setControlSideBar(false)
@@ -111,7 +114,7 @@ const Header = () => {
           }}
         >
           <Button onClick={() => setModalDetails(true)}>
-            <Avatar src={avatarMockup} />
+            <Avatar>{user[0]}</Avatar>
           </Button>
         </ListItem>
       </Drawer>
@@ -218,7 +221,8 @@ const Header = () => {
                 width: "100%",
               }}
             >
-              <Avatar src={avatarMockup} />
+              {/*Vamos pegar a primeira letra do nome do usuario para a imagem do avatar */}
+              <Avatar>{nome.nome[0]}</Avatar>
               Olá, usuario
             </Typography>
           </ListItem>
