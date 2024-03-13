@@ -6,6 +6,8 @@ import * as yup from "yup";
 import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
 import styles from "./vinculoform.module.css";
 import SelectComponent from "../../components/UI/SelectComponent/SelectComponent";
+import { Box, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -21,7 +23,7 @@ const schema = yup
   })
   .required();
 
-const VinculoForm = ({ handleSubmitData }) => {
+const VinculoForm = ({ handleSubmitData, cadastro=false }) => {
   const {
     register,
     handleSubmit,
@@ -30,6 +32,8 @@ const VinculoForm = ({ handleSubmitData }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const navigate = useNavigate();
 
   return (
     <form
@@ -92,6 +96,26 @@ const VinculoForm = ({ handleSubmitData }) => {
           control={control}
         />
       </div>
+
+      <Box sx={{ display: "flex", gap: "30px" }}>
+        {cadastro ? (
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: "primary.main" }}
+            onClick={() => navigate("/vinculo")}
+          >
+            Voltar
+          </Button>
+        ) : ''}
+
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{ backgroundColor: "primary.main" }}
+        >
+          Submit
+        </Button>
+      </Box>
     </form>
   );
 };
