@@ -39,57 +39,57 @@ import { cidadeEstado } from "../../../utils/lists";
 
 const schema = yup
   .object({
-    nome: yup.string().required(),
-    rg: yup.string().required(),
-    CPF: yup.number().required(),
-    celular: yup.string().required(),
-    dataEmissao: yup.string().required(),
-    orgaoRG: yup.string().required(),
-    estadoCivil: yup.string().required(),
-    nacionalidade: yup.string().required(),
-    naturalidade: yup.string().required(),
-    fotoAssinatura: yup.string().required(),
-    curso: yup.string().required(),
-    gestao: yup.string().required(),
-    login: yup.string().required(),
-    senha: yup.string().required(),
-    admin: yup.string().required(),
-    role: yup.string().required(),
-    matricula: yup.string().when("role", {
-      is: "estudante",
-      then: (schema) => schema.required("Digite a matricula"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-    atividade: yup.string().when("role", {
-      is: "estudante",
-      then: (schema) => schema.required("Selecione a atividade"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-    vinculo: yup.string().when("role", {
-      is: "estudante",
-      then: (schema) => schema.required("Selecione o vinculo"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-    funcao: yup.string().when("role", {
-      is: "estudante",
-      then: (schema) => schema.required("Selecione a função"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-    horarioAtividade: yup.string().when("role", {
-      is: "estudante",
-      then: (schema) => schema.required("Selecione um horario de atividade"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-    especialidade: yup.string().when("role", {
-      is: "professor",
-      then: (schema) => schema.required("Digite a especialidade"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-    rua: yup.string().required(),
-    numero: yup.string().required(),
-    cidade: yup.string().required(),
-    estado: yup.string().required(),
-    cep: yup.string().required(),
+    // nome: yup.string().required(),
+    // rg: yup.string().required(),
+    // CPF: yup.number().required(),
+    // celular: yup.string().required(),
+    // dataEmissao: yup.string().required(),
+    // orgaoRG: yup.string().required(),
+    // estadoCivil: yup.string().required(),
+    // nacionalidade: yup.string().required(),
+    // naturalidade: yup.string().required(),
+    // fotoAssinatura: yup.string().required(),
+    // curso: yup.string().required(),
+    // gestao: yup.string().required(),
+    // login: yup.string().required(),
+    // senha: yup.string().required(),
+    // admin: yup.string().required(),
+    // role: yup.string().required(),
+    // matricula: yup.string().when("role", {
+    //   is: "estudante",
+    //   then: (schema) => schema.required("Digite a matricula"),
+    //   otherwise: (schema) => schema.notRequired(),
+    // }),
+    // atividade: yup.string().when("role", {
+    //   is: "estudante",
+    //   then: (schema) => schema.required("Selecione a atividade"),
+    //   otherwise: (schema) => schema.notRequired(),
+    // }),
+    // vinculo: yup.string().when("role", {
+    //   is: "estudante",
+    //   then: (schema) => schema.required("Selecione o vinculo"),
+    //   otherwise: (schema) => schema.notRequired(),
+    // }),
+    // funcao: yup.string().when("role", {
+    //   is: "estudante",
+    //   then: (schema) => schema.required("Selecione a função"),
+    //   otherwise: (schema) => schema.notRequired(),
+    // }),
+    // horarioAtividade: yup.string().when("role", {
+    //   is: "estudante",
+    //   then: (schema) => schema.required("Selecione um horario de atividade"),
+    //   otherwise: (schema) => schema.notRequired(),
+    // }),
+    // especialidade: yup.string().when("role", {
+    //   is: "professor",
+    //   then: (schema) => schema.required("Digite a especialidade"),
+    //   otherwise: (schema) => schema.notRequired(),
+    // }),
+    // rua: yup.string().required(),
+    // numero: yup.string().required(),
+    // cidade: yup.string().required(),
+    // estado: yup.string().required(),
+    // cep: yup.string().required(),
   })
   .required();
 
@@ -361,16 +361,17 @@ const UsuarioForm = ({
             >
               <ErrosForm errors={errors?.numero?.message} />
             </InputTextComponent>
-
-            <SelectComponent
-              name="cep"
-              control={control}
-              listagem={["teste"]}
-              helperText="Selecione a rua"
-            />
           </div>
 
           <div className={styles.inputGroup}>
+            <InputTextComponent
+              name="cep"
+              label="CEP"
+              placeholder="Digite o cep"
+              control={control}
+            >
+              <ErrosForm errors={errors?.cep?.message} />
+            </InputTextComponent>
             <div>
               <Select
                 sx={estilosMUI}
@@ -402,6 +403,9 @@ const UsuarioForm = ({
                   : ""
               )}
             </Select> */}
+          </div>
+
+          <div className={styles.inputGroup}>
             <SelectComponent
               name="cidade"
               control={control}
@@ -457,14 +461,12 @@ const UsuarioForm = ({
                   control={control}
                   listagem={["teste"]}
                   name="funcao"
-                  label="Função"
                   helperText="Selecione uma função"
                 />
                 <SelectComponent
                   control={control}
                   listagem={["teste"]}
                   name="horarioAtividade"
-                  label="Horario de atividade"
                   helperText="Selecione um horario"
                 />
               </div>
@@ -473,7 +475,6 @@ const UsuarioForm = ({
             <div className={styles.inputGroup}>
               <SelectComponent
                 name="especialidade"
-                label="Especialidade"
                 listagem={["teste"]}
                 helperText="Digite a especialidade"
                 control={control}
@@ -486,9 +487,12 @@ const UsuarioForm = ({
               backgroundColor: "#1A2E4F10",
               padding: "30px",
               borderRadius: "20px",
+              gap: "30px",
+              display: 'flex', 
+              flexDirection: 'column'
             }}
           >
-            <Typography>Zona administrativa</Typography>
+            <Typography fontWeight="bold" sx={{color: 'primary.main'}}>Zona administrativa</Typography>
             <div className={styles.inputGroup}>
               <InputTextComponent
                 name="login"
@@ -507,13 +511,14 @@ const UsuarioForm = ({
               >
                 <ErrosForm errors={errors?.senha?.message} />
               </InputTextComponent>
-              <SelectComponent
-                name="admin"
-                control={control}
-                listagem={["Sim", "Não"]}
-                helperText="Essa conta terá privilegios de administrador? "
-              />
             </div>
+
+            <SelectComponent
+              name="admin"
+              control={control}
+              listagem={["Sim", "Não"]}
+              helperText="Essa conta terá privilegios de administrador? "
+            />
           </Box>
         </>
       ) : (
