@@ -40,6 +40,7 @@ const Vinculo = () => {
         >
           Finalizar Vinculo
         </ButtonGerenciamento>
+        {/*Quando clicar em finalizar vinculo, vamos ter a listagem com o modal e o delete no action */}
       </Box>
     </section>
   );

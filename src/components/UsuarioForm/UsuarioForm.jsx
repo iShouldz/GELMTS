@@ -488,11 +488,13 @@ const UsuarioForm = ({
               padding: "30px",
               borderRadius: "20px",
               gap: "30px",
-              display: 'flex', 
-              flexDirection: 'column'
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            <Typography fontWeight="bold" sx={{color: 'primary.main'}}>Zona administrativa</Typography>
+            <Typography fontWeight="bold" sx={{ color: "primary.main" }}>
+              Zona administrativa
+            </Typography>
             <div className={styles.inputGroup}>
               <InputTextComponent
                 name="login"
@@ -523,17 +525,25 @@ const UsuarioForm = ({
         </>
       ) : (
         <>
-          <Typography variant="h5">
-            Selecione o tipo de usuario a ser {typeSub}
-          </Typography>
-
           <RadioGroup
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
             value={radioValue}
             onChange={handleChangeRadio}
+            sx={{
+              backgroundColor: "#1A2E4F10",
+              padding: "30px",
+              borderRadius: "20px",
+              display: "flex",
+              justifyContent: "center",
+              gap: "30px",
+            }}
           >
+            <Typography variant="h5" fontWeight="bold" color="primary.main">
+              Selecione o tipo de usuario a ser {typeSub}
+            </Typography>
+
             <FormControlLabel
               control={<Radio />}
               label="Estudante"
