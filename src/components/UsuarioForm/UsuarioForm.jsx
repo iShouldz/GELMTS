@@ -447,29 +447,28 @@ const UsuarioForm = ({
                   listagem={["teste"]}
                   helperText="Selecione a atividade"
                 />
+              </div>
 
+              <div className={styles.inputGroup}>
                 <SelectComponent
                   name="vinculo"
                   control={control}
                   listagem={["teste"]}
                   helperText="Selecione um vinculo"
                 />
-              </div>
-
-              <div className={styles.inputGroup}>
                 <SelectComponent
                   control={control}
                   listagem={["teste"]}
                   name="funcao"
                   helperText="Selecione uma função"
                 />
-                <SelectComponent
-                  control={control}
-                  listagem={["teste"]}
-                  name="horarioAtividade"
-                  helperText="Selecione um horario"
-                />
               </div>
+              <SelectComponent
+                control={control}
+                listagem={["teste"]}
+                name="horarioAtividade"
+                helperText="Selecione um horario"
+              />
             </>
           ) : (
             <div className={styles.inputGroup}>
