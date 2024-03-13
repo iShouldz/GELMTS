@@ -2,7 +2,7 @@
 import { FormHelperText, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-const InputTextComponent = ({ name, control, helperText = "", children, ...rest }) => {
+const InputTextComponent = ({ name, control, helperText = "", children, type="text", ...rest }) => {
   return (
     <div>
       <Controller
@@ -13,6 +13,7 @@ const InputTextComponent = ({ name, control, helperText = "", children, ...rest 
             <TextField
               {...field}
               {...rest}
+              type={type}
               value={field.value || ""}
               sx={{
                 width: "13vw",
