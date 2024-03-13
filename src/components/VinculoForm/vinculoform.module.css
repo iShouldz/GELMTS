@@ -1,0 +1,14 @@
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    width: 30vw;
+    padding: 30px;
+}
+
+.inputGroup{
+    display: flex;
+    gap: 20px
+}

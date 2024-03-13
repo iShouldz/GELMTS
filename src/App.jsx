@@ -21,6 +21,7 @@ import Editais from "./pages/Editais/Editais";
 import NotFound from "./pages/NotFound/NotFound";
 import Admin from "./pages/admin/Admin";
 import CadastrarUsuario from "./pages/CadastrarUsuario/CadastrarUsuario";
+import CadastrarVinculo from "./pages/CadastrarVinculo/CadastrarVinculo";
 
 function App() {
   const isLogado = useSelector((state) => state.login.isLogado);
@@ -76,6 +77,10 @@ function App() {
         {
           path: "vinculo",
           element: <Vinculo />,
+        },
+        {
+          path: 'vinculo/cadastrar-vinculo', 
+          element: <CadastrarVinculo />
         },
         {
           path: "editais",
