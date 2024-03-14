@@ -148,7 +148,7 @@ const Admin = () => {
       <ModalSearch
         handleClose={handleClose}
         controlDialog={controlDialog}
-        title={"Selecione o estudante"}
+        title={"Selecione o usuário"}
         actionButtonText="Atualizar informações"
         actionButton={handleOpenUpdate}
       />
@@ -156,7 +156,7 @@ const Admin = () => {
       <ModalSearch
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
-        title={"Pesquise o estudante"}
+        title={"Pesquise o usuário"}
         actionButtonText="Detalhes"
         actionButton={() => setControlDialogDetails(true)}
       />
@@ -164,7 +164,7 @@ const Admin = () => {
       <ModalSearch
         handleClose={handleCloseRemove}
         controlDialog={controlDialogRemove}
-        title={"Remova o estudante"}
+        title={"Remova o usuário"}
         actionButtonText="Remover o aluno"
         actionButton={() => console.log("Remover o aluno")}
       />
