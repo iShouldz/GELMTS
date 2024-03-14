@@ -1,6 +1,7 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import styles from "./cadastrarusuario.module.css";
 import UsuarioForm from "../../components/UsuarioForm/UsuarioForm";
+import CadastroTemplate from "../../components/CadastroTemplate/CadastroTemplate";
 const CadastrarUsuario = () => {
   const handleSubmit = (data) => {
     console.log("Dados do formulário:", data);
@@ -19,27 +20,14 @@ const CadastrarUsuario = () => {
   };
  
   return (
-    <section className={styles.UsuarioContainer}>
-      <Typography
-        variant="h3"
-        fontWeight="bold"
-        sx={{ display: "flex", justifyContent: "center", marginTop: "10vh" }}
-        color="primary.main"
-      >
-        Formulario de cadastro
-      </Typography>
-
-      {/* <Typography
-        variant="h6"
-        fontWeight="bold"
-        sx={{ display: "flex", justifyContent: "center" }}
-        color="primary.main"
-      >
-        Cadastrar Usuario
-      </Typography> */}
-
-      <UsuarioForm handleSubmitData={handleSubmit} />
-    </section>
+    
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <CadastroTemplate name="Cadastrar usuarios">
+        <UsuarioForm handleSubmitData={handleSubmit} />
+      </CadastroTemplate>
+    </Box>
+      
+    
   );
 };
 

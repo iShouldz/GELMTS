@@ -8,7 +8,7 @@ const CadastrarEditais = () => {
   };
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
-      <CadastroTemplate name="Editais">
+      <CadastroTemplate name="Cadastrar Editais">
         <EditaisForm handleSubmitData={handleSubmit} cadastro={true} />
       </CadastroTemplate>
     </Box>

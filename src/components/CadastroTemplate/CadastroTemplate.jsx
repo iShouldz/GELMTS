@@ -19,7 +19,7 @@ const CadastroTemplate = ({ name, children }) => {
         sx={{ display: "flex", justifyContent: "center" }}
         color="primary.main"
       >
-        Cadastrar {name}
+        {name}
       </Typography>
 
       {children}
