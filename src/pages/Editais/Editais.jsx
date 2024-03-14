@@ -190,7 +190,9 @@ const Editais = () => {
           <DataGrid rows={rows} columns={columns} />
         </div>
 
-        <Button>Cadidatar-se no edital</Button>
+        <Button variant="contained">Inscreve-se no processo seletivo</Button>
+        <Button variant="contained">Cancelar inscrição</Button>
+        <Button variant="contained">Editar inscrição</Button>
       </ModalDetails>
     </section>
   );
