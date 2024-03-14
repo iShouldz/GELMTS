@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import CadastroTemplate from "../../components/CadastroTemplate/CadastroTemplate";
-import EditaisForm from "../../components/Formularios/EditaisForm/EditaisForm";
+import CadastroTemplate from "../../../components/CadastroTemplate/CadastroTemplate";
+import EditaisForm from "../../../components/Formularios/EditaisForm/EditaisForm";
 
 const CadastrarEditais = () => {
   const handleSubmit = (data) => {

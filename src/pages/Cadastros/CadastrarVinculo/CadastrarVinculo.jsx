@@ -1,36 +1,35 @@
 import { Typography } from "@mui/material";
-import styles from "./cadastrarEstudante.module.css";
-import EstudanteForm from "../../components/Formularios/EstudanteForm/EstudanteForm";
+import styles from "./cadastrarVinculo.module.css";
+import VinculoForm from "../../../components/Formularios/VinculoForm/VinculoForm";
 
-const CadastrarEstudante = () => {
-
+const CadastrarVinculo = () => {
   const handleCadastrar = (data) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 
   return (
-    <section className={styles.FormularioContainer}>
+    <section className={styles.FormularioReuniaoContainer}>
       <Typography
         variant="h3"
         fontWeight="bold"
         sx={{ display: "flex", justifyContent: "center", marginTop: "10vh" }}
         color="primary.main"
       >
-        Formulario de cadastro
+        Formulário de cadastro
       </Typography>
 
       <Typography
-        variant="h6"
+        variant="h5"
         fontWeight="bold"
         sx={{ display: "flex", justifyContent: "center" }}
         color="primary.main"
       >
-        Cadastrar Estudante
+        Cadastrar Vinculo
       </Typography>
 
-      <EstudanteForm handleSubmitData={handleCadastrar} cadastro={true}/>
+      <VinculoForm handleSubmitData={handleCadastrar} cadastro={true} />
     </section>
   );
 };
 
-export default CadastrarEstudante;
+export default CadastrarVinculo;

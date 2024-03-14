@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
-import styles from "./cadastrarBolsa.module.css";
-import BolsaForm from "../../components/Formularios/BolsaForm/BolsaForm";
+import styles from "./cadastrarProjeto.module.css";
+import ProjetoForm from "../../../components/Formularios/ProjetoForm/ProjetoForm";
 
-const CadastrarBolsa = () => {
+const CadastrarProjeto = () => {
   return (
     <section className={styles.FormularioContainer}>
       <Typography
@@ -20,13 +20,12 @@ const CadastrarBolsa = () => {
         sx={{ display: "flex", justifyContent: "center" }}
         color="primary.main"
       >
-        Cadastrar Bolsa
+        Cadastrar Projeto
       </Typography>
 
-      {/*Se refere a uml de inscrição - edital, inscrições de estudante são a lista de bolsas q ele se inscreveu */}
-      <BolsaForm />
+      <ProjetoForm />
     </section>
   );
 };
 
-export default CadastrarBolsa;
+export default CadastrarProjeto;

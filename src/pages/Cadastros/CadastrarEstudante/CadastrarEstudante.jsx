@@ -1,21 +1,22 @@
 import { Typography } from "@mui/material";
-import styles from "./cadastrarOrientador.module.css";
-import OrientadorForm from "../../components/Formularios/OrientadorForm/OrientadorForm";
+import styles from "./cadastrarEstudante.module.css";
+import EstudanteForm from "../../../components/Formularios/EstudanteForm/EstudanteForm";
 
-const CadastrarOrientador = () => {
+const CadastrarEstudante = () => {
+
   const handleCadastrar = (data) => {
-    console.log(data);
-  };
+    console.log(data)
+  }
 
   return (
-    <section className={styles.FormularioOrientadorContainer}>
+    <section className={styles.FormularioContainer}>
       <Typography
         variant="h3"
         fontWeight="bold"
         sx={{ display: "flex", justifyContent: "center", marginTop: "10vh" }}
         color="primary.main"
       >
-        Formulário de cadastro
+        Formulario de cadastro
       </Typography>
 
       <Typography
@@ -24,12 +25,12 @@ const CadastrarOrientador = () => {
         sx={{ display: "flex", justifyContent: "center" }}
         color="primary.main"
       >
-        Cadastrar Orientador
+        Cadastrar Estudante
       </Typography>
 
-      <OrientadorForm handleSubmitData={handleCadastrar} cadastro={true} />
+      <EstudanteForm handleSubmitData={handleCadastrar} cadastro={true}/>
     </section>
   );
 };
 
-export default CadastrarOrientador;
+export default CadastrarEstudante;

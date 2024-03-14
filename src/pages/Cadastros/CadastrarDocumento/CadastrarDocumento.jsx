@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
-import styles from "./cadastrarProjeto.module.css";
-import ProjetoForm from "../../components/Formularios/ProjetoForm/ProjetoForm";
+import styles from "./cadastrarDocumento.module.css";
+import DocumentoForm from "../../../components/Formularios/DocumentoForm/DocumentoForm";
 
-const CadastrarProjeto = () => {
+const CadastrarDocumento = () => {
   return (
     <section className={styles.FormularioContainer}>
       <Typography
@@ -20,12 +20,12 @@ const CadastrarProjeto = () => {
         sx={{ display: "flex", justifyContent: "center" }}
         color="primary.main"
       >
-        Cadastrar Projeto
+        Cadastrar Documento
       </Typography>
 
-      <ProjetoForm />
+      <DocumentoForm />
     </section>
   );
 };
 
-export default CadastrarProjeto;
+export default CadastrarDocumento;

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import UsuarioForm from "../../components/Formularios/UsuarioForm/UsuarioForm";
-import CadastroTemplate from "../../components/CadastroTemplate/CadastroTemplate";
+import UsuarioForm from "../../../components/Formularios/UsuarioForm/UsuarioForm";
+import CadastroTemplate from "../../../components/CadastroTemplate/CadastroTemplate";
 const CadastrarUsuario = () => {
   const handleSubmit = (data) => {
     console.log("Dados do formulário:", data);
