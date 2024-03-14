@@ -39,6 +39,8 @@ const OrientadorForm = ({ handleSubmitData, cadastro = false}) => {
     defaultValues: { orientandos: [''] }
   });
 
+  console.log(errors)
+
   const navigate = useNavigate();
 
   const orientandos = watch("orientandos");
