@@ -22,6 +22,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Admin from "./pages/admin/Admin";
 import CadastrarUsuario from "./pages/CadastrarUsuario/CadastrarUsuario";
 import CadastrarVinculo from "./pages/CadastrarVinculo/CadastrarVinculo";
+import CadastrarEditais from "./pages/CadastrarEditais/CadastrarEditais";
 
 function App() {
   const isLogado = useSelector((state) => state.login.isLogado);
@@ -79,13 +80,14 @@ function App() {
           element: <Vinculo />,
         },
         {
-          path: 'vinculo/cadastrar-vinculo', 
-          element: <CadastrarVinculo />
+          path: "vinculo/cadastrar-vinculo",
+          element: <CadastrarVinculo />,
         },
         {
           path: "editais",
           element: <Editais />,
         },
+        { path: "editais/cadastrar-edital", element: <CadastrarEditais /> },
         {
           /*Para validar o admin, pegue o objeto do usuario e verifique o campo de isAdmin */
         },

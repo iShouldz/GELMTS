@@ -5,20 +5,17 @@ const CadastrarUsuario = () => {
   const handleSubmit = (data) => {
     console.log("Dados do formulário:", data);
     
-    // fetch("http://localhost:8080/professores")
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Erro ao obter os professores");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((professores) => {
-    //     console.log("Professores obtidos com sucesso:", professores);
-    //     // Faça algo com os dados dos professores aqui
-    //   })
-    //   .catch((error) => {
-    //     console.error("Erro ao obter os professores:", error.message);
-    //   });
+    fetch("http://localhost:8080/professores")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro ao obter os professores");
+        }
+        return response.json();
+      })
+      .then((professores) => {
+        console.log("Professores obtidos com sucesso:", professores);
+        
+      })
   };
  
   return (
