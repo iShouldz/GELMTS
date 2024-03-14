@@ -35,7 +35,7 @@ const schema = yup
   })
   .required();
 
-const EditaisForm = ({ handleSubmitData, cadastro = false }) => {
+const EditaisForm = ({ handleSubmitData, cadastro = true }) => {
   const {
     register,
     handleSubmit,
@@ -99,7 +99,7 @@ const EditaisForm = ({ handleSubmitData, cadastro = false }) => {
           control={control}
         />
       </div>
-      {cadastro && (
+      {!cadastro && (
         <>
           <Box
             sx={{
@@ -114,27 +114,28 @@ const EditaisForm = ({ handleSubmitData, cadastro = false }) => {
             <Typography variant="h5" fontWeight="bold" color="primary.main">
               Alunos aprovados
             </Typography>
-            <Alert>
-              Preencha com os alunos aprovados no edital
-            </Alert>
+            <Alert>Preencha com os alunos aprovados no edital</Alert>
             {alunos.map((aluno, index) => (
-              <Box
-                key={index}
-                sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
-              >
-                <InputTextComponent
-                  name={`alunos[${index}].nome`}
-                  label={`Nome do Aluno ${index + 1}`}
-                  placeholder="Digite o nome do aluno"
-                  control={control}
-                />
+              <>
+                <Box
+                  key={index}
+                  sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                >
+                  <InputTextComponent
+                    name={`alunos[${index}].nome`}
+                    label={`Nome do Aluno ${index + 1}`}
+                    placeholder="Digite o nome do aluno"
+                    control={control}
+                  />
 
-                <InputTextComponent
-                  name={`alunos[${index}].matricula`}
-                  label={`Matrícula do Aluno ${index + 1}`}
-                  placeholder="Digite a matrícula do aluno"
-                  control={control}
-                />
+                  <InputTextComponent
+                    name={`alunos[${index}].matricula`}
+                    label={`Matrícula do Aluno ${index + 1}`}
+                    placeholder="Digite a matrícula do aluno"
+                    control={control}
+                  />
+                </Box>
+
                 <InputTextComponent
                   name={`alunos[${index}].rg`}
                   label={`RG do Aluno ${index + 1}`}
@@ -142,27 +143,29 @@ const EditaisForm = ({ handleSubmitData, cadastro = false }) => {
                   control={control}
                 />
 
-                <IconButton onClick={addAluno}>
-                  <PersonAddAlt1Icon />
-                </IconButton>
-
-                {index !== 0 && (
-                  <IconButton onClick={() => removeAluno(index)}>
-                    <PersonRemoveAlt1Icon />
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <IconButton onClick={addAluno}>
+                    <PersonAddAlt1Icon />
                   </IconButton>
-                )}
-              </Box>
+
+                  {index !== 0 && (
+                    <IconButton onClick={() => removeAluno(index)}>
+                      <PersonRemoveAlt1Icon />
+                    </IconButton>
+                  )}
+                </Box>
+              </>
             ))}
           </Box>
         </>
       )}
 
       <Box sx={{ display: "flex", gap: "30px" }}>
-        {cadastro ? (
+        {!cadastro ? (
           <Button
             variant="contained"
             sx={{ backgroundColor: "primary.main" }}
-            onClick={() => navigate("/vinculo")}
+            onClick={() => navigate("/editais")}
           >
             Voltar
           </Button>
