@@ -19,7 +19,7 @@ const ModalTemplate = ({ handleClose, controlDialog, title, children }) => {
         "& .MuiDialog-container": {
           "& .MuiPaper-root": {
             width: "100%",
-            maxWidth: "40vw",
+            maxWidth: "50vw",
           },
         },
       }}

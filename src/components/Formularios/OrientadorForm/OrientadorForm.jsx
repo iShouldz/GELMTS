@@ -86,10 +86,9 @@ const OrientadorForm = ({ handleSubmitData, cadastro = false}) => {
       <div className={styles.inputGroup}>
         <SelectComponent
           name="curso"
-          label="Curso"
-          placeholder="Selecione seu curso"
           control={control}
           listagem={cursos}
+          helperText="Selecione seu curso"
         />
         <InputTextComponent
           name="especialidade"
@@ -99,7 +98,7 @@ const OrientadorForm = ({ handleSubmitData, cadastro = false}) => {
         />
         <SelectComponent
           name="projeto"
-          label="Projeto"
+          helperText="Selecione seu projeto"
           control={control}
         />
       </div>

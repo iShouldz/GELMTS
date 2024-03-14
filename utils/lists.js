@@ -1,10 +1,11 @@
 export const cursos = [
     "Ciência da computação",
-    "Med vet",
+    "Medicina Veterinária",
     "Agronomia",
     "Engenharia de Alimentos",
     "Zootecnia",
     "Letras",
+    "Pedagogia",
 ]
 
 export const estilosMUI = {

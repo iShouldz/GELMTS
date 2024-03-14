@@ -84,7 +84,7 @@ const ReuniaoForm = ({ handleSubmitData, cadastro = false }) => {
         {/* FAZER SELECT DA LISTA DE PROJETOS*/}
         <SelectComponent
           name="projeto"
-          label="Projeto"
+          helperText="Selecione um projeto"
           control={control}
         />
       </div>
@@ -109,8 +109,7 @@ const ReuniaoForm = ({ handleSubmitData, cadastro = false }) => {
       <div className={styles.inputGroup}>
         <SelectComponent
           name="urgencia"
-          label="Urgência"
-          placeholder="Selecione a urgência"
+          helperText="Selecione a urgência"
           listagem={urgencia}
           defaultValue=""
           {...register("urgencia")}
@@ -120,8 +119,7 @@ const ReuniaoForm = ({ handleSubmitData, cadastro = false }) => {
         {/* FAZER SELECT DA LISTA DE ORIENTADORES*/}
         <SelectComponent
           name="orientador"
-          label="Orientador"
-          placeholder="Digite o nome do orientador"
+          helperText="Selecione um orientador"
           variant="outlined"
           {...register("orientador")}
           control={control}

@@ -222,7 +222,7 @@ const Header = () => {
               }}
             >
               {/*Vamos pegar a primeira letra do nome do usuario para a imagem do avatar */}
-              <Avatar>{nome.nome[0]}</Avatar>
+              {/* <Avatar>{nome.nome[0]}</Avatar> */}
               Olá, usuario
             </Typography>
           </ListItem>
