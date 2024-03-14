@@ -8,10 +8,10 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import SearchIcon from '@mui/icons-material/Search';
 
 import {useState} from "react";
-import ModalSearchReuniao from "../../components/Modais/ModalSearchReuniao/ModalSearchReuniao";
-import ModalUpdateReuniao from "../../components/Modais/ModalUpdateReuniao/ModalUpdateReuniao";
+import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
+import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
 import ReuniaoForm from "../../components/Formularios/ReuniaoForm/ReuniaoForm";
-import ModalDetailsReuniao from "../../components/Modais/ModalDetailsReuniao/ModalDetailsReuniao";
+import ModalDetails from "../../components/Modais/ModalDetails/ModalDetails";
 
 const Reuniao = () => {
 
@@ -96,7 +96,7 @@ const Reuniao = () => {
         </ButtonGerenciamento>
       </Box>
 
-      <ModalSearchReuniao
+      <ModalSearch
         handleClose={handleClose}
         controlDialog={controlDialog}
         title={"Selecione a reunião"}
@@ -104,7 +104,7 @@ const Reuniao = () => {
         actionButtonText="Atualizar informações"
       />
 
-      <ModalSearchReuniao
+      <ModalSearch
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
         title={"Pesquise a reunião"}
@@ -112,7 +112,7 @@ const Reuniao = () => {
         actionButtonText="Detalhes"
       />
 
-      <ModalSearchReuniao
+      <ModalSearch
         handleClose={handleCloseRemove}
         controlDialog={controlDialogRemove}
         title={"Remova a reunião"}
@@ -120,15 +120,15 @@ const Reuniao = () => {
         actionButtonText="Remover a reunião"
       />
 
-      <ModalUpdateReuniao
+      <ModalUpdate
         handleClose={handleCloseUpdate}
         controlDialog={controlDialogUpdate}
         title="Atualize os dados"
       >
         <ReuniaoForm handlleSubmitData={handleUpdate} />
-      </ModalUpdateReuniao>
+      </ModalUpdate>
 
-      <ModalDetailsReuniao
+      <ModalDetails
         handleClose={() => setControlDialogDetails(false)}
         controlDialog={controlDialogDetails}
         title="Informações da reunião"

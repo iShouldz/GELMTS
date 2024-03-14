@@ -7,8 +7,8 @@ import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { useState } from "react";
-import ModalSearchOrientadores from "../../components/Modais/ModalSearchOrientadores/ModalSearchOrientadores";
-import ModalUpdateOrientador from "../../components/Modais/ModalUpdateOrientador/ModalUpdateOrientador";
+import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
+import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
 import OrientadorForm from "../../components/Formularios/OrientadorForm/OrientadorForm";
 import ModalDetailsOrientador from "../../components/Modais/ModalDetailsOrientador/ModalDetailsOrientador";
 
@@ -97,7 +97,7 @@ const Orientador = () => {
         </ButtonGerenciamento>
       </Box>
 
-      <ModalSearchOrientadores
+      <ModalSearch
         handleClose={handleClose}
         controlDialog={controlDialog}
         title={"Selecione o orientador"}
@@ -105,7 +105,7 @@ const Orientador = () => {
         actionButtonText="Atualizar informações"
       />
 
-      <ModalSearchOrientadores
+      <ModalSearch
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
         title={"Pesquise o orientador"}
@@ -113,7 +113,7 @@ const Orientador = () => {
         actionButtonText="Detalhes"
       />
 
-      <ModalSearchOrientadores
+      <ModalSearch
         handleClose={handleCloseRemove}
         controlDialog={controlDialogRemove}
         title={"Remova o orientador"}
@@ -121,13 +121,13 @@ const Orientador = () => {
         actionButtonText="Remover o orientador"
       />
 
-      <ModalUpdateOrientador
+      <ModalUpdate
         handleClose={handleCloseUpdate}
         controlDialog={controlDialogUpdate}
         title="Atualize os dados"
       >
         <OrientadorForm handleSubmitData={handleUpdate} />
-      </ModalUpdateOrientador>
+      </ModalUpdate>
 
       <ModalDetailsOrientador
         handleClose={() => setControlDialogDetails(false)}
