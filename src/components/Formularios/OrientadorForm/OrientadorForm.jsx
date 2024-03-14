@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, Button, IconButton, FormHelperText } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,6 +9,7 @@ import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
 import { useNavigate } from "react-router-dom";
 
 import { cursos } from "../../../../utils/lists";
+import Select from "../../UI/SelectComponent/SelectComponent";
 import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 
 const schema = yup
@@ -86,10 +87,9 @@ const OrientadorForm = ({ handleSubmitData, cadastro = false}) => {
       <div className={styles.inputGroup}>
         <SelectComponent
           name="curso"
-          label="Curso"
-          placeholder="Selecione seu curso"
           control={control}
           listagem={cursos}
+          helperText="Selecione seu curso"
         />
         <InputTextComponent
           name="especialidade"
@@ -99,7 +99,7 @@ const OrientadorForm = ({ handleSubmitData, cadastro = false}) => {
         />
         <SelectComponent
           name="projeto"
-          label="Projeto"
+          helperText="Selecione seu projeto"
           control={control}
         />
       </div>
