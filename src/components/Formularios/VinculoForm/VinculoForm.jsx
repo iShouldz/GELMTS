@@ -113,7 +113,7 @@ const VinculoForm = ({ handleSubmitData, cadastro=false }) => {
           type="submit"
           sx={{ backgroundColor: "primary.main" }}
         >
-          Submit
+          Avançar
         </Button>
       </Box>
     </form>

@@ -575,11 +575,11 @@ const UsuarioForm = ({
       <div>
         <Box sx={{ display: "flex", gap: "30px" }}>
           {pageForm >= 50 ? (
-            <Button onClick={() => setPageForm((prevState) => prevState - 25)}>
+            <Button onClick={() => setPageForm((prevState) => prevState - 25)} variant="contained">
               Voltar
             </Button>
           ) : (
-            <Button onClick={() => navigate("/admin")}>Voltar</Button>
+            <Button onClick={() => navigate("/admin")} variant="contained">Voltar</Button>
           )}
 
           {pageForm === 100 ? (
@@ -588,10 +588,10 @@ const UsuarioForm = ({
               type="submit"
               sx={{ backgroundColor: "primary.main" }}
             >
-              Submit
+              Avançar
             </Button>
           ) : (
-            <Button onClick={() => setPageForm((prevState) => prevState + 25)}>
+            <Button onClick={() => setPageForm((prevState) => prevState + 25)} variant="contained">
               Avançar
             </Button>
           )}

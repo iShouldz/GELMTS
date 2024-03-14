@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, IconButton } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -148,6 +148,7 @@ const ReuniaoForm = ({ handleSubmitData, cadastro = false }) => {
       </div>
 
       <div>
+      <Box sx={{ display: "flex", gap: "30px" }}>
         {cadastro && (
           <Button
             type="submit"
@@ -164,8 +165,9 @@ const ReuniaoForm = ({ handleSubmitData, cadastro = false }) => {
           variant="contained"
           sx={{ backgroundColor: "primary.main" }}
         >
-          Submit
+          Enviar
         </Button>
+      </Box>
       </div>
     </form>
   );

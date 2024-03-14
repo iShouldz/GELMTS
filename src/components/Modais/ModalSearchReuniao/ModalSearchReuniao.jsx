@@ -116,7 +116,7 @@ const ModalSearchReuniao = ({
         </List>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Fechar</Button>
+        <Button onClick={handleClose} variant="contained">Fechar</Button>
       </DialogActions>
     </Dialog>
   );
