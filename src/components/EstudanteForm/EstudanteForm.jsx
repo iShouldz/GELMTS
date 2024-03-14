@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { Button, MenuItem, Select, TextField } from "@mui/material";
+import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -117,6 +117,7 @@ const EstudanteForm = ({ handleSubmitData, cadastro = false }) => {
       </div>
 
       <div>
+      <Box sx={{ display: "flex", gap: "30px" }}>
         {cadastro && (
           <Button
             variant="contained"
@@ -126,15 +127,16 @@ const EstudanteForm = ({ handleSubmitData, cadastro = false }) => {
             Voltar
           </Button>
         )}
-
+      
         <Button
           variant="contained"
           // onClick={() => setConfirmModal(true)}
           type="submit"
           sx={{ backgroundColor: "primary.main" }}
         >
-          Submit
+          Enviar
         </Button>
+      </Box>
       </div>
 
       {/* <ModalConfirmation

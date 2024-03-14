@@ -1,9 +1,11 @@
-import { Button, TextField, IconButton} from "@mui/material";
+import { Box, Button, TextField, IconButton} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./documentoForm.module.css";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import { useNavigate } from "react-router-dom";
+
 
 const schema = yup
   .object({
@@ -28,6 +30,8 @@ const DocumentoForm = () => {
   const handleCadastrarDocumento = (data) => {
     console.log(data);
   };
+
+  const navigate = useNavigate();
   
   {Object.keys(errors).length > 0 && (
     <div className={styles.errorContainer}>
@@ -67,8 +71,10 @@ const DocumentoForm = () => {
         {...register("link")}
       />
     </div>
-
-      <Button type="submit">Enviar</Button>
+    <Box sx={{ display: "flex", gap: "30px" }}>
+      <Button onClick={() => navigate("/documento")} variant="contained">Voltar</Button>
+      <Button type="submit" variant="contained">Enviar</Button>
+    </Box>
     </form>
   );
 };
