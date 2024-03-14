@@ -143,23 +143,14 @@ const Editais = () => {
       <ModalDetails
         handleClose={() => setControlDialogDetails(false)}
         controlDialog={controlDialogDetails}
-        title="Informações do Estudante"
-        data={[
-          {
-            name: "Aluno Mockup",
-            curso: "Curso Mockup",
-            cpf: "050.000.000-85",
-            nam1e: "Aluno Mockup",
-            curso2: "Curso Mockup",
-            cp3f: "050.000.000-85",
-            name3: "Aluno Mockup",
-            c3urso: "Curso Mockup",
-            cpf3: "050.000.000-85",
-          },
-        ]}
+        title="Informações do edital"
       >
         {/*Usemos a children para quando for para exibir lista de dados, 
         assim o componente vai ficar bem reutilizavel */}
+
+        {/*Exibir detalhes do edital, joga os dados aqui dentro depois de um fetch no botão "detalhes"
+        e depois faz um map para exibir os alunos classificados logo baixo, na children do componente
+        */}
         {cursos.map((item) => (
           <Typography key={item}>{item}</Typography>
         ))}

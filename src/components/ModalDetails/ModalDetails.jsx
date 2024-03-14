@@ -16,9 +16,9 @@ const ModalDetails = ({
   handleClose,
   controlDialog,
   title,
-  data,
+  data = 0,
   adicionalButton,
-  adicionalButtonText="",
+  adicionalButtonText = "",
   children,
 }) => {
   return (
@@ -32,13 +32,16 @@ const ModalDetails = ({
           justifyContent: "center",
         }}
       >
-        <Avatar
-          src={avatarMockup}
-          sx={{
-            width: "10vw",
-            height: "10vw",
-          }}
-        />
+        {data !== 0 && (
+          <Avatar
+            src={avatarMockup}
+            sx={{
+              width: "10vw",
+              height: "10vw",
+            }}
+          />
+        )}
+
         <Box
           sx={{
             display: "flex",
@@ -49,17 +52,18 @@ const ModalDetails = ({
             alignItems: "center",
           }}
         >
-          {data.map((item) =>
-            Object.entries(item).map(([key, value]) => (
-              <TextField
-                variant="filled"
-                sx={estilosMUI}
-                key={key}
-                value={value}
-                label={key}
-              />
-            ))
-          )}
+          {data !== 0 &&
+            data.map((item) =>
+              Object.entries(item).map(([key, value]) => (
+                <TextField
+                  variant="filled"
+                  sx={estilosMUI}
+                  key={key}
+                  value={value}
+                  label={key}
+                />
+              ))
+            )}
         </Box>
 
         {children}
