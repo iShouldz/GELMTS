@@ -6799,3 +6799,16 @@ export const cidadeEstado = {
       }
     ]
   }
+
+export const linguagensPro = [
+    "JavaScript",
+    "Python",
+    "Java",
+    "C++",
+    "C#",
+    "Ruby",
+    "Go",
+    "Swift",
+    "TypeScript",
+    "Rust"
+]

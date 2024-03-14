@@ -1,30 +1,16 @@
-import { Typography } from "@mui/material";
-import styles from "./cadastrarProjeto.module.css";
 import ProjetoForm from "../../../components/Formularios/ProjetoForm/ProjetoForm";
-
+import CadastroTemplate from "../../../components/CadastroTemplate/CadastroTemplate";
+import { Box } from "@mui/material";
 const CadastrarProjeto = () => {
+  const handleSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <section className={styles.FormularioContainer}>
-      <Typography
-        variant="h3"
-        fontWeight="bold"
-        sx={{ display: "flex", justifyContent: "center", marginTop: "10vh" }}
-        color="primary.main"
-      >
-        Formulario de cadastro
-      </Typography>
-
-      <Typography
-        variant="h6"
-        fontWeight="bold"
-        sx={{ display: "flex", justifyContent: "center" }}
-        color="primary.main"
-      >
-        Cadastrar Projeto
-      </Typography>
-
-      <ProjetoForm />
-    </section>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <CadastroTemplate name="Cadastrar projeto">
+        <ProjetoForm handleSubmitData={handleSubmit} />
+      </CadastroTemplate>
+    </Box>
   );
 };
 
