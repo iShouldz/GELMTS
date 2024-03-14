@@ -42,18 +42,18 @@ const ModalDetails = ({
           />
         )}
 
-        <Box
-          sx={{
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-            padding: "20px",
-            paddingTop: "20px",
-            alignItems: "center",
-          }}
-        >
-          {data !== 0 &&
-            data.map((item) =>
+        {data !== 0 && (
+          <Box
+            sx={{
+              display: "flex",
+              gap: "20px",
+              flexWrap: "wrap",
+              padding: "20px",
+              paddingTop: "20px",
+              alignItems: "center",
+            }}
+          >
+            {data.map((item) =>
               Object.entries(item).map(([key, value]) => (
                 <TextField
                   variant="filled"
@@ -64,7 +64,8 @@ const ModalDetails = ({
                 />
               ))
             )}
-        </Box>
+          </Box>
+        )}
 
         {children}
       </DialogContent>

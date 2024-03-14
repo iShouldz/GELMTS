@@ -11,14 +11,18 @@ import ModalSearch from "../../components/ModalSearch/ModalSearch";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
 import EditaisForm from "../../components/EditaisForm/EditaisForm";
 import ModalDetails from "../../components/ModalDetails/ModalDetails";
-import { cursos } from "../../../utils/lists";
+import { DataGrid } from "@mui/x-data-grid";
 const Editais = () => {
   const [controlDialog, setControlDialog] = useState(false);
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
   const [controlDialogRemove, setControlDialogRemove] = useState(false);
   const [controlDialogUpdate, setControlDialogUpdate] = useState(false);
   const [controlDialogDetails, setControlDialogDetails] = useState(false);
+  let nextId = 1;
 
+  const handleIdIncrementGrid = () => {
+    return nextId++;
+  };
   const handleClose = () => {
     setControlDialog(false);
   };
@@ -52,8 +56,38 @@ const Editais = () => {
   };
 
   const handleUpdate = (data) => {
+    //Desmontar o objeto do form, pegar os alunos e adicionar um campo de id, e por a função
+    //de incremento id: handleIdIncrementGrid(), para ser possivel visualizar o grid
     console.log(data);
   };
+
+  const columns = [
+    { field: "nome", headerName: "Nome", width: 180, editable: true },
+    { field: "matricula", headerName: "Matricula", width: 180, editable: true },
+    { field: "rg", headerName: "RG", width: 180, editable: true },
+  ];
+
+  //Dados mockup
+  const rows = [
+    {
+      nome: "Pedro",
+      matricula: "52514685",
+      rg: "9854244",
+      id: handleIdIncrementGrid(),
+    },
+    {
+      nome: "Lucas",
+      matricula: "5588201",
+      rg: "0121033",
+      id: handleIdIncrementGrid(),
+    },
+    {
+      nome: "Kleiton",
+      matricula: "9968577",
+      rg: "7474560",
+      id: handleIdIncrementGrid(),
+    },
+  ];
 
   return (
     <section className={styles.editaisContainer}>
@@ -137,7 +171,7 @@ const Editais = () => {
         controlDialog={controlDialogUpdate}
         title="Atualize os dados"
       >
-        <EditaisForm handleSubmitData={handleUpdate} cadastro={false}/>
+        <EditaisForm handleSubmitData={handleUpdate} cadastro={false} />
       </ModalUpdate>
 
       <ModalDetails
@@ -151,9 +185,10 @@ const Editais = () => {
         {/*Exibir detalhes do edital, joga os dados aqui dentro depois de um fetch no botão "detalhes"
         e depois faz um map para exibir os alunos classificados logo baixo, na children do componente
         */}
-        {cursos.map((item) => (
-          <Typography key={item}>{item}</Typography>
-        ))}
+        <Typography variant="h5">Alunos aprovados no edital</Typography>
+        <div style={{ height: 400, width: "100%" }}>
+          <DataGrid rows={rows} columns={columns} />
+        </div>
       </ModalDetails>
     </section>
   );
