@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./cadastrarProjeto.module.css";
-import ProjetoForm from "../../components/ProjetoForm/ProjetoForm";
+import ProjetoForm from "../../components/Formularios/ProjetoForm/ProjetoForm";
 
 const CadastrarProjeto = () => {
   return (

@@ -7,10 +7,10 @@ import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { useState } from "react";
-import ModalSearchOrientadores from "../../components/ModalSearchOrientadores/ModalSearchOrientadores";
-import ModalUpdateOrientador from "../../components/ModalUpdateOrientador/ModalUpdateOrientador";
-import OrientadorForm from "../../components/OrientadorForm/OrientadorForm";
-import ModalDetailsOrientador from "../../components/ModalDetailsOrientador/ModalDetailsOrientador";
+import ModalSearchOrientadores from "../../components/Modais/ModalSearchOrientadores/ModalSearchOrientadores";
+import ModalUpdateOrientador from "../../components/Modais/ModalUpdateOrientador/ModalUpdateOrientador";
+import OrientadorForm from "../../components/Formularios/OrientadorForm/OrientadorForm";
+import ModalDetailsOrientador from "../../components/Modais/ModalDetailsOrientador/ModalDetailsOrientador";
 
 //import { cursos } from "../../../utils/lists";
 

@@ -9,8 +9,8 @@ import {
     DialogTitle,
     TextField,
   } from "@mui/material";
-  import { estilosMUI } from "../../../utils/lists";
-  import avatarOrientador from "../../assets/avatarOrientador.jpg";
+  import { estilosMUI } from "../../../../utils/lists";
+  import avatarOrientador from "../../../assets/avatarOrientador.jpg";
   
   const ModalDetailsOrientador = ({
     handleClose,

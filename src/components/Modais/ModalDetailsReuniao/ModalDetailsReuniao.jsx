@@ -9,8 +9,8 @@ import {
     DialogTitle,
     TextField,
 } from "@mui/material";
-import { estilosMUI } from "../../../utils/lists";
-import reuniaoPicture from "../../assets/reuniaoPicture.png";
+import { estilosMUI } from "../../../../utils/lists";
+import reuniaoPicture from "../../../assets/reuniaoPicture.png";
 
 const ModalDetailsReuniao = ({
     handleClose,

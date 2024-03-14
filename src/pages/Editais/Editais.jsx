@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import ButtonGerenciamento from "../../components/UI/ButtonGerenciamento/ButtonGerenciamento";
 import styles from "./editais.module.css";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
@@ -7,10 +7,10 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { useState } from "react";
 
-import ModalSearch from "../../components/ModalSearch/ModalSearch";
-import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
-import EditaisForm from "../../components/EditaisForm/EditaisForm";
-import ModalDetails from "../../components/ModalDetails/ModalDetails";
+import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
+import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
+import EditaisForm from "../../components/Formularios/EditaisForm/EditaisForm";
+import ModalDetails from "../../components/Modais/ModalDetails/ModalDetails";
 import { DataGrid } from "@mui/x-data-grid";
 const Editais = () => {
   const [controlDialog, setControlDialog] = useState(false);
@@ -189,6 +189,8 @@ const Editais = () => {
         <div style={{ height: 400, width: "100%" }}>
           <DataGrid rows={rows} columns={columns} />
         </div>
+
+        <Button>Cadidatar-se no edital</Button>
       </ModalDetails>
     </section>
   );

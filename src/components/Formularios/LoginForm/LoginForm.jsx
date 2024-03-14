@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
 import styles from "./loginForm.module.css";
 import { useDispatch } from "react-redux";
-import userSlice, { userActions } from "../../store/login/loginSlice";
+import userSlice, { userActions } from "../../../store/login/loginSlice";
 
 const schema = yup
   .object({

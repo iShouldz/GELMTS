@@ -7,9 +7,9 @@ import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { useState } from "react";
-import ModalSearch from "../../components/ModalSearch/ModalSearch";
-import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
-import ProjetoForm from "../../components/ProjetoForm/ProjetoForm";
+import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
+import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
+import ProjetoForm from "../../components/Formularios/ProjetoForm/ProjetoForm";
 
 const Projeto = () => {
 

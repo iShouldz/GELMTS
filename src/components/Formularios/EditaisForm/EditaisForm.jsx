@@ -3,9 +3,9 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
 import styles from "../VinculoForm/vinculoform.module.css";
-import SelectComponent from "../../components/UI/SelectComponent/SelectComponent";
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import {
   Alert,

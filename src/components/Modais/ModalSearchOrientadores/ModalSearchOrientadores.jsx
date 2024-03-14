@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Button,
   Card,
@@ -11,21 +10,27 @@ import {
   DialogContent,
   DialogTitle,
   List,
+  TextField,
   Typography,
 } from "@mui/material";
-import SelectComponent from "../../components/UI/SelectComponent/SelectComponent";
+
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
-import reuniaoPicture from "../../assets/reuniaoPicture.png";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
+import { cursos } from "../../../../utils/lists";
+import avatarOrientador from "../../../assets/avatarOrientador.jpg";
+
 
 const schema = yup
   .object({
-    data: yup.date().required(),
-    orientador: yup.string().required(),
+    nome: yup.string().required(),
+    curso: yup.string().required(),
   })
+  .required();
 
-const ModalSearchReuniao = ({
+const ModalSearchOrientadores = ({
   handleClose,
   controlDialog,
   title,
@@ -40,8 +45,6 @@ const ModalSearchReuniao = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  console.log(errors);
 
   return (
     <Dialog onClose={handleClose} open={controlDialog}
@@ -67,44 +70,34 @@ const ModalSearchReuniao = ({
         >
           <InputTextComponent
             fontWeight="bold"
-            name="data"
-            label="Data"
-            type="date"
+            name="nome"
+            label="CPF"
             fullWidth
+            placeholder="Digite seu CPF"
             control={control}
-            helperText="Insira a data"
-            InputLabelProps={{
-              shrink: true,
-            }}
+            helperText="Digite o CPF"
             sx={{ width: "30vw", maxWidth: "800px" }}
-            variant="outlined"
-            {...register("data")}
           />
           <SelectComponent
-            name="orientador"
-            label="Orientador"
+            name="curso"
             control={control}
-            helperText="Selecione o orientador"
-            // listagem dos orientadores
+            listagem={cursos}
+            helperText="Selecione o curso"
           />
 
           <Button variant="contained">Filtrar</Button>
         </form>
 
         <List sx={{ width: "20%" }}>
-          {/*Listagem das reuniões para seleção e depois deleção/update */}
+          {/*Listagem dos orientadores para seleção e depois deleção/update */}
           <Card>
-            <CardMedia
-              sx={{ height: 140 }}
-              image={reuniaoPicture}
-              title="foto da reunião"
-            />
+            <CardMedia sx={{ height: 140 }} image={avatarOrientador} title="foto do orientador" />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Reunião 01
+              <Typography gutterBottom variant="h6" component="div">
+                Orientador 01
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Projeto: XXX
+                Curso: XXX
               </Typography>
             </CardContent>
             <CardActions>
@@ -122,4 +115,4 @@ const ModalSearchReuniao = ({
   );
 };
 
-export default ModalSearchReuniao;
+export default ModalSearchOrientadores;

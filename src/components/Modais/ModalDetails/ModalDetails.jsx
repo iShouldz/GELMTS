@@ -9,8 +9,8 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
-import { estilosMUI } from "../../../utils/lists";
-import avatarMockup from "../../assets/mockupAvatarImage.jpg";
+import { estilosMUI } from "../../../../utils/lists";
+import avatarMockup from "../../../assets/mockupAvatarImage.jpg";
 
 const ModalDetails = ({
   handleClose,

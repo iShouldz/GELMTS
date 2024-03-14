@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./cadastrarVinculo.module.css";
-import VinculoForm from "../../components/VinculoForm/VinculoForm";
+import VinculoForm from "../../components/Formularios/VinculoForm/VinculoForm";
 
 const CadastrarVinculo = () => {
   const handleCadastrar = (data) => {

@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./cadastrarDocumento.module.css";
-import DocumentoForm from "../../components/DocumentoForm/DocumentoForm";
+import DocumentoForm from "../../components/Formularios/DocumentoForm/DocumentoForm";
 
 const CadastrarDocumento = () => {
   return (

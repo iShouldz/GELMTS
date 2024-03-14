@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Button, TextField, IconButton} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./projetoForm.module.css";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

@@ -26,7 +26,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import DeviceHubIcon from "@mui/icons-material/DeviceHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import ModalDetails from "../ModalDetails/ModalDetails";
+import ModalDetails from "../Modais/ModalDetails/ModalDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../store/login/loginSlice";
 

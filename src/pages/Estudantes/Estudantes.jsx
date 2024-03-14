@@ -7,10 +7,10 @@ import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { useState } from "react";
-import ModalSearch from "../../components/ModalSearch/ModalSearch";
-import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
-import EstudanteForm from "../../components/EstudanteForm/EstudanteForm";
-import ModalDetails from "../../components/ModalDetails/ModalDetails";
+import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
+import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
+import EstudanteForm from "../../components/Formularios/EstudanteForm/EstudanteForm";
+import ModalDetails from "../../components/Modais/ModalDetails/ModalDetails";
 import { cursos } from "../../../utils/lists";
 const Estudantes = () => {
   const [controlDialog, setControlDialog] = useState(false);

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import {
   Button,
@@ -10,19 +11,15 @@ import {
   DialogContent,
   DialogTitle,
   List,
-  TextField,
   Typography,
 } from "@mui/material";
-
-import SelectComponent from "../../components/UI/SelectComponent/SelectComponent";
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
-import { cursos } from "../../../utils/lists";
-import avatarOrientador from "../../assets/avatarOrientador.jpg";
-
-
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
+import { cursos } from "../../../../utils/lists";
+import avatarImage from "../../../assets/mockupAvatarImage.jpg";
 const schema = yup
   .object({
     nome: yup.string().required(),
@@ -30,7 +27,7 @@ const schema = yup
   })
   .required();
 
-const ModalSearchOrientadores = ({
+const ModalSearch = ({
   handleClose,
   controlDialog,
   title,
@@ -45,9 +42,10 @@ const ModalSearchOrientadores = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   return (
-    <Dialog onClose={handleClose} open={controlDialog}
+    <Dialog
+      onClose={handleClose}
+      open={controlDialog}
       sx={{
         "& .MuiDialog-container": {
           "& .MuiPaper-root": {
@@ -89,12 +87,16 @@ const ModalSearchOrientadores = ({
         </form>
 
         <List sx={{ width: "20%" }}>
-          {/*Listagem dos orientadores para seleção e depois deleção/update */}
+          {/*Listagem dos estudantes para seleção e depois deleção/update */}
           <Card>
-            <CardMedia sx={{ height: 140 }} image={avatarOrientador} title="foto do orientador" />
+            <CardMedia
+              sx={{ height: 140 }}
+              image={avatarImage}
+              title="foto do aluno"
+            />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                Orientador 01
+              <Typography gutterBottom variant="h5" component="div">
+                Aluno 01
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Curso: XXX
@@ -115,4 +117,4 @@ const ModalSearchOrientadores = ({
   );
 };
 
-export default ModalSearchOrientadores;
+export default ModalSearch;

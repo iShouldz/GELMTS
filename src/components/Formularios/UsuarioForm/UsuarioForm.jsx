@@ -4,14 +4,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
-import SelectComponent from "../UI/SelectComponent/SelectComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 import {
   cursos,
   estilosMUI,
   nacionalidade,
   orgaosRG,
-} from "../../../utils/lists";
+} from "../../../../utils/lists";
 import {
   Alert,
   Box,
@@ -34,8 +34,8 @@ import LooksTwoIcon from "@mui/icons-material/LooksTwo";
 import Looks3Icon from "@mui/icons-material/Looks3";
 import Looks4Icon from "@mui/icons-material/Looks4";
 import ErrosForm from "../ErrorsForm/ErrosForm";
-import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
-import { cidadeEstado } from "../../../utils/lists";
+import ModalConfirmation from '../../Modais/ModalConfirmation/ModalConfirmation'
+import { cidadeEstado } from "../../../../utils/lists";
 
 const schema = yup
   .object({

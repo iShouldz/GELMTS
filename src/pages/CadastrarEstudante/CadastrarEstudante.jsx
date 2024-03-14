@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./cadastrarEstudante.module.css";
-import EstudanteForm from "../../components/EstudanteForm/EstudanteForm";
+import EstudanteForm from "../../components/Formularios/EstudanteForm/EstudanteForm";
 
 const CadastrarEstudante = () => {
 

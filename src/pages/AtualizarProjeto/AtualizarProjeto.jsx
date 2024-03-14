@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./atualizarProjeto.module.css";
-import ProjetoForm from "../../components/ProjetoForm/ProjetoForm";
+import ProjetoForm from "../../components/Formularios/ProjetoForm/ProjetoForm";
 
 const AtualizarProjeto = () => {
   return (

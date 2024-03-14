@@ -12,11 +12,11 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { Box, Typography } from "@mui/material";
 import { userActions } from "../../store/login/loginSlice";
 import { useState } from "react";
-import ModalDetails from "../../components/ModalDetails/ModalDetails";
+import ModalDetails from "../../components/Modais/ModalDetails/ModalDetails";
 import { cursos } from "../../../utils/lists";
-import ModalSearch from "../../components/ModalSearch/ModalSearch";
-import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
-import UsuarioForm from "../../components/UsuarioForm/UsuarioForm";
+import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
+import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
+import UsuarioForm from "../../components/Formularios/UsuarioForm/UsuarioForm";
 const Admin = () => {
   const dispatch = useDispatch();
   const [controlDialog, setControlDialog] = useState(false);

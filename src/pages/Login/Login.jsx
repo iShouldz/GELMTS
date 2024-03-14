@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material"
 import styles from './login.module.css'
 import logo from '../../assets/logoGrandeLTMS.svg'
-import LoginForm from "../../components/LoginForm/LoginForm"
+import LoginForm from "../../components/Formularios/LoginForm/LoginForm"
 
 const Login = () => {
   return (

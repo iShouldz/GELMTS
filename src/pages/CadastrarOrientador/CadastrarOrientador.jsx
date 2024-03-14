@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styles from "./cadastrarOrientador.module.css";
-import OrientadorForm from "../../components/OrientadorForm/OrientadorForm";
+import OrientadorForm from "../../components/Formularios/OrientadorForm/OrientadorForm";
 
 const CadastrarOrientador = () => {
   const handleCadastrar = (data) => {

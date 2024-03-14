@@ -1,6 +1,6 @@
 import  { Typography } from "@mui/material";
 import styles from "./cadastrarReuniao.module.css";
-import ReuniaoForm from "../../components/ReuniaoForm/ReuniaoForm";
+import ReuniaoForm from "../../components/Formularios/ReuniaoForm/ReuniaoForm";
 
 const CadastrarReuniao = () => {
 

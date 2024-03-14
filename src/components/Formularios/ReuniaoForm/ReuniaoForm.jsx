@@ -7,10 +7,10 @@ import styles from "./reuniaoForm.module.css";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
-import SelectComponent from "../UI/SelectComponent/SelectComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 
-import { urgencia } from "../../../utils/lists";
+import { urgencia } from "../../../../utils/lists";
 
 const schema = yup
   .object({

@@ -5,13 +5,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./estudanteForm.module.css";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
-import SelectComponent from "../UI/SelectComponent/SelectComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 import { useNavigate } from "react-router-dom";
-import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
+import ModalConfirmation from "../../Modais/ModalConfirmation/ModalConfirmation";
 import { useState } from "react";
 
-import { cursos } from "../../../utils/lists";
+import { cursos } from "../../../../utils/lists";
 const schema = yup
   .object({
     nome: yup.string().required(),

@@ -5,11 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./orientadorForm.module.css";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
 import { useNavigate } from "react-router-dom";
 
-import { cursos } from "../../../utils/lists";
-import SelectComponent from "../UI/SelectComponent/SelectComponent";
+import { cursos } from "../../../../utils/lists";
+import SelectComponent from "../../UI/SelectComponent/SelectComponent";
 
 const schema = yup
   .object({

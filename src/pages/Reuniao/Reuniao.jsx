@@ -8,10 +8,10 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import SearchIcon from '@mui/icons-material/Search';
 
 import {useState} from "react";
-import ModalSearchReuniao from "../../components/ModalSearchReuniao/ModalSearchReuniao";
-import ModalUpdateReuniao from "../../components/ModalUpdateReuniao/ModalUpdateReuniao";
-import ReuniaoForm from "../../components/ReuniaoForm/ReuniaoForm";
-import ModalDetailsReuniao from "../../components/ModalDetailsReuniao/ModalDetailsReuniao";
+import ModalSearchReuniao from "../../components/Modais/ModalSearchReuniao/ModalSearchReuniao";
+import ModalUpdateReuniao from "../../components/Modais/ModalUpdateReuniao/ModalUpdateReuniao";
+import ReuniaoForm from "../../components/Formularios/ReuniaoForm/ReuniaoForm";
+import ModalDetailsReuniao from "../../components/Modais/ModalDetailsReuniao/ModalDetailsReuniao";
 
 const Reuniao = () => {
 

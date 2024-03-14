@@ -3,9 +3,9 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import InputTextComponent from "../UI/InputTextComponent/InputTextComponent";
+import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
 import styles from "./vinculoform.module.css";
-import SelectComponent from "../../components/UI/SelectComponent/SelectComponent";
+import SelectComponent from '../../UI/SelectComponent/SelectComponent'
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
