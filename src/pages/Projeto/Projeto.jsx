@@ -2,14 +2,15 @@ import { Box, Typography } from "@mui/material";
 import ButtonGerenciamento from "../../components/UI/ButtonGerenciamento/ButtonGerenciamento";
 import styles from "./projeto.module.css";
 
-import PersonIcon from "@mui/icons-material/Person";
-import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import GroupsIcon from '@mui/icons-material/Groups';
+import SettingsIcon from '@mui/icons-material/Settings';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import SearchIcon from '@mui/icons-material/Search';
 import { useState } from "react";
-import ModalSearch from "../../components/ModalSearch/ModalSearch";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
 import ProjetoForm from "../../components/ProjetoForm/ProjetoForm";
+import ModalSearchProjeto from "../../components/ModalSearchProjeto/ModalSearchProjeto";
+import ModalDetails from "../../components/ModalDetails/ModalDetails";
 
 const Projeto = () => {
 
@@ -17,6 +18,7 @@ const Projeto = () => {
   const [controlDialogSearch, setControlDialogSearch] = useState(false);
   const [controlDialogRemove, setControlDialogRemove] = useState(false);
   const [controlDialogUpdate, setControlDialogUpdate] = useState(false);
+  const [controlDialogDetails, setControlDialogDetails] = useState(false);
  
   const handleClose = () => {
     setControlDialog(false);
@@ -78,20 +80,20 @@ const Projeto = () => {
       >
         <ButtonGerenciamento 
           path="cadastrar-projeto"
-          icon={<PersonIcon sx={{ fontSize: 50 }} />}
+          icon={<GroupsIcon sx={{ fontSize: 50 }} />}
         >
           Cadastrar Projeto
         </ButtonGerenciamento>
 
         <ButtonGerenciamento
           onClick={handleOpen}
-          icon={<ManageAccountsIcon sx={{ fontSize: 50 }} />}
+          icon={<SettingsIcon sx={{ fontSize: 50 }} />}
         >
           Atualizar Projeto
         </ButtonGerenciamento>
 
         <ButtonGerenciamento
-          icon={<PersonRemoveIcon sx={{ fontSize: 50 }} />}
+          icon={<RemoveCircleOutlineIcon sx={{ fontSize: 50 }} />}
           onClick={handleOpenRemove}
         >
             Remover Projeto
@@ -100,13 +102,13 @@ const Projeto = () => {
         <ButtonGerenciamento
           path=""
           onClick={handleOpenSearch}
-          icon={<PersonSearchIcon sx={{ fontSize: 50 }} />}
+          icon={<SearchIcon sx={{ fontSize: 50 }} />}
         >
           Procurar Projeto
         </ButtonGerenciamento>
       </Box>
 
-      <ModalSearch
+      <ModalSearchProjeto
         handleClose={handleClose}
         controlDialog={controlDialog}
         title={"Selecione o projeto"}
@@ -114,15 +116,15 @@ const Projeto = () => {
         actionButton={handleOpenUpdate}
       />
 
-      <ModalSearch
+      <ModalSearchProjeto
         handleClose={handleCloseSearch}
         controlDialog={controlDialogSearch}
         title={"Pesquise o projeto"}
         actionButtonText="Detalhes"
-        actionButton={() => console.log("detalhes do projeto")}
+        actionButton={() => setControlDialogDetails(true)}
       />
 
-      <ModalSearch
+      <ModalSearchProjeto
         handleClose={handleCloseRemove}
         controlDialog={controlDialogRemove}
         title={"Remova o projeto"}
@@ -137,6 +139,13 @@ const Projeto = () => {
       >
         <ProjetoForm handleSubmitData={handleUpdate} />
       </ModalUpdate>
+
+      <ModalDetails
+        handleClose={() => setControlDialogDetails(false)}
+        controlDialog={controlDialogDetails}
+        title="Informações do projeto"
+        data={[{ nome: 'Nome do Projeto', descricao: 'Descrição do projeto', participante: 'Participante', ScrumMaster: 'Scrum Master do projeto', orientador: 'Vinícius', AntigosParticipantes: ['Maria', 'José']}]}
+      />
     </section>
   );
 };
