@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Root from "./pages/Root/Root";
 import Home from "./pages/Home/Home";
 import Estudantes from "./pages/Estudantes/Estudantes";
@@ -91,8 +91,18 @@ function App() {
         {
           /*Para validar o admin, pegue o objeto do usuario e verifique o campo de isAdmin */
         },
-        { path: "admin", element: !isAdmin ? <Admin /> : <NotFound /> },
-        { path: "admin/cadastrar-usuario", element: <CadastrarUsuario /> },
+        {
+          path: "admin",
+          element: !isAdmin ? <Admin /> : <NotFound />,
+          loader: async () => {
+            return fetch(`http://localhost:8083/professores`)
+
+          },
+        },
+        {
+          path: "admin/cadastrar-usuario",
+          element: <CadastrarUsuario />,
+        },
         {
           path: "*",
           element: <NotFound />,

@@ -39,57 +39,57 @@ import { cidadeEstado } from "../../../../utils/lists";
 
 const schema = yup
   .object({
-    // nome: yup.string().required(),
-    // rg: yup.string().required(),
-    // CPF: yup.number().required(),
-    // celular: yup.string().required(),
-    // dataEmissao: yup.string().required(),
-    // orgaoRG: yup.string().required(),
-    // estadoCivil: yup.string().required(),
-    // nacionalidade: yup.string().required(),
-    // naturalidade: yup.string().required(),
-    // fotoAssinatura: yup.string().required(),
-    // curso: yup.string().required(),
-    // gestao: yup.string().required(),
-    // login: yup.string().required(),
-    // senha: yup.string().required(),
-    // admin: yup.string().required(),
-    // role: yup.string().required(),
-    // matricula: yup.string().when("role", {
-    //   is: "estudante",
-    //   then: (schema) => schema.required("Digite a matricula"),
-    //   otherwise: (schema) => schema.notRequired(),
-    // }),
-    // atividade: yup.string().when("role", {
-    //   is: "estudante",
-    //   then: (schema) => schema.required("Selecione a atividade"),
-    //   otherwise: (schema) => schema.notRequired(),
-    // }),
-    // vinculo: yup.string().when("role", {
-    //   is: "estudante",
-    //   then: (schema) => schema.required("Selecione o vinculo"),
-    //   otherwise: (schema) => schema.notRequired(),
-    // }),
-    // funcao: yup.string().when("role", {
-    //   is: "estudante",
-    //   then: (schema) => schema.required("Selecione a função"),
-    //   otherwise: (schema) => schema.notRequired(),
-    // }),
-    // horarioAtividade: yup.string().when("role", {
-    //   is: "estudante",
-    //   then: (schema) => schema.required("Selecione um horario de atividade"),
-    //   otherwise: (schema) => schema.notRequired(),
-    // }),
-    // especialidade: yup.string().when("role", {
-    //   is: "professor",
-    //   then: (schema) => schema.required("Digite a especialidade"),
-    //   otherwise: (schema) => schema.notRequired(),
-    // }),
-    // rua: yup.string().required(),
-    // numero: yup.string().required(),
-    // cidade: yup.string().required(),
-    // estado: yup.string().required(),
-    // cep: yup.string().required(),
+    nome: yup.string().required(),
+    rg: yup.string().required(),
+    CPF: yup.string().required(),
+    celular: yup.string().required(),
+    dataEmissao: yup.string().required(),
+    orgaoRG: yup.string().required(),
+    estadoCivil: yup.string().required(),
+    nacionalidade: yup.string().required(),
+    naturalidade: yup.string().required(),
+    fotoAssinatura: yup.string().required(),
+    curso: yup.string().required(),
+    gestao: yup.string().required(),
+    login: yup.string().required(),
+    senha: yup.string().required(),
+    admin: yup.string().required(),
+    role: yup.string().required(),
+    matricula: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Digite a matricula"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    atividade: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione a atividade"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    vinculo: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione o vinculo"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    funcao: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione a função"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    horarioAtividade: yup.string().when("role", {
+      is: "estudante",
+      then: (schema) => schema.required("Selecione um horario de atividade"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    especialidade: yup.string().when("role", {
+      is: "professor",
+      then: (schema) => schema.required("Digite a especialidade"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    rua: yup.string().required(),
+    numero: yup.string().required(),
+    cidade: yup.string().required(),
+    estado: yup.string().required(),
+    cep: yup.string().required(),
   })
   .required();
 
@@ -232,7 +232,7 @@ const UsuarioForm = ({
           <div className={styles.inputGroup}>
             <InputTextComponent
               name="dataEmissao"
-              label="Data Emissão RG"
+              type="Date"
               placeholder="Digite a data de emissão do RG"
               control={control}
             >

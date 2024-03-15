@@ -19,7 +19,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import InputTextComponent from "../../UI/InputTextComponent/InputTextComponent";
 import { cursos } from "../../../../utils/lists";
-import avatarImage from "../../../assets/mockupAvatarImage.jpg";
 const schema = yup
   .object({
     nome: yup.string().required(),
@@ -31,8 +30,7 @@ const ModalSearch = ({
   handleClose,
   controlDialog,
   title,
-  actionButton,
-  actionButtonText,
+  children,
 }) => {
   const {
     register,
@@ -42,6 +40,7 @@ const ModalSearch = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   return (
     <Dialog
       onClose={handleClose}
@@ -71,6 +70,7 @@ const ModalSearch = ({
             name="nome"
             label="CPF"
             fullWidth
+            disabled
             placeholder="Digite seu CPF"
             control={control}
             helperText="Digite o CPF"
@@ -78,40 +78,25 @@ const ModalSearch = ({
           />
           <SelectComponent
             name="curso"
+            disabled
             control={control}
             listagem={cursos}
             helperText="Selecione o curso"
           />
 
-          <Button variant="contained" >Filtrar</Button>
+          <Button variant="contained" disabled>Filtrar</Button>
         </form>
 
-        <List sx={{ width: "20%" }}>
-          {/*Listagem dos estudantes para seleção e depois deleção/update */}
-          <Card>
-            <CardMedia
-              sx={{ height: 140 }}
-              image={avatarImage}
-              title="foto do aluno"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Aluno 01
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Curso: XXX
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" variant="contained" onClick={actionButton}>
-                {actionButtonText}
-              </Button>
-            </CardActions>
-          </Card>
+        <List
+          sx={{ width: "100%", display: "flex", gap: "30px", flexWrap: "wrap" }}
+        >
+          {children}
         </List>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} variant="contained">Fechar</Button>
+        <Button onClick={handleClose} variant="contained">
+          Fechar
+        </Button>
       </DialogActions>
     </Dialog>
   );
