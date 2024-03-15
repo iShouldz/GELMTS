@@ -10,8 +10,7 @@ import { useState } from "react";
 import ModalSearch from "../../components/Modais/ModalSearch/ModalSearch";
 import ModalUpdate from "../../components/Modais/ModalUpdate/ModalUpdate";
 import OrientadorForm from "../../components/Formularios/OrientadorForm/OrientadorForm";
-import ModalDetailsOrientador from "../../components/Modais/ModalDetailsOrientador/ModalDetailsOrientador";
-
+import ModalDetails from '../../components/Modais/ModalDetails/ModalDetails'
 //import { cursos } from "../../../utils/lists";
 
 const Orientador = () => {
@@ -129,7 +128,7 @@ const Orientador = () => {
         <OrientadorForm handleSubmitData={handleUpdate} />
       </ModalUpdate>
 
-      <ModalDetailsOrientador
+      <ModalDetails
         handleClose={() => setControlDialogDetails(false)}
         controlDialog={controlDialogDetails}
         title="Informações do Orientador"
@@ -140,7 +139,7 @@ const Orientador = () => {
         ))} */}
 
         
-      </ModalDetailsOrientador>
+      </ModalDetails>
     </section>
   );
 };

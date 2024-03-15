@@ -107,7 +107,6 @@ const UsuarioForm = ({
   const [selectedEstado, setSelectedEstado] = useState();
   const [selectedCity, setSelectedCity] = useState();
 
-  console.log(radioValue);
   const handleChange = (event) => {
     setRgSelect(event.target.value);
   };
@@ -144,7 +143,7 @@ const UsuarioForm = ({
       // setConfirm(true);
     }
   }, [numberOfErrors, pageForm]);
-  console.log(selectedEstado);
+  
   return (
     <form
       onSubmit={handleSubmit(handleSubmitData)}
